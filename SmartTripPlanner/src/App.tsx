@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import { MainLayout } from './components/layout/MainLayout';
-import { AppRoutes } from '@/Routes/Index';
+import { AppRoutes } from './Routes/approutes';
 import { ThemeProvider } from './context/ThemeContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext';
