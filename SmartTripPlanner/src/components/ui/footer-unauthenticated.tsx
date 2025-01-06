@@ -4,7 +4,7 @@ export default function UniqueFooter() {
   return (
     <>
     <hr/>
-    <footer className=" bg-white/30 dark:bg-zinc-950/90 text-white py-8 relative overflow-hidden">
+    <footer className=" bg-stone-50 dark:bg-zinc-950/90 text-white py-8 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center space-y-4">
           <div className="flex items-center space-x-2">

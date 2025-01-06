@@ -27,7 +27,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 overflow-hidden">
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none opacity-20 dark:opacity-30"
+        className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-30"
         style={{ zIndex: 0 }}
       />
       <main className="z-10 container mx-auto px-20 py-20 mb-20">
