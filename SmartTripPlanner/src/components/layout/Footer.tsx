@@ -52,7 +52,7 @@ export const Footer = () => {
       <FloatingDock
         mobileClassName="translate-y-20" // only for demo, remove for production
         items={links}
-        desktopClassName="bg-black"
+        desktopClassName="bg-black dark:shadow-[0_6px_30px_rgb(255,255,255,0.2)] transition-shadow duration-300"
       />
     </footer>
   );

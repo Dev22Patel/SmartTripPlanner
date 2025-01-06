@@ -30,7 +30,7 @@ export default function Dashboard() {
         className="fixed inset-0 pointer-events-none opacity-20 dark:opacity-30"
         style={{ zIndex: 0 }}
       />
-      <main className="relative z-10 container mx-auto px-4 py-20">
+      <main className="z-10 container mx-auto px-20 py-20 mb-20">
         <motion.div
           className="max-w-4xl mx-auto text-center mb-16"
           {...fadeIn}
@@ -49,7 +49,7 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="relative rounded-2xl bg-gray-50/50 dark:bg-gray-900/50 p-2 backdrop-blur-lg border border-gray-200 dark:border-gray-800">
+          <div className="rounded-2xl bg-gray-50/50 dark:bg-gray-900/50 p-2 backdrop-blur-lg border border-gray-200 dark:border-gray-800">
             <Input
               type="text"
               placeholder="Where do you want to go?"
@@ -72,7 +72,7 @@ export default function Dashboard() {
             { icon: Hotel, title: 'Accommodation', description: 'Discover perfect places to stay during your trip.' },
             { icon: Map, title: 'Itinerary Planning', description: 'Create personalized day-by-day travel plans.' },
             { icon: Calendar, title: 'Scheduling', description: 'Optimize your daily activities for the best experience.' },
-            { icon: Utensils, title: 'Dining', description: 'Explore local cuisines and book restaurant reservations.' },
+            { icon: Utensils, title: 'Dining', description: 'Explore local cuisines and restaurant reservations.' },
             { icon: CreditCard, title: 'Budget Tracking', description: 'Keep your travel expenses in check.' },
           ].map((feature, index) => (
             <motion.div
