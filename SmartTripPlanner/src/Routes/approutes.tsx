@@ -1,8 +1,8 @@
 import Authentication from '@/Pages/Authentication';
 import Home from '@/Pages/Home';
-import { Landing } from '@/Pages/LandingPage';
 import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
+import Dashboard from '@/Pages/LandingPage';
 
 
 export const AppRoutes = () => {
@@ -11,7 +11,7 @@ export const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/landing-page" element={
             <ProtectedRoute>
-            <Landing />
+            <Dashboard />
             </ProtectedRoute>
         } />
         <Route path="/authentication" element={<Authentication />} />

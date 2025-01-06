@@ -13,14 +13,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark'); // Default theme set to "dark"
   const [isThemeSet, setIsThemeSet] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(savedTheme || (userPrefersDarkMode ? 'dark' : 'light'));
+    // Use saved theme or fallback to "dark" if none is saved
+    setTheme(savedTheme || (userPrefersDarkMode ? 'dark' : 'dark'));
     setIsThemeSet(true);
   }, []);
 
@@ -43,7 +44,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   if (!isThemeSet) return null;
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, isLoading, defaultTheme: 'light' }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isLoading, defaultTheme: 'dark' }}>
       {isLoading && <Loader />}
       {children}
     </ThemeContext.Provider>

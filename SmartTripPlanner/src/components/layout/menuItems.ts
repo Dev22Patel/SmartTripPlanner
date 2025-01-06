@@ -1,34 +1,45 @@
 export const menuItems = {
     services: [
-      { title: 'Web Development', href: '/services/web-development' },
-      { title: 'Interface Design', href: '/services/interface-design' },
-      { title: 'Search Engine Optimization', href: '/services/seo' },
-      { title: 'Branding', href: '/services/branding' },
+      {
+        title: 'Itinerary Builder',
+        href: '/itinerary-builder',
+        description: 'Plan a day-by-day itinerary tailored to your preferences.',
+      },
+      {
+        title: 'Budget Planner',
+        href: '/budget-planner',
+        description: 'Estimate and manage your travel expenses effortlessly.',
+      },
+      {
+        title: 'Travel Assistance',
+        href: '/travel-assistance',
+        description: 'Get support for booking and travel-related queries.',
+      },
     ],
     products: [
       {
-        title: 'Algochurn',
-        href: '/products/algochurn',
-        description: 'Prepare for tech interviews like never before.',
-        image: '/placeholder.svg?height=200&width=300'
+        title: 'Top Destinations',
+        href: '/top-destinations',
+        description: 'Discover trending destinations for your next trip.',
+        image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963 ',
       },
       {
-        title: 'Tailwind Master Kit',
-        href: '/products/tmk',
-        description: 'Production ready Tailwind components for your next project',
-        image: '/placeholder.svg?height=200&width=300'
+        title: 'Travel Packages',
+        href: '/travel-packages',
+        description: 'Find exclusive deals on travel packages.',
+        image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1 ',
       },
       {
-        title: 'Moonbeam',
-        href: '/products/moonbeam',
-        description: 'Never write from scratch again. Go from idea to blog in minutes.',
-        image: '/placeholder.svg?height=200&width=300'
+        title: 'Adventure Tours',
+        href: '/adventure-tours',
+        description: 'Embark on thrilling adventures around the globe.',
+        image: 'https://images.unsplash.com/photo-1533240332313-0db49b459ad6',
       },
       {
-        title: 'Rogue',
-        href: '/products/rogue',
-        description: 'Respond to government RFPs, RFIs and RFQs 10x faster using AI',
-        image: '/placeholder.svg?height=200&width=300'
+        title: 'Family Trips',
+        href: '/family-trips',
+        description: 'Plan unforgettable family vacations.',
+        image: 'https://images.unsplash.com/photo-1563911302283-d2bc129e7570',
       },
     ],
-  }
+  };
