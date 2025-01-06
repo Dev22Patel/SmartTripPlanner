@@ -45,25 +45,25 @@ export default function SignupFormDemo() {
       </div>
 
       <form className="space-y-5" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="John" type="text" className="h-10" />
+            <Input id="firstname" placeholder="John" type="text" className="h-10 text-black dark:text-white" />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Doe" type="text" className="h-10" />
+            <Input id="lastname" placeholder="Doe" type="text" className="h-10 text-black dark:text-white" />
           </LabelInputContainer>
         </div>
 
         <LabelInputContainer>
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="you@example.com" type="email" className="h-10" />
+          <Input id="email" placeholder="you@example.com" type="email" className="h-10 text-black dark:text-white" />
         </LabelInputContainer>
 
         <LabelInputContainer>
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" className="h-10" />
+          <Input id="password" placeholder="••••••••" type="password" className="h-10 text-black dark:text-white" />
         </LabelInputContainer>
 
         <button

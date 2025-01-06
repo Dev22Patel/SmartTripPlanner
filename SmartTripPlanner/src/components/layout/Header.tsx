@@ -5,6 +5,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { menuItems } from './menuItems';
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { Loader } from '../common/Loader';
 interface DropdownProps {
   items: Array<{
     title: string;
@@ -75,11 +76,6 @@ const NavItem = ({
   </div>
 );
 
-const Loader = () => (
-  <div className="flex justify-center items-center w-full h-full">
-    <div className="animate-spin border-4 border-t-4 border-gray-300 dark:border-gray-700 border-solid rounded-full w-12 h-12"></div>
-  </div>
-);
 
 export const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -114,9 +110,9 @@ export const Header = () => {
     <div className="w-full">
       {/* Gradient background */}
       <div className="h-7 w-full bg-gradient-to-r from-purple-500/70 via-pink-400/70 to-purple-500/70 dark:bg-gradient-to-r dark:from-black/50 dark:via-stone-800 dark:to-black/50 flex items-center justify-center">
-        <span className="font-bold">INTRODUCING SMART TRIP PLANNER -</span>
+        <span className="font-mono font-bold text-zinc-800 dark:text-white">INTRODUCING SMART TRIP PLANNER -</span>
         <p className="w-1"> </p>
-        <span className="font-serif"> A Perfect Trip Planner for Your Next Trip</span>
+        <span className="font-thin text-black dark:text-white"> A Perfect Trip Planner for Your Next Trip</span>
       </div>
 
       {/* Main header */}
@@ -125,7 +121,7 @@ export const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Left section - Logo or brand */}
             <div className="w-32">
-              <Link to="/" className="text-xl font-bold text-black">
+              <Link to="/" className="text-xl font-bold text-black dark:text-white">
                 TripPlanner
               </Link>
             </div>

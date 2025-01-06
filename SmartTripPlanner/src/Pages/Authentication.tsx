@@ -9,7 +9,7 @@ export default function Authentication() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center py-8 px-4 bg-stone-200 dark:bg-black/50 dark:shadow-2xl dark:shadow-red-500">
+    <div className="relative min-h-screen flex flex-col items-center justify-center py-8 px-4 bg-stone-200 dark:bg-black/50">
       {/* Bright Backlight Effect */}
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="w-[800px] h-[500px] bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 opacity-30 blur-3xl rounded-full -z-10 dark:from-blue-700 dark:via-blue-600 dark:to-blue-700"></div>
@@ -54,7 +54,7 @@ export default function Authentication() {
         </div>
 
         {/* Form container */}
-        <div className="shadow-lg rounded-2xl bg-white dark:bg-black backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90">
+        <div className="shadow-lg rounded-2xl bg-white dark:bg-black backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90 dark:shadow-lg dark:shadow-gray-800 mb-9">
           {authMode === "signup" ? (
             <>
               <SignupForm />
