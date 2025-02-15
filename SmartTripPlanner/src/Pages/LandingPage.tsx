@@ -100,7 +100,7 @@ export default function Dashboard() {
         <div className='mt-32'>
         <RetroProjectBoard />
         </div>
-        <div className='mt-20'>
+        <div className='-mt-10 -mb-32'>
         <RetroDiagram />
         </div>
       </main>

@@ -1,32 +1,34 @@
 import ColourfulText from "../ui/colourful-text";
 import { motion } from "framer-motion";
+import FooterGridBackground from "../ui/FooterGridBackground";
+import { Cover } from "../ui/cover";
 
 export default function Footer() {
   return (
     <>
       <hr />
-      <footer className="bg-white/80 dark:bg-zinc-950/90 py-12 relative overflow-hidden">
-        <div className="container mx-auto px-4">
+      <footer className="relative overflow-hidden">
+        {/* Grid Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <FooterGridBackground />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 py-12">
           {/* Main Content */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* Brand Section */}
             <div className="col-span-1 md:col-span-4 mb-8 text-center">
               <div className="flex items-center justify-center space-x-2 mb-4">
-                {/* <Skull className="w-6 h-6 text-black dark:text-white" /> */}
                 <motion.div
-        className="h-full w-full object-cover absolute inset-0 [mask-image:radial-gradient(circle,transparent,black_80%)] pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ duration: 1 }}
-      />
-      <h1 className="text-2xl md:text-5xl lg:text-7xl font-bold text-center text-white relative z-2 font-mono">
-        <ColourfulText text="Smart Trip Planner" /> <br />
-      </h1>
-                {/* <Coffee className="w-6 h-6 text-black dark:text-white" /> */}
+                  className="h-full w-full object-cover absolute inset-0 [mask-image:radial-gradient(circle,transparent,black_80%)] pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.5 }}
+                  transition={{ duration: 1 }}
+                />
+                <h1 className="text-2xl md:text-5xl lg:text-7xl font-bold text-center relative z-2 font-mono">
+                  <Cover><ColourfulText text="Smart Trip Planner" /></Cover> <br />
+                </h1>
               </div>
-              {/* <p className="text-gray-600 dark:text-gray-400 text-center max-w-md mx-auto">
-                Crafting digital nightmares and coding fever dreams since the last full moon.
-              </p> */}
             </div>
 
             {/* Navigation Columns */}
@@ -75,9 +77,8 @@ export default function Footer() {
             </div>
           </div>
 
-
           {/* Copyright */}
-          <div className="text-center text-sm text-gray-500 mt-12">
+          <div className="text-center text-sm text-gray-500 dark:text-gray-400 mt-12">
             <p>© {new Date().getFullYear()} Dev Creations. All rights reserved.</p>
           </div>
         </div>
