@@ -6,6 +6,11 @@ import { Input } from "@/components/ui/input"
 import { Plane, Map, Calendar, Hotel, Utensils, CreditCard, Search } from 'lucide-react'
 import RetroProjectBoard from '@/components/ui/smaple';
 import RetroDiagram from '@/components/ui/TripDiagram';
+import BentoGrid from '@/components/ui/BentoGrid';
+import ColourfulText from '@/components/ui/colourful-text';
+import { Spotlight } from '@/components/ui/spotlight-new';
+import SearchInput from '@/features/searchFunctionality/searchBar';
+import SearchBar from '@/features/searchFunctionality/searchBar';
 
 export default function Dashboard() {
   const [destination, setDestination] = useState('');
@@ -25,13 +30,14 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gradient-to-bl dark:from-zinc-900 dark:via-zinc-950 dark:to-black text-gray-900 dark:text-gray-100 overflow-hidden">
+        <Spotlight />
       <main className="z-10 container mx-auto px-20 py-20 mb-20">
         <motion.div
           className="max-w-4xl mx-auto text-center mb-16"
           {...fadeIn}
         >
-          <h1 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 dark:from-violet-400 dark:via-purple-400 dark:to-pink-500 font-mono">
-            Welcome to Your Smart Trip Planner!
+          <h1 className="text-6xl font-bold mb-6 bg-clip-text text-zinc-700 dark:text-white/90 font-mono">
+            Welcome to Your <ColourfulText text="Smart" /> Trip Planner!
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto font-mono">
             Plan your perfect journey with our intelligent travel companion
@@ -43,32 +49,17 @@ export default function Dashboard() {
         <h1 className='text-6xl font-extrabold text-center font-mono'>WHERE TO?</h1>
         </div>
         <motion.div
-          className="max-w-3xl mx-auto mb-16 mt-8"
+          className="max-w-3xl mx-auto mb-20 mt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Input
-              type="text"
-              placeholder="Where do you want to go?"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              className="flex-grow py-6 px-6 text-lg text-gray-900 dark:text-white rounded-full focus:ring-2 focus:ring-violet-500 border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg"
-            />
-            <Button
-              className="sm:flex-shrink-0 rounded-full bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 px-8 py-6 text-base font-medium text-white transition-all duration-300 shadow-lg hover:shadow-violet-500/25"
-              onClick={() => console.log('Planning trip to', destination)}
-            >
-            <Search className="w-5 h-5 mr-2" />
-              Plan Trip
-            </Button>
-          </div>
+            <SearchBar />
         </motion.div>
 
 
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
+        <BentoGrid />
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
           {[
             { icon: Plane, title: 'Flight Booking', description: 'Find and book the best flights for your journey.' },
             { icon: Hotel, title: 'Accommodation', description: 'Discover perfect places to stay during your trip.' },
@@ -96,11 +87,12 @@ export default function Dashboard() {
               </Card>
             </motion.div>
           ))}
-        </div>
+        </div> */}
         <div className='mt-32'>
         <RetroProjectBoard />
         </div>
-        <div className='-mt-10 -mb-32'>
+        <div className='    -mb-32'>
+        <h2 className='mt-20 -mb-20 text-center font-mono text-4xl font-bold'>How We Deliver</h2>
         <RetroDiagram />
         </div>
       </main>
