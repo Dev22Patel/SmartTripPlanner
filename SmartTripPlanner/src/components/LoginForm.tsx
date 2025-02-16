@@ -14,7 +14,8 @@ export default function LoginForm() {
         password: "",
     });
     const [error, setError] = useState("");
-
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    console.log(API_BASE_URL);
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
@@ -31,7 +32,7 @@ export default function LoginForm() {
         setError(""); // Clear previous errors
 
         try {
-            const response = await fetch("http://localhost:5000/api/auth/login", {
+            const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
