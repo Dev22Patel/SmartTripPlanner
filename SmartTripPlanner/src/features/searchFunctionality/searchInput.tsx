@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button"; // Adjust based on your UI libr
 
 const POPULAR_PLACES = ["Dubai", "Singapore", "Paris", "New York", "Tokyo", "London"];
 
-const SearchInput = () => {
-  const [destination, setDestination] = useState("");
+const SearchInput = ({dest} : any) => {
+  const [destination, setDestination] = useState(dest);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
 

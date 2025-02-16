@@ -1,4 +1,5 @@
 import { ArrowRight, Mountain, Building, Palmtree, Globe, BookOpen } from 'lucide-react';
+import { JSX } from 'react/jsx-runtime';
 
 export default function AppleBentoGrid() {
   const trips = [
@@ -57,7 +58,7 @@ export default function AppleBentoGrid() {
     }
   ];
 
-  const renderCard = (trip, index) => {
+  const renderCard = (trip: { title: string; tagline: string; description: string; className: string; textColor: string; category: string; icon: JSX.Element; image: string; isLarge: boolean; bgColor?: undefined; } | { title: string; tagline: string; description: string; className: string; textColor: string; category: string; icon: JSX.Element; bgColor: string; image?: undefined; isLarge?: undefined; } ) => {
     if (trip.isLarge) {
       return (
         <div className="relative h-full">
@@ -150,7 +151,7 @@ export default function AppleBentoGrid() {
             key={index}
             className={`group relative overflow-hidden rounded-3xl ${trip.className} transition-all duration-500 hover:shadow-lg`}
           >
-            {renderCard(trip, index)}
+            {renderCard(trip)}
           </div>
         ))}
       </div>

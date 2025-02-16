@@ -1,19 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Plane, Map, Calendar, Hotel, Utensils, CreditCard, Search } from 'lucide-react'
 import RetroProjectBoard from '@/components/ui/smaple';
 import RetroDiagram from '@/components/ui/TripDiagram';
 import BentoGrid from '@/components/ui/BentoGrid';
 import ColourfulText from '@/components/ui/colourful-text';
 import { Spotlight } from '@/components/ui/spotlight-new';
-import SearchInput from '@/features/searchFunctionality/searchBar';
 import SearchBar from '@/features/searchFunctionality/searchBar';
 
 export default function Dashboard() {
-  const [destination, setDestination] = useState('');
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
