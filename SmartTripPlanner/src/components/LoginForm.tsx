@@ -6,17 +6,13 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 
-export default function SignupForm() {
+export default function LoginForm() {
     const { login, isAuthenticated } = useAuth();
     const navigate = useNavigate();
-
     const [formData, setFormData] = useState({
-        firstname: "",
-        lastname: "",
         email: "",
         password: "",
     });
-
     const [error, setError] = useState("");
 
     // Redirect if already authenticated
@@ -26,18 +22,16 @@ export default function SignupForm() {
         }
     }, [isAuthenticated, navigate]);
 
-    // Handle Input Change
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
     };
 
-    // Handle Form Submit
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError(""); // Clear previous errors
 
         try {
-            const response = await fetch("http://localhost:5000/api/auth/signup", {
+            const response = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -48,7 +42,7 @@ export default function SignupForm() {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(data.message || "Signup failed. Please try again.");
+                setError(data.message || "Login failed. Please try again.");
                 return;
             }
 
@@ -75,10 +69,10 @@ export default function SignupForm() {
         <div className="px-8 pt-6">
             <div className="text-center mb-6">
                 <h2 className="font-bold text-2xl text-neutral-800 dark:text-neutral-200">
-                    Welcome to SmartTripPlanner
+                    Welcome Back to SmartTripPlanner
                 </h2>
                 <p className="text-neutral-600 text-sm max-w-sm mx-auto dark:text-neutral-300 mt-2">
-                    Create your account and start planning your next adventure
+                    Sign in and start to explore the world again!
                 </p>
             </div>
 
@@ -89,33 +83,6 @@ export default function SignupForm() {
             )}
 
             <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-                    <LabelInputContainer>
-                        <Label htmlFor="firstname">First name</Label>
-                        <Input
-                            id="firstname"
-                            placeholder="John"
-                            type="text"
-                            value={formData.firstname}
-                            onChange={handleChange}
-                            className="h-10 text-black dark:text-white"
-                            required
-                        />
-                    </LabelInputContainer>
-                    <LabelInputContainer>
-                        <Label htmlFor="lastname">Last name</Label>
-                        <Input
-                            id="lastname"
-                            placeholder="Doe"
-                            type="text"
-                            value={formData.lastname}
-                            onChange={handleChange}
-                            className="h-10 text-black dark:text-white"
-                            required
-                        />
-                    </LabelInputContainer>
-                </div>
-
                 <LabelInputContainer>
                     <Label htmlFor="email">Email Address</Label>
                     <Input
@@ -146,7 +113,7 @@ export default function SignupForm() {
                     className="relative w-full h-10 dark:bg-gray-800 text-black dark:text-white rounded-lg font-medium shadow-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 group/btn"
                     type="submit"
                 >
-                    Create Account
+                    Enter
                     <BottomGradient />
                 </button>
 
@@ -162,7 +129,9 @@ export default function SignupForm() {
                 <div className="w-full flex items-center justify-center mb-4">
                     <GoogleLogin
                         onSuccess={handleGoogleLoginSuccess}
-                        onError={() => setError("Google login failed")}
+                        onError={() => {
+                            setError("Google login failed");
+                        }}
                     />
                 </div>
             </form>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SignupForm from "@/components/SignupForm";
+import LoginForm from "@/components/LoginForm";
 
 export default function Authentication() {
   const [authMode, setAuthMode] = useState<"signup" | "login">("signup");
@@ -17,7 +18,7 @@ export default function Authentication() {
 
 
       {/* Main heading */}
-      <div className="text-center mb-8">
+      <div className="text-center mb-8 mt-8">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
           {authMode === "signup" ? "Create Your Account" : "Welcome Back"}
         </h1>
@@ -54,7 +55,7 @@ export default function Authentication() {
         </div>
 
         {/* Form container */}
-        <div className="shadow-lg rounded-2xl bg-white dark:bg-black backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90 dark:shadow-lg dark:shadow-gray-800 mb-9">
+        <div className="shadow-lg rounded-2xl bg-white dark:bg-black backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90 dark:shadow-lg dark:shadow-gray-800 mb-20">
           {authMode === "signup" ? (
             <>
               <SignupForm />
@@ -71,17 +72,20 @@ export default function Authentication() {
               </div>
             </>
           ) : (
+            <>
+            <LoginForm />
             <div className="px-8 py-6">
               <p className="text-center text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account?{" "}
                 <button
                   onClick={toggleAuthMode}
                   className="text-blue-500 hover:text-blue-600 font-medium transition-colors"
-                >
+                  >
                   Sign up
                 </button>
               </p>
             </div>
+            </>
           )}
         </div>
       </div>

@@ -1,17 +1,19 @@
-const app = require('./app');
-const config = require('./config/config');
-const connectDB = require('./config/database');
-const logger = require('./utils/logger');
+const express = require("express");
+const connectDB = require("./config/database");
+const authRoutes = require("./routes/authroutes");
+const cors = require("cors");
+require("dotenv").config();
 
-// Connect to Database
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// Routes
+app.use("/api/auth", authRoutes);
+
+// Start Server
+const PORT = process.env.PORT || 5000;
 connectDB();
-
-const server = app.listen(config.port, () => {
-  logger.info(`Server running in ${config.environment} mode on port ${config.port}`);
-});
-
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err) => {
-  logger.error('Unhandled Rejection:', err);
-  server.close(() => process.exit(1));
-});
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
