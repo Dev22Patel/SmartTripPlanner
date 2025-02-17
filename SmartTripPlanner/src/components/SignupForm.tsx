@@ -22,7 +22,7 @@ export default function SignupForm() {
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/landing-page');
+            navigate('/preferences');
         }
     }, [isAuthenticated, navigate]);
 
@@ -34,6 +34,7 @@ export default function SignupForm() {
     // Handle Form Submit
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log("button clicked");
         setError(""); // Clear previous errors
 
         try {

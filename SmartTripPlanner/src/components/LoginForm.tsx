@@ -19,7 +19,7 @@ export default function LoginForm() {
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/landing-page');
+            navigate('/preferences');
         }
     }, [isAuthenticated, navigate]);
 

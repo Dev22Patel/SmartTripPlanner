@@ -1,0 +1,1001 @@
+state_country,activities,budget,destinationType,duration
+"Hawaii, USA","[""Surfing"", ""Snorkeling""]",Low,"[""Cultural"", ""Food""]",6-8 days
+"Tokyo, Japan","[""Cultural Shows"", ""Temple Visits""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Historical Tours"", ""Hiking"", ""Castle Tours""]",Medium,"[""Cultural"", ""Historical""]",8-10 days
+"Bangkok, Thailand","[""Temple Visits"", ""Shopping"", ""Cultural Shows"", ""Food Tours""]",Medium,"[""Adventure"", ""Beach""]",10-14 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Photography""]",Low,"[""Adventure"", ""Beach""]",4-6 days
+"Paris, France","[""Museums"", ""Food Tours"", ""Historical Tours""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari"", ""Architecture Tours"", ""Shopping""]",Medium,"[""Adventure"", ""Sports""]",2-3 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Temple Visits"", ""Food Tours"", ""Art Museums""]",High,"[""Nature"", ""Photography""]",2-3 days
+"Bavaria, Germany","[""Beer Tours"", ""Historical Tours"", ""Hiking"", ""Castle Tours"", ""Wildlife Safari""]",Low,"[""Beach"", ""Relaxation""]",10-14 days
+"Bangkok, Thailand","[""Food Tours"", ""Shopping"", ""Cultural Shows"", ""Temple Visits""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Photography""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours""]",High,"[""Historical"", ""Educational""]",8-10 days
+"California, USA","[""Theme Parks"", ""Wine Tasting"", ""Surfing"", ""Beach""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"New York, USA","[""Food Tours"", ""Theater"", ""Shopping""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Museums""]",High,"[""Nature"", ""Photography""]",10-14 days
+"Dubai, UAE","[""Desert Safari"", ""Architecture Tours"", ""Shopping"", ""Water Parks""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks"", ""Architecture Tours"", ""Shopping""]",High,"[""Cultural"", ""Adventure""]",4-6 days
+"Colorado, USA","[""Mountain Biking"", ""Skiing"", ""Hiking"", ""Rock Climbing""]",High,"[""Beach"", ""Relaxation""]",4-6 days
+"Queensland, Australia","[""Beach"", ""Hiking"", ""Wildlife Tours"", ""Snorkeling""]",Medium,"[""Adventure"", ""Beach""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Surfing"", ""Volcano Tours"", ""Yoga Retreats""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Bangkok, Thailand","[""Food Tours"", ""Cultural Shows"", ""Shopping""]",High,"[""Historical"", ""Educational""]",6-8 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Food Tours"", ""Shopping""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"Paris, France","[""Food Tours"", ""Historical Tours"", ""Museums"", ""Shopping"", ""River Rafting""]",Medium,"[""Nature"", ""Relaxation""]",4-6 days
+"Paris, France","[""Food Tours"", ""Museums"", ""Historical Tours""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"California, USA","[""Surfing"", ""Beach"", ""Wine Tasting"", ""Theme Parks""]",High,"[""Urban"", ""Shopping""]",4-6 days
+"California, USA","[""Surfing"", ""Wine Tasting"", ""Beach"", ""Theme Parks""]",Low,"[""Beach"", ""Relaxation""]",10-14 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Museums"", ""Food Tours""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Skiing"", ""Hiking""]",High,"[""Cultural"", ""Historical""]",4-6 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari"", ""Photography"", ""Hiking""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Hiking"", ""Historical Tours""]",Low,"[""Cultural"", ""Historical""]",6-8 days
+"Paris, France","[""Shopping"", ""Food Tours"", ""Museums"", ""Historical Tours""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks""]",Medium,"[""Urban"", ""Shopping""]",2-3 days
+"Dubai, UAE","[""Architecture Tours"", ""Shopping"", ""Desert Safari""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Theater""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"Bangkok, Thailand","[""Food Tours"", ""Temple Visits"", ""Shopping"", ""Cultural Shows"", ""Hiking""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Photography"", ""Hiking"", ""Mountain Tours""]",Medium,"[""Adventure"", ""Nature""]",2-3 days
+"Dubai, UAE","[""Shopping"", ""Architecture Tours""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Paris, France","[""Food Tours"", ""Museums""]",Low,"[""Adventure"", ""Sports""]",2-3 days
+"Tuscany, Italy","[""Historical Tours"", ""Food Tours"", ""Art Museums"", ""Wine Tasting"", ""Hiking""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Wine Tasting"", ""Beach""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"Tokyo, Japan","[""Shopping"", ""Food Tours"", ""Cultural Shows"", ""Temple Visits"", ""Zip Lining""]",High,"[""Cultural"", ""Food""]",6-8 days
+"British Columbia, Canada","[""Hiking"", ""Kayaking"", ""Skiing""]",High,"[""Urban"", ""Modern""]",10-14 days
+"Bangkok, Thailand","[""Temple Visits"", ""Shopping"", ""Food Tours"", ""Cultural Shows""]",Medium,"[""Adventure"", ""Sports""]",2-3 days
+"British Columbia, Canada","[""Hiking"", ""Skiing"", ""Wildlife Tours""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"Colorado, USA","[""Hiking"", ""Rock Climbing""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks""]",Low,"[""Nature"", ""Photography""]",2-3 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Food Tours""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Hawaii, USA","[""Surfing"", ""Snorkeling"", ""Volcano Tours"", ""Beach"", ""Shopping""]",Medium,"[""Cultural"", ""Adventure""]",6-8 days
+"Tuscany, Italy","[""Historical Tours"", ""Art Museums"", ""Food Tours"", ""Wine Tasting""]",Medium,"[""Adventure"", ""Sports""]",10-14 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Beer Tours""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours"", ""Kayaking""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari"", ""Shopping"", ""Architecture Tours""]",Low,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Shopping"", ""Museums"", ""Theater""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Hiking"", ""Skiing""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Paris, France","[""Food Tours"", ""Museums"", ""Historical Tours"", ""Shopping"", ""Snorkeling""]",High,"[""Nature"", ""Relaxation""]",10-14 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Skiing""]",High,"[""Nature"", ""Photography""]",2-3 days
+"Bangkok, Thailand","[""Food Tours"", ""Shopping"", ""Temple Visits""]",Low,"[""Urban"", ""Shopping""]",4-6 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Camping"", ""Hiking"", ""Skiing""]",Low,"[""Nature"", ""Relaxation""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Snorkeling"", ""Surfing""]",Low,"[""Cultural"", ""Historical""]",2-3 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Beach"", ""Cultural Tours"", ""Theater""]",Low,"[""Nature"", ""Photography""]",2-3 days
+"Wyoming, USA","[""Hiking"", ""Wildlife Safari"", ""Photography"", ""Camping"", ""Cultural Shows""]",Low,"[""Cultural"", ""Historical""]",4-6 days
+"Dubai, UAE","[""Architecture Tours"", ""Water Parks""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Dubai, UAE","[""Shopping"", ""Desert Safari"", ""Architecture Tours""]",High,"[""Nature"", ""Relaxation""]",8-10 days
+"Tokyo, Japan","[""Temple Visits"", ""Shopping""]",High,"[""Historical"", ""Educational""]",8-10 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Beach"", ""Wine Tasting""]",Medium,"[""Historical"", ""Educational""]",10-14 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours"", ""Food Tours"", ""Art Museums""]",High,"[""Cultural"", ""Food""]",10-14 days
+"Colorado, USA","[""Hiking"", ""Mountain Biking""]",High,"[""Urban"", ""Modern""]",6-8 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Temple Visits"", ""Cultural Tours""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach""]",High,"[""Historical"", ""Educational""]",8-10 days
+"New York, USA","[""Shopping"", ""Theater"", ""Museums"", ""Food Tours"", ""Mountain Biking""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"New York, USA","[""Museums"", ""Shopping""]",High,"[""Adventure"", ""Nature""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Beach"", ""Hiking"", ""Camping""]",Medium,"[""Historical"", ""Educational""]",10-14 days
+"Dubai, UAE","[""Architecture Tours"", ""Desert Safari""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Temple Visits"", ""Cultural Tours""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Hawaii, USA","[""Beach"", ""Volcano Tours""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"British Columbia, Canada","[""Hiking"", ""Wildlife Tours""]",Medium,"[""Adventure"", ""Beach""]",2-3 days
+"Hawaii, USA","[""Surfing"", ""Beach"", ""Snorkeling""]",Medium,"[""Cultural"", ""Historical""]",8-10 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours"", ""Skiing""]",High,"[""Nature"", ""Photography""]",6-8 days
+"California, USA","[""Theme Parks"", ""Beach""]",High,"[""Cultural"", ""Adventure""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Architecture Tours"", ""Water Parks""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"Colorado, USA","[""Rock Climbing"", ""Hiking"", ""Skiing"", ""Mountain Biking""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"Queensland, Australia","[""Hiking"", ""Beach"", ""Wildlife Tours"", ""Snorkeling""]",Medium,"[""Adventure"", ""Beach""]",10-14 days
+"Dubai, UAE","[""Architecture Tours"", ""Water Parks""]",Low,"[""Historical"", ""Educational""]",6-8 days
+"California, USA","[""Surfing"", ""Theme Parks""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Surfing"", ""Snorkeling""]",Medium,"[""Nature"", ""Photography""]",4-6 days
+"Tokyo, Japan","[""Temple Visits"", ""Food Tours"", ""Cultural Shows"", ""Shopping"", ""Wildlife Tours""]",Medium,"[""Beach"", ""Relaxation""]",4-6 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows""]",Low,"[""Cultural"", ""Adventure""]",10-14 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours"", ""Skiing"", ""Hiking""]",Medium,"[""Adventure"", ""Beach""]",8-10 days
+"Tokyo, Japan","[""Cultural Shows"", ""Temple Visits"", ""Shopping"", ""Food Tours""]",Low,"[""Adventure"", ""Beach""]",4-6 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Skiing"", ""Hiking"", ""Photography"", ""Theme Parks""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Beach"", ""Hiking""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Hiking"", ""Camping"", ""Cooking Classes""]",Medium,"[""Adventure"", ""Sports""]",2-3 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Hiking""]",High,"[""Beach"", ""Relaxation""]",4-6 days
+"Bavaria, Germany","[""Beer Tours"", ""Historical Tours"", ""Castle Tours"", ""Hiking""]",Medium,"[""Adventure"", ""Beach""]",6-8 days
+"Bangkok, Thailand","[""Food Tours"", ""Cultural Shows"", ""Shopping"", ""Temple Visits"", ""Beach""]",Low,"[""Historical"", ""Educational""]",4-6 days
+"Tokyo, Japan","[""Shopping"", ""Temple Visits"", ""Food Tours"", ""Cultural Shows"", ""Snorkeling""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"California, USA","[""Beach"", ""Surfing""]",Medium,"[""Adventure"", ""Nature""]",2-3 days
+"Colorado, USA","[""Mountain Biking"", ""Skiing"", ""Rock Climbing"", ""Hiking""]",High,"[""Adventure"", ""Beach""]",2-3 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours""]",High,"[""Urban"", ""Modern""]",6-8 days
+"Colorado, USA","[""Skiing"", ""Rock Climbing""]",Medium,"[""Beach"", ""Relaxation""]",10-14 days
+"Colorado, USA","[""Rock Climbing"", ""Hiking"", ""Skiing"", ""Mountain Biking"", ""Wildlife Safari""]",Medium,"[""Cultural"", ""Historical""]",6-8 days
+"Dubai, UAE","[""Water Parks"", ""Shopping""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"Tuscany, Italy","[""Art Museums"", ""Food Tours"", ""Historical Tours""]",High,"[""Historical"", ""Educational""]",10-14 days
+"Queensland, Australia","[""Hiking"", ""Beach"", ""Wildlife Tours""]",Medium,"[""Adventure"", ""Beach""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Shopping"", ""Architecture Tours""]",Low,"[""Cultural"", ""Food""]",6-8 days
+"California, USA","[""Theme Parks"", ""Wine Tasting""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking""]",Low,"[""Historical"", ""Educational""]",6-8 days
+"Queensland, Australia","[""Snorkeling"", ""Beach"", ""Hiking"", ""Wildlife Tours"", ""Wildlife Safari""]",Low,"[""Nature"", ""Photography""]",6-8 days
+"California, USA","[""Beach"", ""Surfing""]",High,"[""Adventure"", ""Nature""]",4-6 days
+"California, USA","[""Surfing"", ""Beach"", ""Theme Parks"", ""Wine Tasting""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking"", ""Skiing""]",Low,"[""Nature"", ""Relaxation""]",6-8 days
+"Bavaria, Germany","[""Hiking"", ""Castle Tours"", ""Historical Tours"", ""Beer Tours"", ""Camping""]",Low,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Food Tours"", ""Shopping""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"Paris, France","[""Museums"", ""Food Tours"", ""Shopping"", ""Historical Tours""]",Medium,"[""Urban"", ""Modern""]",6-8 days
+"Tokyo, Japan","[""Food Tours"", ""Shopping"", ""Temple Visits"", ""Cultural Shows""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Dubai, UAE","[""Shopping"", ""Desert Safari"", ""Water Parks""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Surfing"", ""Volcano Tours"", ""Snorkeling""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Hawaii, USA","[""Surfing"", ""Volcano Tours"", ""Beach"", ""Snorkeling""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"Tuscany, Italy","[""Historical Tours"", ""Wine Tasting"", ""Food Tours""]",Low,"[""Urban"", ""Modern""]",2-3 days
+"California, USA","[""Beach"", ""Surfing"", ""Wine Tasting"", ""Theme Parks"", ""River Rafting""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Queensland, Australia","[""Snorkeling"", ""Wildlife Tours"", ""Beach"", ""Hiking""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Tokyo, Japan","[""Temple Visits"", ""Food Tours"", ""Shopping"", ""Cultural Shows""]",Medium,"[""Nature"", ""Photography""]",8-10 days
+"Paris, France","[""Shopping"", ""Historical Tours"", ""Museums""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Surfing""]",High,"[""Historical"", ""Educational""]",8-10 days
+"Colorado, USA","[""Hiking"", ""Mountain Biking"", ""Rock Climbing"", ""Skiing""]",Medium,"[""Adventure"", ""Beach""]",4-6 days
+"Colorado, USA","[""Hiking"", ""Mountain Biking"", ""Skiing"", ""Rock Climbing"", ""Yoga Retreats""]",Medium,"[""Adventure"", ""Nature""]",4-6 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Snorkeling"", ""Surfing""]",High,"[""Nature"", ""Photography""]",8-10 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Tuscany, Italy","[""Historical Tours"", ""Food Tours"", ""Wine Tasting""]",Medium,"[""Adventure"", ""Nature""]",6-8 days
+"California, USA","[""Beach"", ""Surfing"", ""Wine Tasting"", ""Theme Parks"", ""Castle Tours""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Hawaii, USA","[""Volcano Tours"", ""Snorkeling"", ""Surfing""]",High,"[""Adventure"", ""Beach""]",2-3 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting"", ""Art Museums""]",High,"[""Cultural"", ""Historical""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Hiking""]",Low,"[""Adventure"", ""Sports""]",2-3 days
+"Colorado, USA","[""Skiing"", ""Hiking"", ""Mountain Biking"", ""Rock Climbing""]",Low,"[""Nature"", ""Relaxation""]",2-3 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours"", ""Food Tours""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Tuscany, Italy","[""Art Museums"", ""Wine Tasting""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours"", ""Kayaking"", ""Hiking""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Paris, France","[""Museums"", ""Historical Tours"", ""Food Tours"", ""Shopping"", ""Zip Lining""]",Medium,"[""Cultural"", ""Adventure""]",8-10 days
+"Bavaria, Germany","[""Castle Tours"", ""Historical Tours"", ""Hiking""]",High,"[""Urban"", ""Shopping""]",10-14 days
+"Wyoming, USA","[""Camping"", ""Hiking"", ""Wildlife Safari""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"Bavaria, Germany","[""Castle Tours"", ""Historical Tours"", ""Hiking"", ""Beer Tours""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"Bangkok, Thailand","[""Temple Visits"", ""Cultural Shows"", ""Shopping""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Wyoming, USA","[""Photography"", ""Camping"", ""Wildlife Safari"", ""Hiking"", ""Surfing""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"Tokyo, Japan","[""Cultural Shows"", ""Temple Visits""]",Low,"[""Cultural"", ""Historical""]",6-8 days
+"Tuscany, Italy","[""Food Tours"", ""Art Museums"", ""Wine Tasting"", ""Historical Tours""]",High,"[""Cultural"", ""Food""]",6-8 days
+"Bali, Indonesia","[""Surfing"", ""Temple Visits""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Snorkeling"", ""Surfing""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Hiking""]",High,"[""Adventure"", ""Sports""]",8-10 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Shopping"", ""Temple Visits"", ""Food Tours"", ""Desert Safari""]",Low,"[""Cultural"", ""Historical""]",6-8 days
+"Bangkok, Thailand","[""Food Tours"", ""Shopping"", ""Temple Visits"", ""Cultural Shows""]",High,"[""Historical"", ""Educational""]",6-8 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Museums""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"Bali, Indonesia","[""Cultural Tours"", ""Temple Visits""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Hawaii, USA","[""Beach"", ""Volcano Tours""]",High,"[""Cultural"", ""Food""]",10-14 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking""]",Low,"[""Urban"", ""Modern""]",2-3 days
+"Colorado, USA","[""Mountain Biking"", ""Hiking"", ""Skiing"", ""Rock Climbing""]",High,"[""Urban"", ""Shopping""]",4-6 days
+"Colorado, USA","[""Hiking"", ""Skiing"", ""Mountain Biking"", ""Rock Climbing"", ""Art Museums""]",Low,"[""Nature"", ""Relaxation""]",2-3 days
+"Queensland, Australia","[""Snorkeling"", ""Beach"", ""Hiking""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours""]",High,"[""Beach"", ""Relaxation""]",2-3 days
+"Tuscany, Italy","[""Food Tours"", ""Art Museums""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"Dubai, UAE","[""Architecture Tours"", ""Water Parks"", ""Desert Safari""]",Medium,"[""Urban"", ""Modern""]",2-3 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Hiking"", ""Beer Tours"", ""Volcano Tours""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"Tokyo, Japan","[""Temple Visits"", ""Shopping"", ""Food Tours"", ""Cultural Shows""]",Low,"[""Cultural"", ""Historical""]",6-8 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Photography"", ""Mountain Tours"", ""Skiing""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Bangkok, Thailand","[""Food Tours"", ""Cultural Shows""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"British Columbia, Canada","[""Skiing"", ""Hiking"", ""Kayaking""]",Low,"[""Beach"", ""Relaxation""]",6-8 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Beach"", ""Cultural Tours""]",Medium,"[""Adventure"", ""Beach""]",4-6 days
+"Bavaria, Germany","[""Castle Tours"", ""Hiking"", ""Beer Tours"", ""Historical Tours""]",Low,"[""Nature"", ""Relaxation""]",6-8 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Beach""]",High,"[""Urban"", ""Modern""]",6-8 days
+"Tokyo, Japan","[""Temple Visits"", ""Food Tours"", ""Cultural Shows""]",High,"[""Cultural"", ""Historical""]",8-10 days
+"California, USA","[""Surfing"", ""Wine Tasting""]",Low,"[""Urban"", ""Shopping""]",10-14 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Beer Tours"", ""Hiking"", ""Scuba Diving""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"Paris, France","[""Museums"", ""Shopping""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Beach"", ""Snorkeling"", ""Temple Visits""]",Medium,"[""Urban"", ""Modern""]",6-8 days
+"Bavaria, Germany","[""Castle Tours"", ""Hiking""]",Low,"[""Adventure"", ""Beach""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Snorkeling"", ""Surfing"", ""Mountain Biking""]",Low,"[""Adventure"", ""Beach""]",6-8 days
+"Bali, Indonesia","[""Beach"", ""Temple Visits"", ""Cultural Tours"", ""Surfing"", ""Hiking""]",High,"[""Urban"", ""Modern""]",6-8 days
+"Tokyo, Japan","[""Shopping"", ""Food Tours""]",Low,"[""Adventure"", ""Beach""]",2-3 days
+"Paris, France","[""Museums"", ""Shopping""]",Medium,"[""Cultural"", ""Historical""]",10-14 days
+"Wyoming, USA","[""Hiking"", ""Camping""]",Low,"[""Historical"", ""Educational""]",8-10 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours"", ""Surfing"", ""Beach"", ""Photography""]",Low,"[""Beach"", ""Relaxation""]",10-14 days
+"Bangkok, Thailand","[""Shopping"", ""Temple Visits"", ""Cultural Shows""]",Medium,"[""Nature"", ""Relaxation""]",4-6 days
+"Hawaii, USA","[""Surfing"", ""Beach""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours"", ""Skiing"", ""Hiking""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Theater"", ""Museums""]",Medium,"[""Adventure"", ""Nature""]",4-6 days
+"Queensland, Australia","[""Hiking"", ""Wildlife Tours"", ""Snorkeling"", ""Beach""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours"", ""Hiking"", ""Kayaking""]",Low,"[""Historical"", ""Educational""]",4-6 days
+"Tuscany, Italy","[""Historical Tours"", ""Food Tours"", ""Wine Tasting"", ""Art Museums"", ""Rock Climbing""]",Medium,"[""Adventure"", ""Sports""]",8-10 days
+"Tuscany, Italy","[""Wine Tasting"", ""Food Tours""]",Low,"[""Nature"", ""Relaxation""]",8-10 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Hiking"", ""Skiing""]",Medium,"[""Nature"", ""Relaxation""]",4-6 days
+"Queensland, Australia","[""Wildlife Tours"", ""Beach""]",Medium,"[""Urban"", ""Modern""]",4-6 days
+"Hawaii, USA","[""Snorkeling"", ""Beach""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"Colorado, USA","[""Skiing"", ""Hiking""]",Medium,"[""Cultural"", ""Food""]",2-3 days
+"Bali, Indonesia","[""Surfing"", ""Temple Visits"", ""Beach""]",Medium,"[""Adventure"", ""Nature""]",4-6 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Beer Tours"", ""Hiking"", ""Theater""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Hiking""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"Tokyo, Japan","[""Shopping"", ""Food Tours"", ""Temple Visits""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Bangkok, Thailand","[""Temple Visits"", ""Cultural Shows"", ""Food Tours"", ""Shopping"", ""Museums""]",Medium,"[""Historical"", ""Educational""]",4-6 days
+"Colorado, USA","[""Hiking"", ""Rock Climbing"", ""Skiing"", ""Mountain Biking"", ""Architecture Tours""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"Paris, France","[""Museums"", ""Historical Tours"", ""Food Tours"", ""Shopping"", ""Nightlife""]",Medium,"[""Cultural"", ""Historical""]",6-8 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari"", ""Architecture Tours"", ""Shopping""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Wyoming, USA","[""Wildlife Safari"", ""Hiking"", ""Camping"", ""Photography"", ""Surfing""]",Low,"[""Urban"", ""Shopping""]",4-6 days
+"Tuscany, Italy","[""Historical Tours"", ""Art Museums"", ""Wine Tasting"", ""Food Tours""]",Medium,"[""Historical"", ""Educational""]",8-10 days
+"Bangkok, Thailand","[""Food Tours"", ""Temple Visits"", ""Cultural Shows""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"Bavaria, Germany","[""Castle Tours"", ""Beer Tours"", ""Hiking"", ""Historical Tours""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"California, USA","[""Wine Tasting"", ""Theme Parks""]",Low,"[""Adventure"", ""Sports""]",4-6 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Beach""]",High,"[""Nature"", ""Photography""]",10-14 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Wine Tasting"", ""Art Museums"", ""River Rafting""]",High,"[""Urban"", ""Shopping""]",8-10 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Shopping"", ""Temple Visits""]",Low,"[""Urban"", ""Shopping""]",6-8 days
+"Tokyo, Japan","[""Temple Visits"", ""Cultural Shows"", ""Food Tours"", ""Shopping""]",Medium,"[""Beach"", ""Relaxation""]",2-3 days
+"California, USA","[""Beach"", ""Theme Parks""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"Tuscany, Italy","[""Wine Tasting"", ""Food Tours""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Bali, Indonesia","[""Surfing"", ""Beach"", ""Temple Visits""]",Medium,"[""Urban"", ""Shopping""]",2-3 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours""]",Medium,"[""Adventure"", ""Sports""]",10-14 days
+"Bali, Indonesia","[""Cultural Tours"", ""Temple Visits"", ""Beach""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Bangkok, Thailand","[""Food Tours"", ""Temple Visits"", ""Shopping"", ""Cultural Shows""]",Low,"[""Adventure"", ""Nature""]",6-8 days
+"Colorado, USA","[""Hiking"", ""Rock Climbing"", ""Mountain Biking"", ""Skiing""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Shopping"", ""Museums""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours""]",High,"[""Urban"", ""Modern""]",4-6 days
+"British Columbia, Canada","[""Kayaking"", ""Skiing""]",Low,"[""Historical"", ""Educational""]",8-10 days
+"California, USA","[""Surfing"", ""Wine Tasting""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"Tokyo, Japan","[""Shopping"", ""Temple Visits"", ""Cultural Shows""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Wyoming, USA","[""Hiking"", ""Wildlife Safari""]",High,"[""Historical"", ""Educational""]",2-3 days
+"Queensland, Australia","[""Snorkeling"", ""Beach""]",High,"[""Cultural"", ""Historical""]",6-8 days
+"British Columbia, Canada","[""Kayaking"", ""Skiing"", ""Wildlife Tours""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Photography""]",High,"[""Adventure"", ""Sports""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Theme Parks"", ""Surfing"", ""Beach"", ""Camping""]",High,"[""Historical"", ""Educational""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Snorkeling""]",High,"[""Adventure"", ""Nature""]",10-14 days
+"Tuscany, Italy","[""Art Museums"", ""Food Tours"", ""Wine Tasting"", ""Historical Tours""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking""]",Low,"[""Nature"", ""Photography""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Historical Tours"", ""Hiking""]",Medium,"[""Adventure"", ""Nature""]",6-8 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Museums""]",High,"[""Nature"", ""Photography""]",8-10 days
+"Bali, Indonesia","[""Surfing"", ""Beach""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Bavaria, Germany","[""Hiking"", ""Beer Tours""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Temple Visits"", ""Food Tours"", ""Castle Tours""]",Low,"[""Adventure"", ""Sports""]",4-6 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Surfing""]",High,"[""Nature"", ""Photography""]",10-14 days
+"Queensland, Australia","[""Beach"", ""Snorkeling"", ""Wildlife Tours"", ""Hiking"", ""Mountain Biking""]",Medium,"[""Urban"", ""Modern""]",8-10 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours"", ""Skiing""]",High,"[""Cultural"", ""Historical""]",8-10 days
+"Bavaria, Germany","[""Beer Tours"", ""Historical Tours"", ""Castle Tours""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Skiing"", ""Hiking"", ""Beach""]",High,"[""Adventure"", ""Nature""]",4-6 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Tokyo, Japan","[""Food Tours"", ""Cultural Shows"", ""Temple Visits""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Shopping"", ""Food Tours"", ""Scuba Diving""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Theme Parks"", ""Beach"", ""Surfing"", ""Cooking Classes""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Skiing""]",High,"[""Nature"", ""Photography""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Beach""]",High,"[""Cultural"", ""Food""]",6-8 days
+"Colorado, USA","[""Skiing"", ""Mountain Biking"", ""Hiking""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Theater"", ""Museums"", ""Scuba Diving""]",High,"[""Adventure"", ""Nature""]",6-8 days
+"British Columbia, Canada","[""Hiking"", ""Skiing"", ""Kayaking""]",Medium,"[""Adventure"", ""Beach""]",6-8 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Surfing"", ""Beach""]",Low,"[""Adventure"", ""Nature""]",2-3 days
+"Paris, France","[""Food Tours"", ""Museums""]",Low,"[""Adventure"", ""Beach""]",6-8 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Skiing"", ""Hiking"", ""Theater""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Bangkok, Thailand","[""Temple Visits"", ""Food Tours"", ""Shopping""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"California, USA","[""Surfing"", ""Theme Parks"", ""Beach"", ""Wine Tasting""]",Medium,"[""Nature"", ""Photography""]",2-3 days
+"British Columbia, Canada","[""Skiing"", ""Kayaking"", ""Wildlife Tours"", ""Hiking"", ""Water Parks""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"British Columbia, Canada","[""Skiing"", ""Kayaking"", ""Hiking"", ""Wildlife Tours""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours"", ""Wine Tasting"", ""Food Tours"", ""Photography""]",Low,"[""Cultural"", ""Food""]",6-8 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Hiking"", ""Beach"", ""River Rafting""]",High,"[""Cultural"", ""Food""]",8-10 days
+"British Columbia, Canada","[""Kayaking"", ""Skiing"", ""Wildlife Tours"", ""Hiking"", ""Camping""]",Medium,"[""Nature"", ""Photography""]",4-6 days
+"Tokyo, Japan","[""Food Tours"", ""Cultural Shows"", ""Shopping""]",Medium,"[""Adventure"", ""Beach""]",10-14 days
+"New York, USA","[""Theater"", ""Museums"", ""Shopping"", ""Food Tours"", ""Camping""]",Low,"[""Beach"", ""Relaxation""]",10-14 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows"", ""Temple Visits""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking"", ""Beach"", ""Wildlife Tours""]",High,"[""Nature"", ""Relaxation""]",6-8 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Shopping"", ""Museums""]",High,"[""Cultural"", ""Adventure""]",6-8 days
+"Paris, France","[""Food Tours"", ""Historical Tours"", ""Museums""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows"", ""Temple Visits"", ""Food Tours""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Shopping"", ""Food Tours""]",Medium,"[""Historical"", ""Educational""]",4-6 days
+"Bavaria, Germany","[""Hiking"", ""Historical Tours""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Photography"", ""Skiing""]",Medium,"[""Adventure"", ""Sports""]",8-10 days
+"Bangkok, Thailand","[""Temple Visits"", ""Shopping""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Bavaria, Germany","[""Castle Tours"", ""Hiking"", ""Historical Tours""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Wyoming, USA","[""Hiking"", ""Photography"", ""Camping""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing"", ""Mountain Tours""]",Low,"[""Nature"", ""Relaxation""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Hiking"", ""Historical Tours""]",High,"[""Urban"", ""Shopping""]",8-10 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking"", ""Castle Tours""]",High,"[""Historical"", ""Educational""]",6-8 days
+"Paris, France","[""Shopping"", ""Museums"", ""Food Tours""]",High,"[""Historical"", ""Educational""]",2-3 days
+"California, USA","[""Surfing"", ""Theme Parks"", ""Beach""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Skiing"", ""Hiking"", ""Kayaking""]",Medium,"[""Adventure"", ""Sports""]",8-10 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"Colorado, USA","[""Hiking"", ""Skiing"", ""Rock Climbing"", ""Mountain Biking"", ""Mountain Tours""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Food Tours""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"Tokyo, Japan","[""Food Tours"", ""Shopping"", ""Temple Visits""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Bali, Indonesia","[""Surfing"", ""Cultural Tours"", ""Temple Visits"", ""Beach"", ""Wildlife Tours""]",Low,"[""Adventure"", ""Nature""]",6-8 days
+"Tuscany, Italy","[""Art Museums"", ""Wine Tasting""]",High,"[""Adventure"", ""Sports""]",6-8 days
+"Tuscany, Italy","[""Art Museums"", ""Wine Tasting"", ""Food Tours""]",Low,"[""Urban"", ""Shopping""]",6-8 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"Bavaria, Germany","[""Historical Tours"", ""Beer Tours"", ""Castle Tours"", ""Hiking"", ""Snorkeling""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking"", ""Photography""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Paris, France","[""Museums"", ""Historical Tours""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"California, USA","[""Theme Parks"", ""Wine Tasting""]",High,"[""Urban"", ""Shopping""]",6-8 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Skiing"", ""Photography"", ""Mountain Tours"", ""Wildlife Safari""]",High,"[""Adventure"", ""Sports""]",8-10 days
+"New York, USA","[""Shopping"", ""Food Tours""]",High,"[""Nature"", ""Relaxation""]",6-8 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Photography""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"New York, USA","[""Theater"", ""Shopping"", ""Museums""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Paris, France","[""Museums"", ""Shopping"", ""Historical Tours""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Paris, France","[""Museums"", ""Shopping""]",Low,"[""Cultural"", ""Food""]",2-3 days
+"Queensland, Australia","[""Snorkeling"", ""Beach"", ""Hiking"", ""Wildlife Tours""]",Medium,"[""Cultural"", ""Adventure""]",6-8 days
+"California, USA","[""Beach"", ""Surfing""]",Medium,"[""Adventure"", ""Sports""]",4-6 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Volcano Tours"", ""Surfing""]",Medium,"[""Urban"", ""Modern""]",8-10 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Hiking"", ""Photography""]",Low,"[""Urban"", ""Modern""]",6-8 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours"", ""Surfing""]",High,"[""Adventure"", ""Nature""]",4-6 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours"", ""Skiing"", ""Photography""]",Low,"[""Cultural"", ""Food""]",6-8 days
+"Bali, Indonesia","[""Cultural Tours"", ""Surfing""]",Medium,"[""Cultural"", ""Historical""]",4-6 days
+"Wyoming, USA","[""Hiking"", ""Camping"", ""Photography"", ""Wildlife Safari""]",Medium,"[""Adventure"", ""Sports""]",8-10 days
+"Bavaria, Germany","[""Castle Tours"", ""Beer Tours"", ""Hiking""]",Medium,"[""Adventure"", ""Nature""]",8-10 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting"", ""Art Museums"", ""Historical Tours"", ""Photography""]",High,"[""Nature"", ""Relaxation""]",10-14 days
+"Tokyo, Japan","[""Temple Visits"", ""Shopping"", ""Food Tours"", ""Cultural Shows"", ""Snorkeling""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Paris, France","[""Food Tours"", ""Shopping"", ""Historical Tours"", ""Museums""]",Low,"[""Urban"", ""Shopping""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Temple Visits""]",High,"[""Adventure"", ""Nature""]",2-3 days
+"California, USA","[""Beach"", ""Surfing"", ""Wine Tasting"", ""Theme Parks""]",Medium,"[""Cultural"", ""Historical""]",8-10 days
+"New York, USA","[""Museums"", ""Theater""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Bavaria, Germany","[""Castle Tours"", ""Historical Tours"", ""Hiking""]",Low,"[""Nature"", ""Photography""]",4-6 days
+"Hawaii, USA","[""Snorkeling"", ""Beach""]",High,"[""Urban"", ""Modern""]",6-8 days
+"British Columbia, Canada","[""Skiing"", ""Kayaking"", ""Hiking"", ""Wildlife Tours"", ""Museums""]",Medium,"[""Urban"", ""Modern""]",2-3 days
+"Bali, Indonesia","[""Surfing"", ""Cultural Tours""]",Low,"[""Beach"", ""Relaxation""]",2-3 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Cultural Tours"", ""Beach"", ""Cultural Shows""]",Low,"[""Adventure"", ""Beach""]",6-8 days
+"Bangkok, Thailand","[""Temple Visits"", ""Shopping"", ""Food Tours"", ""Cultural Shows""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Bangkok, Thailand","[""Temple Visits"", ""Food Tours"", ""Cultural Shows""]",Low,"[""Beach"", ""Relaxation""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Shopping""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"Bangkok, Thailand","[""Temple Visits"", ""Food Tours"", ""Cultural Shows""]",Medium,"[""Beach"", ""Relaxation""]",8-10 days
+"Wyoming, USA","[""Photography"", ""Wildlife Safari"", ""Hiking"", ""Camping""]",Low,"[""Urban"", ""Shopping""]",10-14 days
+"Tuscany, Italy","[""Food Tours"", ""Art Museums""]",High,"[""Historical"", ""Educational""]",10-14 days
+"New York, USA","[""Museums"", ""Theater"", ""Shopping"", ""Food Tours""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Food Tours"", ""Temple Visits"", ""Kayaking""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Beach"", ""Cultural Tours""]",High,"[""Adventure"", ""Nature""]",2-3 days
+"Tokyo, Japan","[""Temple Visits"", ""Shopping""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours"", ""Hiking"", ""Skiing"", ""Snorkeling""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours"", ""Surfing"", ""Temple Visits"", ""Zip Lining""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting"", ""Art Museums""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking""]",Low,"[""Adventure"", ""Sports""]",4-6 days
+"Queensland, Australia","[""Beach"", ""Wildlife Tours"", ""Snorkeling"", ""Hiking""]",Low,"[""Beach"", ""Relaxation""]",2-3 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Museums"", ""Shopping""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Dubai, UAE","[""Shopping"", ""Water Parks"", ""Desert Safari""]",High,"[""Nature"", ""Photography""]",6-8 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Skiing"", ""Photography"", ""Mountain Tours""]",Medium,"[""Adventure"", ""Nature""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing"", ""Mountain Tours""]",Medium,"[""Urban"", ""Modern""]",6-8 days
+"New York, USA","[""Theater"", ""Museums"", ""Shopping""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Hawaii, USA","[""Snorkeling"", ""Beach"", ""Surfing"", ""Volcano Tours"", ""Architecture Tours""]",Medium,"[""Urban"", ""Modern""]",6-8 days
+"Colorado, USA","[""Skiing"", ""Mountain Biking"", ""Rock Climbing"", ""Hiking""]",High,"[""Nature"", ""Photography""]",4-6 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"New York, USA","[""Theater"", ""Museums"", ""Food Tours"", ""Shopping"", ""Wildlife Tours""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"New York, USA","[""Theater"", ""Shopping"", ""Museums""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Skiing"", ""Mountain Tours"", ""Photography""]",High,"[""Urban"", ""Shopping""]",8-10 days
+"Colorado, USA","[""Mountain Biking"", ""Hiking""]",Medium,"[""Historical"", ""Educational""]",10-14 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Shopping""]",Medium,"[""Urban"", ""Modern""]",8-10 days
+"Colorado, USA","[""Skiing"", ""Hiking"", ""Mountain Biking"", ""Rock Climbing""]",High,"[""Beach"", ""Relaxation""]",2-3 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach""]",Low,"[""Urban"", ""Shopping""]",6-8 days
+"Wyoming, USA","[""Hiking"", ""Camping"", ""Wildlife Safari""]",Low,"[""Urban"", ""Modern""]",6-8 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Food Tours"", ""Temple Visits""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"California, USA","[""Beach"", ""Wine Tasting""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Hiking""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking"", ""Skiing"", ""Photography""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"New York, USA","[""Theater"", ""Shopping"", ""Museums"", ""Food Tours"", ""Mountain Biking""]",High,"[""Nature"", ""Relaxation""]",6-8 days
+"Colorado, USA","[""Skiing"", ""Hiking""]",High,"[""Cultural"", ""Food""]",6-8 days
+"Tuscany, Italy","[""Historical Tours"", ""Wine Tasting""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Dubai, UAE","[""Water Parks"", ""Shopping"", ""Architecture Tours"", ""Desert Safari"", ""River Rafting""]",Medium,"[""Nature"", ""Photography""]",4-6 days
+"Bali, Indonesia","[""Cultural Tours"", ""Temple Visits"", ""Surfing"", ""Beach""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"Hawaii, USA","[""Snorkeling"", ""Beach"", ""Volcano Tours""]",Medium,"[""Nature"", ""Relaxation""]",6-8 days
+"Paris, France","[""Museums"", ""Food Tours"", ""Historical Tours""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"California, USA","[""Wine Tasting"", ""Theme Parks"", ""Surfing""]",Medium,"[""Adventure"", ""Beach""]",4-6 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach"", ""Surfing""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"British Columbia, Canada","[""Hiking"", ""Kayaking"", ""Wildlife Tours"", ""Skiing""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Snorkeling""]",Low,"[""Adventure"", ""Nature""]",6-8 days
+"British Columbia, Canada","[""Kayaking"", ""Wildlife Tours"", ""Skiing"", ""Hiking"", ""Cooking Classes""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"California, USA","[""Theme Parks"", ""Wine Tasting"", ""Surfing"", ""Beach""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"California, USA","[""Beach"", ""Theme Parks"", ""Wine Tasting"", ""Surfing""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Snorkeling"", ""Surfing"", ""Scuba Diving""]",Low,"[""Nature"", ""Photography""]",2-3 days
+"Dubai, UAE","[""Water Parks"", ""Shopping"", ""Desert Safari""]",Low,"[""Cultural"", ""Historical""]",4-6 days
+"British Columbia, Canada","[""Skiing"", ""Hiking"", ""Wildlife Tours"", ""Kayaking"", ""Museums""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"Hawaii, USA","[""Snorkeling"", ""Beach"", ""Surfing""]",Medium,"[""Adventure"", ""Sports""]",2-3 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Food Tours"", ""Museums""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Tokyo, Japan","[""Food Tours"", ""Shopping"", ""Temple Visits"", ""Cultural Shows"", ""Zip Lining""]",High,"[""Cultural"", ""Historical""]",6-8 days
+"Colorado, USA","[""Mountain Biking"", ""Hiking"", ""Rock Climbing""]",Medium,"[""Urban"", ""Modern""]",6-8 days
+"Tokyo, Japan","[""Shopping"", ""Food Tours""]",Low,"[""Adventure"", ""Nature""]",2-3 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Shopping"", ""Temple Visits"", ""Wine Tasting""]",Medium,"[""Nature"", ""Photography""]",6-8 days
+"Hawaii, USA","[""Surfing"", ""Volcano Tours""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"New York, USA","[""Museums"", ""Food Tours"", ""Shopping"", ""Theater""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Snorkeling"", ""Surfing"", ""Beach"", ""Nightlife""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"British Columbia, Canada","[""Kayaking"", ""Skiing"", ""Wildlife Tours""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"Bali, Indonesia","[""Surfing"", ""Temple Visits"", ""Cultural Tours"", ""Beach""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari"", ""Architecture Tours"", ""Shopping""]",Low,"[""Historical"", ""Educational""]",8-10 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Volcano Tours"", ""Surfing""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Shopping""]",Medium,"[""Historical"", ""Educational""]",4-6 days
+"Colorado, USA","[""Mountain Biking"", ""Skiing"", ""Hiking"", ""Rock Climbing""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting"", ""Historical Tours"", ""Art Museums"", ""Kayaking""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Shopping"", ""Theater"", ""Museums"", ""Food Tours""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Bavaria, Germany","[""Hiking"", ""Castle Tours"", ""Historical Tours"", ""Beer Tours""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"Colorado, USA","[""Rock Climbing"", ""Skiing"", ""Mountain Biking""]",Medium,"[""Adventure"", ""Beach""]",8-10 days
+"California, USA","[""Beach"", ""Surfing""]",High,"[""Urban"", ""Shopping""]",8-10 days
+"New York, USA","[""Food Tours"", ""Theater"", ""Museums"", ""Shopping"", ""Zip Lining""]",Medium,"[""Cultural"", ""Historical""]",6-8 days
+"Paris, France","[""Museums"", ""Historical Tours"", ""Shopping"", ""Food Tours"", ""Mountain Biking""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Camping""]",Low,"[""Cultural"", ""Historical""]",2-3 days
+"Queensland, Australia","[""Beach"", ""Hiking""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"New York, USA","[""Food Tours"", ""Theater""]",Low,"[""Nature"", ""Relaxation""]",8-10 days
+"Paris, France","[""Food Tours"", ""Museums"", ""Shopping"", ""Historical Tours"", ""Hiking""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"California, USA","[""Surfing"", ""Wine Tasting"", ""Theme Parks""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Hawaii, USA","[""Snorkeling"", ""Surfing"", ""Beach""]",Medium,"[""Adventure"", ""Sports""]",2-3 days
+"California, USA","[""Beach"", ""Theme Parks""]",Low,"[""Historical"", ""Educational""]",10-14 days
+"Wyoming, USA","[""Hiking"", ""Camping"", ""Wildlife Safari""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Dubai, UAE","[""Architecture Tours"", ""Shopping"", ""Desert Safari"", ""Water Parks""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Shopping"", ""Desert Safari"", ""Architecture Tours""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"Hawaii, USA","[""Volcano Tours"", ""Snorkeling""]",High,"[""Cultural"", ""Food""]",2-3 days
+"Hawaii, USA","[""Surfing"", ""Snorkeling"", ""Volcano Tours""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Cultural Tours""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"New York, USA","[""Museums"", ""Food Tours""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking"", ""Historical Tours"", ""Castle Tours""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Bavaria, Germany","[""Historical Tours"", ""Beer Tours"", ""Hiking"", ""Castle Tours"", ""Beach""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours"", ""Surfing""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Theme Parks""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Theme Parks"", ""Surfing"", ""Hiking""]",Medium,"[""Adventure"", ""Sports""]",2-3 days
+"California, USA","[""Theme Parks"", ""Beach"", ""Wine Tasting"", ""Surfing""]",Low,"[""Nature"", ""Relaxation""]",8-10 days
+"Queensland, Australia","[""Beach"", ""Hiking"", ""Wildlife Tours"", ""Snorkeling""]",Medium,"[""Urban"", ""Modern""]",8-10 days
+"Tokyo, Japan","[""Temple Visits"", ""Food Tours"", ""Cultural Shows"", ""Shopping""]",Low,"[""Cultural"", ""Adventure""]",8-10 days
+"Queensland, Australia","[""Beach"", ""Wildlife Tours"", ""Snorkeling"", ""Hiking"", ""Cooking Classes""]",Medium,"[""Cultural"", ""Historical""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Surfing"", ""Beach"", ""Theme Parks""]",High,"[""Historical"", ""Educational""]",4-6 days
+"Wyoming, USA","[""Photography"", ""Wildlife Safari"", ""Camping""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"Tuscany, Italy","[""Art Museums"", ""Food Tours""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach"", ""Cultural Tours""]",Medium,"[""Cultural"", ""Food""]",8-10 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Surfing"", ""Volcano Tours""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach""]",High,"[""Nature"", ""Photography""]",4-6 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking"", ""Skiing""]",Low,"[""Adventure"", ""Sports""]",2-3 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking"", ""Wildlife Tours""]",Low,"[""Adventure"", ""Nature""]",8-10 days
+"New York, USA","[""Theater"", ""Shopping"", ""Food Tours"", ""Museums""]",Medium,"[""Urban"", ""Shopping""]",8-10 days
+"California, USA","[""Beach"", ""Wine Tasting""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Snorkeling"", ""Beach"", ""Surfing""]",Low,"[""Nature"", ""Photography""]",6-8 days
+"Colorado, USA","[""Rock Climbing"", ""Skiing"", ""Mountain Biking"", ""Hiking"", ""Beer Tours""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Queensland, Australia","[""Snorkeling"", ""Wildlife Tours""]",Medium,"[""Adventure"", ""Nature""]",2-3 days
+"Paris, France","[""Museums"", ""Shopping"", ""Historical Tours"", ""Food Tours""]",Medium,"[""Adventure"", ""Nature""]",6-8 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours"", ""Temple Visits"", ""Surfing""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"Bavaria, Germany","[""Historical Tours"", ""Beer Tours""]",Low,"[""Adventure"", ""Nature""]",8-10 days
+"British Columbia, Canada","[""Skiing"", ""Kayaking"", ""Wildlife Tours""]",Low,"[""Historical"", ""Educational""]",6-8 days
+"Bavaria, Germany","[""Castle Tours"", ""Hiking"", ""Beer Tours"", ""Historical Tours""]",Medium,"[""Cultural"", ""Historical""]",6-8 days
+"Tokyo, Japan","[""Cultural Shows"", ""Temple Visits"", ""Food Tours"", ""Shopping""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking"", ""Photography"", ""Skiing""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing"", ""Hiking"", ""Mountain Tours""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"Queensland, Australia","[""Beach"", ""Wildlife Tours""]",High,"[""Cultural"", ""Food""]",6-8 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Temple Visits""]",Medium,"[""Adventure"", ""Beach""]",2-3 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Food Tours""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"British Columbia, Canada","[""Skiing"", ""Hiking""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours""]",Medium,"[""Nature"", ""Photography""]",2-3 days
+"Dubai, UAE","[""Shopping"", ""Water Parks"", ""Architecture Tours"", ""Desert Safari"", ""Photography""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Food Tours"", ""Museums""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"Dubai, UAE","[""Water Parks"", ""Architecture Tours"", ""Desert Safari"", ""Shopping""]",High,"[""Historical"", ""Educational""]",4-6 days
+"Wyoming, USA","[""Photography"", ""Hiking""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"Dubai, UAE","[""Shopping"", ""Desert Safari"", ""Architecture Tours""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Hiking"", ""Skiing""]",Low,"[""Cultural"", ""Historical""]",4-6 days
+"Queensland, Australia","[""Hiking"", ""Wildlife Tours"", ""Snorkeling"", ""Beach"", ""Cultural Shows""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"Tuscany, Italy","[""Historical Tours"", ""Food Tours"", ""Wine Tasting""]",High,"[""Beach"", ""Relaxation""]",2-3 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Wine Tasting"", ""Beach"", ""Snorkeling""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari"", ""Hiking"", ""Photography""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"British Columbia, Canada","[""Hiking"", ""Skiing"", ""Wildlife Tours"", ""Kayaking""]",High,"[""Cultural"", ""Historical""]",8-10 days
+"Paris, France","[""Shopping"", ""Historical Tours"", ""Museums""]",Medium,"[""Urban"", ""Modern""]",4-6 days
+"Wyoming, USA","[""Camping"", ""Hiking""]",Low,"[""Urban"", ""Shopping""]",6-8 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Shopping""]",High,"[""Adventure"", ""Beach""]",4-6 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling""]",High,"[""Nature"", ""Photography""]",6-8 days
+"California, USA","[""Surfing"", ""Wine Tasting"", ""Theme Parks"", ""Beach""]",Medium,"[""Nature"", ""Relaxation""]",4-6 days
+"California, USA","[""Theme Parks"", ""Wine Tasting"", ""Surfing"", ""Beach""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking""]",High,"[""Historical"", ""Educational""]",10-14 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Beach"", ""Cultural Tours""]",Low,"[""Nature"", ""Photography""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Shopping"", ""Water Parks"", ""Architecture Tours""]",Low,"[""Nature"", ""Photography""]",2-3 days
+"New York, USA","[""Museums"", ""Shopping"", ""Food Tours"", ""Theater"", ""Cultural Shows""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Queensland, Australia","[""Hiking"", ""Beach"", ""Wildlife Tours"", ""Snorkeling""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"California, USA","[""Beach"", ""Surfing"", ""Theme Parks"", ""Wine Tasting""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Hiking"", ""Skiing""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking"", ""Mountain Tours"", ""Skiing""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Camping""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Volcano Tours""]",High,"[""Nature"", ""Photography""]",6-8 days
+"Hawaii, USA","[""Beach"", ""Surfing"", ""Snorkeling""]",High,"[""Cultural"", ""Food""]",10-14 days
+"Paris, France","[""Shopping"", ""Historical Tours""]",Low,"[""Cultural"", ""Food""]",4-6 days
+"California, USA","[""Beach"", ""Theme Parks""]",Medium,"[""Adventure"", ""Nature""]",2-3 days
+"Tuscany, Italy","[""Wine Tasting"", ""Art Museums"", ""Food Tours"", ""Historical Tours""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking""]",Low,"[""Adventure"", ""Nature""]",8-10 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Snorkeling"", ""Surfing""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Colorado, USA","[""Skiing"", ""Rock Climbing"", ""Hiking"", ""Mountain Biking""]",Medium,"[""Cultural"", ""Adventure""]",6-8 days
+"British Columbia, Canada","[""Hiking"", ""Wildlife Tours"", ""Skiing"", ""Kayaking""]",High,"[""Urban"", ""Modern""]",4-6 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours""]",High,"[""Historical"", ""Educational""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Hiking"", ""Skiing""]",Low,"[""Nature"", ""Photography""]",6-8 days
+"Wyoming, USA","[""Photography"", ""Hiking""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Cultural Tours"", ""Temple Visits""]",Medium,"[""Cultural"", ""Historical""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Snorkeling""]",Low,"[""Nature"", ""Photography""]",10-14 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks"", ""Shopping""]",High,"[""Historical"", ""Educational""]",4-6 days
+"Tuscany, Italy","[""Historical Tours"", ""Art Museums"", ""Wine Tasting"", ""Food Tours"", ""Zip Lining""]",High,"[""Cultural"", ""Food""]",8-10 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Wine Tasting"", ""Beach"", ""Art Museums""]",High,"[""Cultural"", ""Food""]",6-8 days
+"New York, USA","[""Museums"", ""Shopping""]",Medium,"[""Urban"", ""Shopping""]",2-3 days
+"Colorado, USA","[""Hiking"", ""Skiing"", ""Rock Climbing"", ""Mountain Biking""]",High,"[""Historical"", ""Educational""]",10-14 days
+"British Columbia, Canada","[""Skiing"", ""Hiking""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Wyoming, USA","[""Hiking"", ""Camping"", ""Wildlife Safari""]",Low,"[""Cultural"", ""Historical""]",6-8 days
+"Colorado, USA","[""Rock Climbing"", ""Hiking"", ""Skiing"", ""Mountain Biking""]",Medium,"[""Urban"", ""Modern""]",2-3 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Snorkeling"", ""Beach""]",Low,"[""Cultural"", ""Adventure""]",10-14 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Hiking""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Bavaria, Germany","[""Hiking"", ""Beer Tours""]",High,"[""Historical"", ""Educational""]",4-6 days
+"Bavaria, Germany","[""Castle Tours"", ""Hiking""]",Medium,"[""Beach"", ""Relaxation""]",10-14 days
+"Bavaria, Germany","[""Castle Tours"", ""Historical Tours"", ""Hiking"", ""Beer Tours"", ""Wildlife Safari""]",High,"[""Cultural"", ""Food""]",10-14 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking"", ""Mountain Tours"", ""Skiing""]",Low,"[""Cultural"", ""Adventure""]",8-10 days
+"New York, USA","[""Theater"", ""Museums"", ""Shopping"", ""Food Tours"", ""Cooking Classes""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"California, USA","[""Theme Parks"", ""Wine Tasting"", ""Beach"", ""Surfing""]",Medium,"[""Beach"", ""Relaxation""]",10-14 days
+"Paris, France","[""Museums"", ""Shopping"", ""Historical Tours"", ""Food Tours"", ""Wine Tasting""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"New York, USA","[""Shopping"", ""Theater""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Surfing"", ""Volcano Tours""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Wine Tasting"", ""Art Museums""]",High,"[""Cultural"", ""Historical""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach""]",High,"[""Cultural"", ""Historical""]",8-10 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari"", ""Shopping"", ""Architecture Tours"", ""Cooking Classes""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"Queensland, Australia","[""Beach"", ""Snorkeling"", ""Hiking"", ""Wildlife Tours"", ""Local Festivals""]",Low,"[""Nature"", ""Relaxation""]",4-6 days
+"New York, USA","[""Theater"", ""Shopping""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Cultural Tours""]",High,"[""Adventure"", ""Nature""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Surfing"", ""Snorkeling""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"Colorado, USA","[""Hiking"", ""Mountain Biking"", ""Skiing"", ""Rock Climbing"", ""Cultural Tours""]",Low,"[""Adventure"", ""Nature""]",2-3 days
+"California, USA","[""Theme Parks"", ""Beach""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach"", ""Surfing"", ""Cultural Tours""]",Medium,"[""Cultural"", ""Food""]",2-3 days
+"Dubai, UAE","[""Shopping"", ""Architecture Tours"", ""Desert Safari"", ""Water Parks"", ""Kayaking""]",Medium,"[""Nature"", ""Photography""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours"", ""Surfing"", ""Temple Visits""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"Wyoming, USA","[""Photography"", ""Hiking"", ""Camping"", ""Wildlife Safari"", ""River Rafting""]",Low,"[""Nature"", ""Photography""]",8-10 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Food Tours""]",Medium,"[""Nature"", ""Photography""]",2-3 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Hiking"", ""Skiing""]",Low,"[""Cultural"", ""Adventure""]",10-14 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours"", ""Hiking"", ""Kayaking""]",Low,"[""Adventure"", ""Sports""]",8-10 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Historical Tours""]",Medium,"[""Beach"", ""Relaxation""]",4-6 days
+"Bavaria, Germany","[""Castle Tours"", ""Historical Tours""]",High,"[""Historical"", ""Educational""]",4-6 days
+"Tokyo, Japan","[""Cultural Shows"", ""Shopping"", ""Food Tours"", ""Temple Visits"", ""Camping""]",Medium,"[""Cultural"", ""Food""]",8-10 days
+"Paris, France","[""Museums"", ""Shopping""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking""]",High,"[""Historical"", ""Educational""]",8-10 days
+"California, USA","[""Beach"", ""Wine Tasting"", ""Theme Parks"", ""Surfing""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Theme Parks""]",Medium,"[""Historical"", ""Educational""]",8-10 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking"", ""Beach"", ""Wildlife Tours""]",Low,"[""Nature"", ""Relaxation""]",4-6 days
+"Tokyo, Japan","[""Food Tours"", ""Temple Visits"", ""Shopping""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Theme Parks""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"Paris, France","[""Shopping"", ""Museums""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"California, USA","[""Beach"", ""Surfing"", ""Theme Parks"", ""Wine Tasting""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"Colorado, USA","[""Skiing"", ""Hiking"", ""Rock Climbing"", ""Mountain Biking"", ""Temple Visits""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"New York, USA","[""Museums"", ""Food Tours""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Skiing""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Hawaii, USA","[""Snorkeling"", ""Surfing"", ""Volcano Tours""]",Low,"[""Adventure"", ""Beach""]",2-3 days
+"California, USA","[""Beach"", ""Theme Parks"", ""Wine Tasting"", ""Surfing"", ""River Rafting""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking"", ""Wildlife Tours"", ""Beach""]",Medium,"[""Nature"", ""Photography""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Surfing"", ""Snorkeling"", ""Beach"", ""Nightlife""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"New York, USA","[""Museums"", ""Theater"", ""Food Tours"", ""Shopping"", ""Mountain Biking""]",High,"[""Urban"", ""Modern""]",8-10 days
+"Bali, Indonesia","[""Cultural Tours"", ""Temple Visits""]",Medium,"[""Nature"", ""Photography""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Hiking"", ""Historical Tours"", ""Museums""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"California, USA","[""Beach"", ""Surfing"", ""Theme Parks"", ""Wine Tasting""]",Low,"[""Beach"", ""Relaxation""]",2-3 days
+"California, USA","[""Beach"", ""Wine Tasting""]",High,"[""Urban"", ""Modern""]",4-6 days
+"Tuscany, Italy","[""Art Museums"", ""Food Tours"", ""Wine Tasting"", ""Historical Tours""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"Bali, Indonesia","[""Cultural Tours"", ""Beach"", ""Surfing""]",Medium,"[""Nature"", ""Photography""]",4-6 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Theme Parks"", ""Surfing"", ""Volcano Tours""]",High,"[""Urban"", ""Shopping""]",4-6 days
+"British Columbia, Canada","[""Kayaking"", ""Wildlife Tours"", ""Hiking"", ""Skiing""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"Paris, France","[""Shopping"", ""Food Tours"", ""Museums"", ""Historical Tours"", ""Beach""]",Low,"[""Nature"", ""Relaxation""]",2-3 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Skiing"", ""Hiking"", ""Cooking Classes""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Shopping""]",Low,"[""Beach"", ""Relaxation""]",2-3 days
+"Paris, France","[""Museums"", ""Shopping""]",Low,"[""Adventure"", ""Nature""]",6-8 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Beach"", ""Surfing"", ""Theater""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"Hawaii, USA","[""Snorkeling"", ""Beach""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Wine Tasting"", ""Art Museums"", ""Architecture Tours""]",Low,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Museums""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Wyoming, USA","[""Photography"", ""Hiking"", ""Wildlife Safari""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"Bali, Indonesia","[""Beach"", ""Temple Visits"", ""Cultural Tours"", ""Surfing""]",High,"[""Adventure"", ""Nature""]",2-3 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"Queensland, Australia","[""Beach"", ""Snorkeling"", ""Hiking"", ""Wildlife Tours"", ""Surfing""]",Medium,"[""Urban"", ""Shopping""]",8-10 days
+"Bavaria, Germany","[""Hiking"", ""Beer Tours""]",Low,"[""Adventure"", ""Nature""]",8-10 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari"", ""Photography"", ""Hiking""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Tokyo, Japan","[""Shopping"", ""Temple Visits""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Surfing"", ""Beach"", ""Theme Parks"", ""Beer Tours""]",High,"[""Adventure"", ""Nature""]",2-3 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Food Tours"", ""Museums""]",Low,"[""Adventure"", ""Nature""]",2-3 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Camping"", ""Hiking"", ""Art Museums""]",Medium,"[""Adventure"", ""Sports""]",4-6 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Hiking"", ""Photography"", ""Museums""]",Medium,"[""Nature"", ""Relaxation""]",6-8 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Temple Visits""]",High,"[""Historical"", ""Educational""]",10-14 days
+"Dubai, UAE","[""Water Parks"", ""Shopping""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"Dubai, UAE","[""Water Parks"", ""Architecture Tours"", ""Shopping""]",Low,"[""Nature"", ""Photography""]",2-3 days
+"Paris, France","[""Shopping"", ""Historical Tours"", ""Museums"", ""Food Tours""]",Low,"[""Cultural"", ""Adventure""]",10-14 days
+"Colorado, USA","[""Skiing"", ""Mountain Biking"", ""Hiking""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"Bangkok, Thailand","[""Food Tours"", ""Shopping"", ""Cultural Shows"", ""Temple Visits"", ""Snorkeling""]",Low,"[""Cultural"", ""Adventure""]",8-10 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Shopping"", ""Food Tours"", ""River Rafting""]",High,"[""Adventure"", ""Nature""]",6-8 days
+"Queensland, Australia","[""Snorkeling"", ""Beach"", ""Hiking"", ""Wildlife Tours"", ""Photography""]",Low,"[""Adventure"", ""Nature""]",8-10 days
+"British Columbia, Canada","[""Hiking"", ""Skiing"", ""Wildlife Tours"", ""Kayaking"", ""Castle Tours""]",Low,"[""Beach"", ""Relaxation""]",4-6 days
+"Colorado, USA","[""Mountain Biking"", ""Skiing"", ""Hiking"", ""Rock Climbing"", ""Spa & Wellness""]",Medium,"[""Beach"", ""Relaxation""]",8-10 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Shopping"", ""Food Tours""]",Medium,"[""Beach"", ""Relaxation""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking"", ""Historical Tours""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Surfing"", ""Volcano Tours"", ""Snorkeling"", ""Mountain Biking""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"New York, USA","[""Museums"", ""Shopping""]",High,"[""Adventure"", ""Nature""]",4-6 days
+"New York, USA","[""Shopping"", ""Theater"", ""Museums""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Tuscany, Italy","[""Food Tours"", ""Art Museums"", ""Historical Tours""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Hawaii, USA","[""Snorkeling"", ""Beach"", ""Volcano Tours""]",Low,"[""Historical"", ""Educational""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Surfing"", ""Snorkeling""]",Low,"[""Urban"", ""Modern""]",6-8 days
+"Tuscany, Italy","[""Historical Tours"", ""Art Museums"", ""Food Tours"", ""Wine Tasting""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"British Columbia, Canada","[""Kayaking"", ""Skiing"", ""Hiking""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Colorado, USA","[""Mountain Biking"", ""Rock Climbing""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"Bavaria, Germany","[""Historical Tours"", ""Hiking""]",High,"[""Urban"", ""Shopping""]",10-14 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Food Tours"", ""Shopping""]",Medium,"[""Adventure"", ""Nature""]",8-10 days
+"Bangkok, Thailand","[""Shopping"", ""Food Tours"", ""Cultural Shows"", ""Temple Visits"", ""Snorkeling""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Wine Tasting"", ""Beach"", ""Historical Tours""]",Low,"[""Cultural"", ""Food""]",10-14 days
+"Colorado, USA","[""Mountain Biking"", ""Rock Climbing"", ""Skiing"", ""Hiking""]",Medium,"[""Adventure"", ""Beach""]",10-14 days
+"Hawaii, USA","[""Surfing"", ""Beach"", ""Snorkeling"", ""Volcano Tours"", ""Wine Tasting""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking""]",Low,"[""Urban"", ""Shopping""]",10-14 days
+"Colorado, USA","[""Rock Climbing"", ""Skiing""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Wyoming, USA","[""Wildlife Safari"", ""Hiking"", ""Photography"", ""Camping""]",Low,"[""Adventure"", ""Nature""]",10-14 days
+"Bangkok, Thailand","[""Temple Visits"", ""Food Tours"", ""Shopping""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Paris, France","[""Shopping"", ""Historical Tours"", ""Museums"", ""Food Tours""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows"", ""Food Tours"", ""Temple Visits""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Tokyo, Japan","[""Food Tours"", ""Temple Visits""]",High,"[""Adventure"", ""Beach""]",2-3 days
+"California, USA","[""Theme Parks"", ""Beach""]",Medium,"[""Cultural"", ""Adventure""]",8-10 days
+"Paris, France","[""Museums"", ""Historical Tours""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Paris, France","[""Shopping"", ""Food Tours""]",Medium,"[""Cultural"", ""Food""]",6-8 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Shopping""]",Low,"[""Historical"", ""Educational""]",10-14 days
+"California, USA","[""Surfing"", ""Theme Parks"", ""Beach"", ""Wine Tasting"", ""Shopping""]",Medium,"[""Adventure"", ""Beach""]",8-10 days
+"California, USA","[""Surfing"", ""Beach""]",Low,"[""Adventure"", ""Nature""]",2-3 days
+"Hawaii, USA","[""Beach"", ""Snorkeling""]",Low,"[""Nature"", ""Relaxation""]",6-8 days
+"New York, USA","[""Theater"", ""Shopping"", ""Food Tours""]",Low,"[""Nature"", ""Relaxation""]",4-6 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking"", ""Beach"", ""Wildlife Tours"", ""Spa & Wellness""]",Medium,"[""Historical"", ""Educational""]",10-14 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Hiking"", ""Camping""]",Medium,"[""Adventure"", ""Nature""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Skiing""]",Medium,"[""Historical"", ""Educational""]",4-6 days
+"Bavaria, Germany","[""Hiking"", ""Historical Tours"", ""Beer Tours"", ""Castle Tours"", ""Beach""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"New York, USA","[""Food Tours"", ""Museums"", ""Theater""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting""]",High,"[""Urban"", ""Modern""]",4-6 days
+"British Columbia, Canada","[""Skiing"", ""Kayaking""]",Low,"[""Nature"", ""Photography""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking""]",Low,"[""Cultural"", ""Historical""]",6-8 days
+"Queensland, Australia","[""Hiking"", ""Beach"", ""Wildlife Tours""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Photography"", ""Skiing"", ""Hiking""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"Queensland, Australia","[""Hiking"", ""Snorkeling"", ""Wildlife Tours"", ""Beach"", ""Wildlife Safari""]",Low,"[""Beach"", ""Relaxation""]",4-6 days
+"Queensland, Australia","[""Hiking"", ""Snorkeling"", ""Wildlife Tours"", ""Beach"", ""Food Tours""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"California, USA","[""Beach"", ""Wine Tasting"", ""Theme Parks""]",Medium,"[""Urban"", ""Shopping""]",2-3 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours"", ""Photography""]",Medium,"[""Cultural"", ""Historical""]",10-14 days
+"Bangkok, Thailand","[""Food Tours"", ""Cultural Shows""]",High,"[""Nature"", ""Photography""]",2-3 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography""]",Medium,"[""Adventure"", ""Beach""]",8-10 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Skiing""]",High,"[""Nature"", ""Relaxation""]",6-8 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach"", ""Surfing"", ""Cultural Tours"", ""Mountain Biking""]",Medium,"[""Historical"", ""Educational""]",2-3 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Food Tours""]",Low,"[""Historical"", ""Educational""]",4-6 days
+"Colorado, USA","[""Hiking"", ""Mountain Biking""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari""]",Low,"[""Adventure"", ""Sports""]",4-6 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Volcano Tours"", ""Surfing"", ""Museums""]",Medium,"[""Beach"", ""Relaxation""]",8-10 days
+"Paris, France","[""Shopping"", ""Food Tours"", ""Historical Tours"", ""Museums""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"Bavaria, Germany","[""Hiking"", ""Castle Tours"", ""Historical Tours"", ""Beer Tours"", ""Rock Climbing""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"New York, USA","[""Shopping"", ""Museums"", ""Theater""]",Medium,"[""Beach"", ""Relaxation""]",2-3 days
+"California, USA","[""Beach"", ""Theme Parks"", ""Wine Tasting"", ""Surfing""]",High,"[""Nature"", ""Relaxation""]",6-8 days
+"Bali, Indonesia","[""Surfing"", ""Cultural Tours""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Queensland, Australia","[""Hiking"", ""Snorkeling"", ""Beach"", ""Wildlife Tours"", ""Water Parks""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Theater""]",Low,"[""Nature"", ""Relaxation""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking"", ""Mountain Tours""]",Medium,"[""Historical"", ""Educational""]",10-14 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing"", ""Mountain Tours""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"California, USA","[""Wine Tasting"", ""Theme Parks""]",Low,"[""Historical"", ""Educational""]",6-8 days
+"Paris, France","[""Historical Tours"", ""Food Tours""]",Medium,"[""Urban"", ""Shopping""]",8-10 days
+"Bangkok, Thailand","[""Temple Visits"", ""Food Tours"", ""Shopping"", ""Cultural Shows"", ""Spa & Wellness""]",Medium,"[""Nature"", ""Photography""]",2-3 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari"", ""Architecture Tours"", ""Shopping""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Bavaria, Germany","[""Castle Tours"", ""Beer Tours"", ""Hiking""]",High,"[""Adventure"", ""Sports""]",8-10 days
+"New York, USA","[""Shopping"", ""Theater"", ""Museums"", ""Food Tours"", ""Cooking Classes""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"Wyoming, USA","[""Wildlife Safari"", ""Hiking"", ""Camping"", ""Photography"", ""Cultural Tours""]",Medium,"[""Historical"", ""Educational""]",2-3 days
+"Tokyo, Japan","[""Temple Visits"", ""Cultural Shows"", ""Shopping"", ""Food Tours""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"California, USA","[""Theme Parks"", ""Wine Tasting"", ""Beach""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Beer Tours"", ""Hiking"", ""Beach""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Hawaii, USA","[""Snorkeling"", ""Beach"", ""Surfing"", ""Volcano Tours"", ""Nightlife""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Paris, France","[""Food Tours"", ""Historical Tours""]",Medium,"[""Historical"", ""Educational""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Hiking"", ""Skiing"", ""Theme Parks""]",Low,"[""Urban"", ""Modern""]",4-6 days
+"Tokyo, Japan","[""Food Tours"", ""Shopping"", ""Temple Visits"", ""Cultural Shows"", ""Wildlife Tours""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Bangkok, Thailand","[""Food Tours"", ""Temple Visits"", ""Shopping"", ""Cultural Shows"", ""Scuba Diving""]",Medium,"[""Urban"", ""Shopping""]",6-8 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours"", ""Beach"", ""Surfing""]",Low,"[""Cultural"", ""Adventure""]",10-14 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Temple Visits"", ""Food Tours""]",Low,"[""Adventure"", ""Sports""]",8-10 days
+"New York, USA","[""Museums"", ""Theater"", ""Food Tours""]",Low,"[""Nature"", ""Relaxation""]",8-10 days
+"California, USA","[""Theme Parks"", ""Beach"", ""Surfing"", ""Wine Tasting""]",High,"[""Urban"", ""Modern""]",2-3 days
+"Dubai, UAE","[""Architecture Tours"", ""Water Parks""]",Low,"[""Nature"", ""Relaxation""]",6-8 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing"", ""Hiking"", ""Mountain Tours""]",High,"[""Nature"", ""Photography""]",2-3 days
+"Paris, France","[""Shopping"", ""Historical Tours""]",High,"[""Cultural"", ""Adventure""]",8-10 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Wine Tasting"", ""Beach""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Colorado, USA","[""Mountain Biking"", ""Hiking""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Surfing"", ""Beach""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Bangkok, Thailand","[""Food Tours"", ""Temple Visits"", ""Cultural Shows""]",Low,"[""Adventure"", ""Sports""]",2-3 days
+"New York, USA","[""Shopping"", ""Museums"", ""Food Tours"", ""Theater"", ""Skiing""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Paris, France","[""Shopping"", ""Museums"", ""Historical Tours""]",High,"[""Cultural"", ""Adventure""]",6-8 days
+"Colorado, USA","[""Mountain Biking"", ""Hiking"", ""Skiing"", ""Rock Climbing"", ""Museums""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours"", ""Food Tours""]",High,"[""Urban"", ""Modern""]",10-14 days
+"Bavaria, Germany","[""Hiking"", ""Historical Tours"", ""Beer Tours"", ""Castle Tours""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"California, USA","[""Theme Parks"", ""Wine Tasting"", ""Beach"", ""Surfing""]",Low,"[""Adventure"", ""Beach""]",4-6 days
+"Wyoming, USA","[""Camping"", ""Hiking"", ""Photography""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"British Columbia, Canada","[""Kayaking"", ""Wildlife Tours""]",Medium,"[""Cultural"", ""Food""]",8-10 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Skiing"", ""Hiking""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"Wyoming, USA","[""Hiking"", ""Wildlife Safari"", ""Camping""]",High,"[""Cultural"", ""Adventure""]",6-8 days
+"Bangkok, Thailand","[""Shopping"", ""Temple Visits"", ""Food Tours"", ""Cultural Shows""]",High,"[""Adventure"", ""Nature""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Surfing"", ""Volcano Tours"", ""Cultural Shows""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Tokyo, Japan","[""Temple Visits"", ""Cultural Shows"", ""Shopping"", ""Food Tours""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Tuscany, Italy","[""Historical Tours"", ""Food Tours"", ""Art Museums"", ""Wine Tasting"", ""Architecture Tours""]",High,"[""Nature"", ""Photography""]",2-3 days
+"New York, USA","[""Shopping"", ""Food Tours"", ""Museums"", ""Theater""]",Low,"[""Nature"", ""Relaxation""]",8-10 days
+"Bangkok, Thailand","[""Shopping"", ""Temple Visits"", ""Food Tours""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks"", ""Shopping"", ""Architecture Tours""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"New York, USA","[""Theater"", ""Museums"", ""Food Tours"", ""Shopping""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Queensland, Australia","[""Beach"", ""Hiking"", ""Wildlife Tours""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Tokyo, Japan","[""Food Tours"", ""Cultural Shows"", ""Temple Visits"", ""Shopping"", ""Wildlife Safari""]",Medium,"[""Cultural"", ""Historical""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Snorkeling"", ""Beach""]",High,"[""Cultural"", ""Food""]",6-8 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Museums"", ""Food Tours""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Skiing"", ""Hiking"", ""Kayaking""]",High,"[""Urban"", ""Shopping""]",4-6 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours"", ""Wine Tasting"", ""Food Tours""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Tuscany, Italy","[""Historical Tours"", ""Art Museums"", ""Food Tours"", ""Wine Tasting""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Bavaria, Germany","[""Hiking"", ""Castle Tours"", ""Historical Tours"", ""Beer Tours""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"Tokyo, Japan","[""Temple Visits"", ""Cultural Shows"", ""Food Tours""]",Low,"[""Beach"", ""Relaxation""]",6-8 days
+"Bangkok, Thailand","[""Shopping"", ""Food Tours""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Shopping""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"Tokyo, Japan","[""Food Tours"", ""Cultural Shows"", ""Shopping"", ""Temple Visits""]",Medium,"[""Nature"", ""Relaxation""]",6-8 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Theater"", ""Museums"", ""Hiking""]",Medium,"[""Cultural"", ""Food""]",6-8 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Photography"", ""Hiking""]",Low,"[""Urban"", ""Modern""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"British Columbia, Canada","[""Skiing"", ""Hiking"", ""Wildlife Tours"", ""Kayaking""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"Colorado, USA","[""Hiking"", ""Mountain Biking""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Wyoming, USA","[""Camping"", ""Hiking"", ""Photography"", ""Wildlife Safari"", ""Kayaking""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Wyoming, USA","[""Hiking"", ""Photography""]",High,"[""Urban"", ""Modern""]",8-10 days
+"Tokyo, Japan","[""Temple Visits"", ""Cultural Shows"", ""Food Tours"", ""Shopping""]",High,"[""Cultural"", ""Food""]",2-3 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Beach""]",Medium,"[""Urban"", ""Modern""]",4-6 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours"", ""Art Museums"", ""Food Tours""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"Paris, France","[""Museums"", ""Shopping"", ""Food Tours""]",High,"[""Urban"", ""Modern""]",2-3 days
+"California, USA","[""Theme Parks"", ""Surfing""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Bangkok, Thailand","[""Temple Visits"", ""Cultural Shows"", ""Shopping"", ""Food Tours"", ""Museums""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours"", ""Hiking"", ""Skiing""]",Low,"[""Nature"", ""Relaxation""]",4-6 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Hiking"", ""Beer Tours"", ""Beach""]",Medium,"[""Cultural"", ""Historical""]",8-10 days
+"Dubai, UAE","[""Shopping"", ""Water Parks""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours"", ""Surfing"", ""Beach"", ""Historical Tours""]",High,"[""Adventure"", ""Nature""]",4-6 days
+"Wyoming, USA","[""Wildlife Safari"", ""Camping""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"Tokyo, Japan","[""Food Tours"", ""Temple Visits"", ""Cultural Shows""]",Medium,"[""Historical"", ""Educational""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Cultural Tours""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Hawaii, USA","[""Surfing"", ""Volcano Tours"", ""Snorkeling"", ""Beach"", ""Camping""]",Medium,"[""Cultural"", ""Adventure""]",10-14 days
+"California, USA","[""Wine Tasting"", ""Theme Parks"", ""Beach"", ""Surfing"", ""Local Festivals""]",Medium,"[""Historical"", ""Educational""]",2-3 days
+"Bali, Indonesia","[""Surfing"", ""Beach""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Surfing"", ""Beach"", ""Wine Tasting""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Hiking"", ""Kayaking"", ""Skiing""]",Low,"[""Adventure"", ""Sports""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing"", ""Hiking"", ""Mountain Tours"", ""Desert Safari""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"New York, USA","[""Food Tours"", ""Theater"", ""Shopping"", ""Museums""]",Medium,"[""Nature"", ""Photography""]",10-14 days
+"Dubai, UAE","[""Water Parks"", ""Architecture Tours"", ""Shopping""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Shopping"", ""Architecture Tours"", ""Water Parks"", ""Cooking Classes""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"Wyoming, USA","[""Photography"", ""Camping"", ""Wildlife Safari""]",High,"[""Beach"", ""Relaxation""]",6-8 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking"", ""Wildlife Tours"", ""Skiing"", ""Cooking Classes""]",Medium,"[""Cultural"", ""Food""]",2-3 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Surfing"", ""Beach""]",Medium,"[""Cultural"", ""Food""]",2-3 days
+"Bavaria, Germany","[""Historical Tours"", ""Hiking"", ""Beer Tours""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Hiking"", ""Photography"", ""Architecture Tours""]",Low,"[""Adventure"", ""Sports""]",10-14 days
+"Bangkok, Thailand","[""Shopping"", ""Food Tours"", ""Temple Visits"", ""Cultural Shows"", ""Photography""]",Low,"[""Cultural"", ""Adventure""]",6-8 days
+"Hawaii, USA","[""Snorkeling"", ""Surfing""]",Medium,"[""Nature"", ""Photography""]",4-6 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Beer Tours""]",High,"[""Adventure"", ""Sports""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Beach"", ""Hiking"", ""Snorkeling""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"British Columbia, Canada","[""Hiking"", ""Wildlife Tours"", ""Skiing"", ""Kayaking"", ""Zip Lining""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Colorado, USA","[""Hiking"", ""Skiing"", ""Rock Climbing"", ""Mountain Biking"", ""Temple Visits""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking"", ""Wildlife Tours"", ""Skiing"", ""Scuba Diving""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Temple Visits""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Bavaria, Germany","[""Hiking"", ""Historical Tours""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Hiking"", ""Photography""]",High,"[""Cultural"", ""Adventure""]",4-6 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours"", ""Hiking"", ""Photography"", ""Architecture Tours""]",Medium,"[""Urban"", ""Modern""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks""]",Medium,"[""Urban"", ""Modern""]",8-10 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Food Tours""]",Medium,"[""Nature"", ""Photography""]",10-14 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Museums""]",High,"[""Nature"", ""Relaxation""]",8-10 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Temple Visits"", ""Shopping"", ""Wildlife Tours""]",High,"[""Cultural"", ""Adventure""]",6-8 days
+"Tokyo, Japan","[""Shopping"", ""Food Tours"", ""Temple Visits""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Shopping"", ""Water Parks""]",High,"[""Urban"", ""Modern""]",6-8 days
+"California, USA","[""Surfing"", ""Wine Tasting"", ""Theme Parks"", ""Beach"", ""Mountain Tours""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Bali, Indonesia","[""Cultural Tours"", ""Surfing""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Historical Tours"", ""Castle Tours""]",Medium,"[""Cultural"", ""Historical""]",6-8 days
+"Dubai, UAE","[""Desert Safari"", ""Water Parks"", ""Shopping"", ""Architecture Tours"", ""Zip Lining""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Hawaii, USA","[""Volcano Tours"", ""Surfing"", ""Beach"", ""Snorkeling""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"New York, USA","[""Museums"", ""Theater"", ""Shopping"", ""Food Tours""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"Wyoming, USA","[""Photography"", ""Wildlife Safari"", ""Camping""]",Low,"[""Adventure"", ""Nature""]",6-8 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Art Museums""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"Bavaria, Germany","[""Hiking"", ""Historical Tours"", ""Beer Tours"", ""Castle Tours"", ""River Rafting""]",Medium,"[""Beach"", ""Relaxation""]",8-10 days
+"New York, USA","[""Shopping"", ""Theater""]",Low,"[""Nature"", ""Relaxation""]",2-3 days
+"Dubai, UAE","[""Water Parks"", ""Shopping""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Tuscany, Italy","[""Art Museums"", ""Wine Tasting"", ""Historical Tours"", ""Food Tours""]",High,"[""Nature"", ""Relaxation""]",10-14 days
+"New York, USA","[""Shopping"", ""Museums"", ""Food Tours"", ""Theater"", ""Desert Safari""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"Queensland, Australia","[""Snorkeling"", ""Beach""]",Low,"[""Nature"", ""Relaxation""]",10-14 days
+"Paris, France","[""Museums"", ""Historical Tours"", ""Food Tours"", ""Shopping"", ""Temple Visits""]",Low,"[""Adventure"", ""Sports""]",8-10 days
+"Bavaria, Germany","[""Hiking"", ""Castle Tours"", ""Beer Tours"", ""Historical Tours""]",Low,"[""Adventure"", ""Nature""]",6-8 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking"", ""Historical Tours"", ""Castle Tours"", ""Cultural Tours""]",Medium,"[""Urban"", ""Shopping""]",8-10 days
+"Bavaria, Germany","[""Historical Tours"", ""Beer Tours"", ""Hiking""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"Tuscany, Italy","[""Historical Tours"", ""Wine Tasting"", ""Food Tours""]",Medium,"[""Nature"", ""Relaxation""]",4-6 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Art Museums"", ""Wine Tasting"", ""Scuba Diving""]",High,"[""Adventure"", ""Beach""]",2-3 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Kayaking"", ""Skiing"", ""Hiking""]",High,"[""Nature"", ""Relaxation""]",6-8 days
+"Dubai, UAE","[""Architecture Tours"", ""Shopping"", ""Desert Safari""]",Low,"[""Urban"", ""Modern""]",2-3 days
+"California, USA","[""Surfing"", ""Beach"", ""Wine Tasting"", ""Theme Parks""]",High,"[""Urban"", ""Shopping""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Desert Safari""]",High,"[""Cultural"", ""Food""]",4-6 days
+"Queensland, Australia","[""Snorkeling"", ""Beach"", ""Hiking""]",Medium,"[""Nature"", ""Relaxation""]",2-3 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Skiing"", ""Hiking"", ""Kayaking""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Food Tours""]",Medium,"[""Nature"", ""Photography""]",6-8 days
+"Queensland, Australia","[""Snorkeling"", ""Wildlife Tours"", ""Beach"", ""Hiking"", ""Spa & Wellness""]",Medium,"[""Historical"", ""Educational""]",2-3 days
+"Tuscany, Italy","[""Food Tours"", ""Art Museums"", ""Historical Tours"", ""Wine Tasting"", ""River Rafting""]",Medium,"[""Cultural"", ""Historical""]",4-6 days
+"Tuscany, Italy","[""Art Museums"", ""Food Tours"", ""Wine Tasting""]",High,"[""Adventure"", ""Beach""]",6-8 days
+"California, USA","[""Theme Parks"", ""Beach"", ""Wine Tasting"", ""Surfing""]",Low,"[""Urban"", ""Modern""]",10-14 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Shopping""]",Medium,"[""Nature"", ""Relaxation""]",6-8 days
+"Bavaria, Germany","[""Castle Tours"", ""Beer Tours"", ""Hiking""]",High,"[""Urban"", ""Shopping""]",6-8 days
+"Bavaria, Germany","[""Hiking"", ""Beer Tours"", ""Historical Tours""]",Low,"[""Nature"", ""Relaxation""]",2-3 days
+"California, USA","[""Beach"", ""Theme Parks"", ""Surfing"", ""Wine Tasting""]",High,"[""Nature"", ""Relaxation""]",10-14 days
+"California, USA","[""Wine Tasting"", ""Beach"", ""Surfing"", ""Theme Parks""]",Low,"[""Nature"", ""Photography""]",4-6 days
+"Dubai, UAE","[""Shopping"", ""Architecture Tours"", ""Water Parks"", ""Desert Safari"", ""Spa & Wellness""]",High,"[""Adventure"", ""Sports""]",8-10 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking""]",Medium,"[""Adventure"", ""Nature""]",2-3 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking"", ""Skiing"", ""Photography""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Bali, Indonesia","[""Surfing"", ""Beach"", ""Temple Visits""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Queensland, Australia","[""Wildlife Tours"", ""Beach"", ""Hiking"", ""Snorkeling""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"California, USA","[""Theme Parks"", ""Beach"", ""Surfing""]",Medium,"[""Cultural"", ""Food""]",10-14 days
+"Hawaii, USA","[""Surfing"", ""Snorkeling"", ""Beach"", ""Volcano Tours"", ""Mountain Tours""]",Medium,"[""Adventure"", ""Beach""]",10-14 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Photography"", ""Skiing"", ""Hiking""]",High,"[""Nature"", ""Photography""]",8-10 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Shopping"", ""Food Tours"", ""Temple Visits""]",High,"[""Adventure"", ""Sports""]",10-14 days
+"New York, USA","[""Museums"", ""Shopping"", ""Food Tours"", ""Theater""]",Medium,"[""Cultural"", ""Adventure""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Skiing""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"Colorado, USA","[""Skiing"", ""Hiking"", ""Mountain Biking"", ""Rock Climbing"", ""Cooking Classes""]",Low,"[""Beach"", ""Relaxation""]",4-6 days
+"Queensland, Australia","[""Hiking"", ""Wildlife Tours"", ""Beach"", ""Snorkeling"", ""Photography""]",Medium,"[""Adventure"", ""Beach""]",6-8 days
+"Tuscany, Italy","[""Wine Tasting"", ""Art Museums"", ""Historical Tours""]",High,"[""Adventure"", ""Beach""]",10-14 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours"", ""Wine Tasting""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Mountain Tours"", ""Photography"", ""Skiing"", ""Cultural Tours""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours"", ""Temple Visits"", ""Surfing"", ""River Rafting""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Hiking"", ""Skiing"", ""Photography"", ""Snorkeling""]",Low,"[""Adventure"", ""Sports""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours"", ""Hiking"", ""Skiing""]",High,"[""Urban"", ""Modern""]",2-3 days
+"Tokyo, Japan","[""Food Tours"", ""Temple Visits""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"Wyoming, USA","[""Photography"", ""Wildlife Safari"", ""Hiking"", ""Camping"", ""Theme Parks""]",High,"[""Nature"", ""Photography""]",4-6 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours""]",Low,"[""Adventure"", ""Nature""]",2-3 days
+"Hawaii, USA","[""Snorkeling"", ""Surfing"", ""Beach""]",Low,"[""Beach"", ""Relaxation""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Snorkeling"", ""Beach""]",High,"[""Historical"", ""Educational""]",10-14 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Photography"", ""Skiing"", ""Hiking""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"Tokyo, Japan","[""Cultural Shows"", ""Shopping"", ""Temple Visits""]",High,"[""Adventure"", ""Beach""]",4-6 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari"", ""Photography"", ""Hiking"", ""Wine Tasting""]",Low,"[""Adventure"", ""Sports""]",8-10 days
+"Wyoming, USA","[""Photography"", ""Camping"", ""Hiking"", ""Wildlife Safari""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours""]",High,"[""Historical"", ""Educational""]",2-3 days
+"Paris, France","[""Shopping"", ""Historical Tours"", ""Food Tours"", ""Museums"", ""Art Museums""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Snorkeling"", ""Beach"", ""Hiking""]",Low,"[""Cultural"", ""Food""]",4-6 days
+"Wyoming, USA","[""Hiking"", ""Camping"", ""Photography"", ""Wildlife Safari"", ""Local Festivals""]",Medium,"[""Cultural"", ""Historical""]",10-14 days
+"New York, USA","[""Museums"", ""Shopping""]",High,"[""Cultural"", ""Adventure""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Hiking""]",High,"[""Urban"", ""Shopping""]",6-8 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Photography"", ""Skiing""]",Low,"[""Urban"", ""Modern""]",10-14 days
+"Tuscany, Italy","[""Historical Tours"", ""Art Museums"", ""Wine Tasting"", ""Food Tours""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours"", ""Wine Tasting"", ""Food Tours""]",Low,"[""Adventure"", ""Beach""]",6-8 days
+"New York, USA","[""Theater"", ""Food Tours""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Architecture Tours"", ""Shopping"", ""Desert Safari"", ""Photography""]",Medium,"[""Adventure"", ""Sports""]",10-14 days
+"Bali, Indonesia","[""Cultural Tours"", ""Surfing"", ""Beach"", ""Temple Visits""]",High,"[""Cultural"", ""Food""]",2-3 days
+"Paris, France","[""Food Tours"", ""Shopping"", ""Historical Tours"", ""Museums""]",Medium,"[""Cultural"", ""Food""]",8-10 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Art Museums""]",Low,"[""Nature"", ""Relaxation""]",10-14 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows"", ""Temple Visits""]",Medium,"[""Cultural"", ""Food""]",6-8 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Food Tours"", ""Temple Visits""]",Medium,"[""Cultural"", ""Adventure""]",6-8 days
+"California, USA","[""Wine Tasting"", ""Theme Parks"", ""Surfing""]",High,"[""Cultural"", ""Adventure""]",8-10 days
+"California, USA","[""Beach"", ""Wine Tasting"", ""Theme Parks"", ""Surfing""]",Low,"[""Nature"", ""Relaxation""]",8-10 days
+"Bali, Indonesia","[""Cultural Tours"", ""Beach"", ""Surfing"", ""Temple Visits""]",Medium,"[""Historical"", ""Educational""]",2-3 days
+"New York, USA","[""Food Tours"", ""Museums"", ""Theater""]",Low,"[""Cultural"", ""Historical""]",2-3 days
+"Tokyo, Japan","[""Temple Visits"", ""Shopping"", ""Food Tours"", ""Cultural Shows""]",High,"[""Nature"", ""Photography""]",10-14 days
+"California, USA","[""Beach"", ""Wine Tasting"", ""Surfing"", ""Theme Parks"", ""Cultural Shows""]",High,"[""Adventure"", ""Nature""]",10-14 days
+"Hawaii, USA","[""Snorkeling"", ""Surfing"", ""Volcano Tours"", ""Beach"", ""Camping""]",Low,"[""Beach"", ""Relaxation""]",10-14 days
+"Tuscany, Italy","[""Wine Tasting"", ""Art Museums"", ""Food Tours"", ""Historical Tours""]",Low,"[""Urban"", ""Shopping""]",8-10 days
+"Wyoming, USA","[""Photography"", ""Camping"", ""Hiking"", ""Wildlife Safari""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"Bali, Indonesia","[""Temple Visits"", ""Cultural Tours"", ""Surfing""]",High,"[""Nature"", ""Relaxation""]",10-14 days
+"British Columbia, Canada","[""Skiing"", ""Hiking"", ""Kayaking"", ""Wildlife Tours"", ""Rock Climbing""]",Low,"[""Urban"", ""Modern""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Surfing""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"Tuscany, Italy","[""Food Tours"", ""Art Museums""]",Medium,"[""Cultural"", ""Food""]",8-10 days
+"Hawaii, USA","[""Beach"", ""Volcano Tours""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"California, USA","[""Theme Parks"", ""Beach"", ""Wine Tasting"", ""Surfing""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking""]",High,"[""Nature"", ""Photography""]",2-3 days
+"Colorado, USA","[""Mountain Biking"", ""Rock Climbing""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"California, USA","[""Surfing"", ""Wine Tasting""]",Medium,"[""Adventure"", ""Nature""]",10-14 days
+"Paris, France","[""Historical Tours"", ""Museums"", ""Food Tours""]",Medium,"[""Beach"", ""Relaxation""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours"", ""Surfing"", ""Temple Visits"", ""Castle Tours""]",High,"[""Cultural"", ""Historical""]",4-6 days
+"Paris, France","[""Museums"", ""Food Tours"", ""Shopping""]",Low,"[""Historical"", ""Educational""]",6-8 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Shopping"", ""Temple Visits""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours""]",Low,"[""Beach"", ""Relaxation""]",6-8 days
+"Hawaii, USA","[""Beach"", ""Volcano Tours""]",Low,"[""Adventure"", ""Nature""]",10-14 days
+"Queensland, Australia","[""Beach"", ""Hiking"", ""Wildlife Tours"", ""Snorkeling"", ""Kayaking""]",High,"[""Beach"", ""Relaxation""]",2-3 days
+"Swiss Alps, Switzerland","[""Mountain Tours"", ""Photography"", ""Hiking"", ""Skiing"", ""Surfing""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"Paris, France","[""Food Tours"", ""Museums"", ""Historical Tours"", ""Shopping""]",Low,"[""Historical"", ""Educational""]",2-3 days
+"Tuscany, Italy","[""Historical Tours"", ""Food Tours"", ""Art Museums"", ""Wine Tasting""]",Medium,"[""Nature"", ""Photography""]",8-10 days
+"Hawaii, USA","[""Snorkeling"", ""Volcano Tours"", ""Surfing"", ""Beach""]",Low,"[""Adventure"", ""Beach""]",6-8 days
+"Wyoming, USA","[""Hiking"", ""Wildlife Safari"", ""Camping"", ""Photography"", ""Museums""]",Low,"[""Adventure"", ""Sports""]",6-8 days
+"Bavaria, Germany","[""Beer Tours"", ""Historical Tours"", ""Hiking"", ""Castle Tours""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Cultural Tours"", ""Temple Visits"", ""Castle Tours""]",High,"[""Cultural"", ""Historical""]",4-6 days
+"California, USA","[""Wine Tasting"", ""Surfing""]",High,"[""Cultural"", ""Food""]",6-8 days
+"Hawaii, USA","[""Surfing"", ""Beach"", ""Snorkeling""]",High,"[""Urban"", ""Shopping""]",2-3 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Food Tours""]",High,"[""Nature"", ""Relaxation""]",10-14 days
+"Wyoming, USA","[""Hiking"", ""Photography""]",High,"[""Adventure"", ""Beach""]",4-6 days
+"Wyoming, USA","[""Hiking"", ""Wildlife Safari"", ""Photography"", ""Camping"", ""Water Parks""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Colorado, USA","[""Skiing"", ""Rock Climbing"", ""Mountain Biking"", ""Hiking"", ""Local Festivals""]",High,"[""Nature"", ""Photography""]",2-3 days
+"Paris, France","[""Museums"", ""Historical Tours"", ""Food Tours"", ""Shopping""]",High,"[""Cultural"", ""Food""]",2-3 days
+"Wyoming, USA","[""Camping"", ""Hiking"", ""Wildlife Safari"", ""Photography""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Skiing""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Wine Tasting"", ""Art Museums"", ""Castle Tours""]",Medium,"[""Urban"", ""Modern""]",2-3 days
+"Bali, Indonesia","[""Beach"", ""Cultural Tours""]",Low,"[""Adventure"", ""Beach""]",4-6 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography""]",Medium,"[""Nature"", ""Photography""]",8-10 days
+"California, USA","[""Theme Parks"", ""Surfing"", ""Beach"", ""Wine Tasting"", ""Wildlife Tours""]",Low,"[""Cultural"", ""Historical""]",4-6 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Hiking""]",Medium,"[""Cultural"", ""Food""]",4-6 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Historical Tours"", ""Hiking"", ""Theater""]",High,"[""Urban"", ""Shopping""]",8-10 days
+"Swiss Alps, Switzerland","[""Photography"", ""Mountain Tours"", ""Skiing"", ""Hiking""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"Hawaii, USA","[""Snorkeling"", ""Beach""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"Paris, France","[""Museums"", ""Shopping"", ""Historical Tours"", ""Food Tours""]",Low,"[""Nature"", ""Photography""]",8-10 days
+"Swiss Alps, Switzerland","[""Hiking"", ""Skiing"", ""Mountain Tours"", ""Photography""]",Medium,"[""Cultural"", ""Food""]",6-8 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Hiking"", ""Historical Tours""]",Low,"[""Cultural"", ""Food""]",6-8 days
+"Swiss Alps, Switzerland","[""Skiing"", ""Mountain Tours""]",Low,"[""Adventure"", ""Sports""]",2-3 days
+"British Columbia, Canada","[""Hiking"", ""Wildlife Tours"", ""Kayaking"", ""Skiing"", ""Scuba Diving""]",Medium,"[""Adventure"", ""Sports""]",4-6 days
+"British Columbia, Canada","[""Hiking"", ""Kayaking"", ""Skiing"", ""Wildlife Tours"", ""Historical Tours""]",Medium,"[""Cultural"", ""Historical""]",10-14 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari"", ""Hiking"", ""Photography"", ""Surfing""]",High,"[""Historical"", ""Educational""]",2-3 days
+"California, USA","[""Surfing"", ""Wine Tasting"", ""Beach"", ""Theme Parks"", ""Nightlife""]",Low,"[""Urban"", ""Shopping""]",4-6 days
+"Hawaii, USA","[""Beach"", ""Surfing"", ""Snorkeling""]",Medium,"[""Nature"", ""Photography""]",4-6 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Wine Tasting"", ""Art Museums"", ""Skiing""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"New York, USA","[""Museums"", ""Theater"", ""Shopping""]",Medium,"[""Nature"", ""Relaxation""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Temple Visits""]",Medium,"[""Beach"", ""Relaxation""]",6-8 days
+"Hawaii, USA","[""Beach"", ""Snorkeling"", ""Surfing"", ""Volcano Tours""]",Medium,"[""Urban"", ""Shopping""]",2-3 days
+"Queensland, Australia","[""Wildlife Tours"", ""Beach""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"British Columbia, Canada","[""Wildlife Tours"", ""Hiking"", ""Kayaking"", ""Skiing"", ""Beach""]",High,"[""Adventure"", ""Nature""]",8-10 days
+"Bali, Indonesia","[""Beach"", ""Temple Visits"", ""Cultural Tours"", ""Surfing""]",Medium,"[""Historical"", ""Educational""]",8-10 days
+"Bavaria, Germany","[""Historical Tours"", ""Castle Tours"", ""Beer Tours"", ""Hiking""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking"", ""Skiing""]",High,"[""Cultural"", ""Adventure""]",2-3 days
+"Colorado, USA","[""Skiing"", ""Rock Climbing"", ""Mountain Biking"", ""Hiking"", ""Shopping""]",Medium,"[""Nature"", ""Photography""]",6-8 days
+"Paris, France","[""Food Tours"", ""Museums""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"Hawaii, USA","[""Beach"", ""Surfing"", ""Snorkeling""]",Medium,"[""Cultural"", ""Historical""]",10-14 days
+"Wyoming, USA","[""Photography"", ""Wildlife Safari"", ""Camping"", ""Hiking""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Mountain Biking""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Temple Visits"", ""Food Tours"", ""Mountain Tours""]",Medium,"[""Adventure"", ""Sports""]",6-8 days
+"Tuscany, Italy","[""Wine Tasting"", ""Food Tours"", ""Historical Tours""]",Low,"[""Historical"", ""Educational""]",4-6 days
+"Tokyo, Japan","[""Shopping"", ""Cultural Shows"", ""Temple Visits""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"New York, USA","[""Shopping"", ""Theater""]",High,"[""Adventure"", ""Nature""]",6-8 days
+"Queensland, Australia","[""Beach"", ""Hiking"", ""Snorkeling"", ""Wildlife Tours""]",Low,"[""Nature"", ""Photography""]",2-3 days
+"Colorado, USA","[""Skiing"", ""Mountain Biking""]",High,"[""Adventure"", ""Sports""]",8-10 days
+"Wyoming, USA","[""Photography"", ""Hiking"", ""Wildlife Safari""]",High,"[""Nature"", ""Photography""]",6-8 days
+"Dubai, UAE","[""Water Parks"", ""Shopping"", ""Architecture Tours"", ""Desert Safari""]",Medium,"[""Cultural"", ""Adventure""]",4-6 days
+"New York, USA","[""Theater"", ""Shopping"", ""Food Tours"", ""Museums"", ""Skiing""]",High,"[""Cultural"", ""Food""]",8-10 days
+"Tokyo, Japan","[""Food Tours"", ""Cultural Shows""]",Low,"[""Urban"", ""Shopping""]",6-8 days
+"Colorado, USA","[""Rock Climbing"", ""Hiking"", ""Skiing"", ""Mountain Biking""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Paris, France","[""Historical Tours"", ""Food Tours"", ""Shopping"", ""Museums""]",Medium,"[""Historical"", ""Educational""]",4-6 days
+"Dubai, UAE","[""Desert Safari"", ""Architecture Tours"", ""Water Parks""]",High,"[""Nature"", ""Photography""]",8-10 days
+"Queensland, Australia","[""Snorkeling"", ""Hiking"", ""Wildlife Tours"", ""Beach"", ""Nightlife""]",Low,"[""Urban"", ""Modern""]",8-10 days
+"Paris, France","[""Museums"", ""Food Tours""]",Low,"[""Cultural"", ""Food""]",6-8 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Beach"", ""Snorkeling"", ""Architecture Tours""]",Low,"[""Adventure"", ""Beach""]",8-10 days
+"Bali, Indonesia","[""Temple Visits"", ""Beach""]",High,"[""Beach"", ""Relaxation""]",4-6 days
+"Bangkok, Thailand","[""Shopping"", ""Temple Visits"", ""Food Tours"", ""Cultural Shows""]",High,"[""Cultural"", ""Adventure""]",4-6 days
+"Tokyo, Japan","[""Cultural Shows"", ""Temple Visits"", ""Food Tours""]",Low,"[""Adventure"", ""Nature""]",10-14 days
+"California, USA","[""Surfing"", ""Theme Parks"", ""Beach""]",Low,"[""Adventure"", ""Sports""]",4-6 days
+"Tokyo, Japan","[""Food Tours"", ""Cultural Shows"", ""Shopping"", ""Temple Visits"", ""Surfing""]",High,"[""Adventure"", ""Sports""]",2-3 days
+"Bavaria, Germany","[""Beer Tours"", ""Castle Tours"", ""Historical Tours"", ""Hiking""]",Medium,"[""Urban"", ""Modern""]",6-8 days
+"Tuscany, Italy","[""Food Tours"", ""Wine Tasting"", ""Art Museums"", ""Historical Tours""]",Low,"[""Cultural"", ""Historical""]",8-10 days
+"California, USA","[""Surfing"", ""Beach"", ""Theme Parks"", ""Wine Tasting"", ""Castle Tours""]",Medium,"[""Adventure"", ""Nature""]",6-8 days
+"Wyoming, USA","[""Photography"", ""Hiking"", ""Camping"", ""Wildlife Safari"", ""Cultural Tours""]",Medium,"[""Urban"", ""Modern""]",4-6 days
+"Wyoming, USA","[""Photography"", ""Camping"", ""Hiking"", ""Wildlife Safari"", ""Desert Safari""]",High,"[""Nature"", ""Relaxation""]",2-3 days
+"Tokyo, Japan","[""Temple Visits"", ""Cultural Shows"", ""Food Tours"", ""Shopping"", ""Yoga Retreats""]",Medium,"[""Urban"", ""Modern""]",10-14 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours"", ""Food Tours"", ""Wine Tasting""]",Medium,"[""Nature"", ""Relaxation""]",4-6 days
+"Tuscany, Italy","[""Wine Tasting"", ""Historical Tours"", ""Art Museums"", ""Food Tours"", ""Volcano Tours""]",Low,"[""Urban"", ""Shopping""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Architecture Tours"", ""Shopping"", ""Desert Safari""]",Low,"[""Nature"", ""Photography""]",8-10 days
+"Tuscany, Italy","[""Wine Tasting"", ""Art Museums""]",Medium,"[""Beach"", ""Relaxation""]",8-10 days
+"Bangkok, Thailand","[""Food Tours"", ""Temple Visits"", ""Shopping""]",Low,"[""Cultural"", ""Historical""]",10-14 days
+"Colorado, USA","[""Skiing"", ""Rock Climbing""]",Low,"[""Cultural"", ""Adventure""]",4-6 days
+"Wyoming, USA","[""Hiking"", ""Wildlife Safari"", ""Photography"", ""Camping"", ""River Rafting""]",Medium,"[""Adventure"", ""Beach""]",6-8 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Cultural Tours"", ""Temple Visits"", ""Historical Tours""]",Medium,"[""Nature"", ""Photography""]",6-8 days
+"Paris, France","[""Museums"", ""Food Tours"", ""Historical Tours"", ""Shopping""]",High,"[""Adventure"", ""Nature""]",2-3 days
+"Colorado, USA","[""Hiking"", ""Skiing"", ""Rock Climbing"", ""Mountain Biking""]",High,"[""Adventure"", ""Beach""]",4-6 days
+"Paris, France","[""Museums"", ""Shopping"", ""Food Tours"", ""Historical Tours"", ""Temple Visits""]",Medium,"[""Cultural"", ""Food""]",8-10 days
+"California, USA","[""Beach"", ""Theme Parks"", ""Wine Tasting""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Bali, Indonesia","[""Cultural Tours"", ""Temple Visits"", ""Beach"", ""Surfing""]",High,"[""Urban"", ""Shopping""]",10-14 days
+"Tuscany, Italy","[""Art Museums"", ""Wine Tasting"", ""Historical Tours"", ""Food Tours"", ""Museums""]",Low,"[""Cultural"", ""Adventure""]",2-3 days
+"Bangkok, Thailand","[""Temple Visits"", ""Cultural Shows"", ""Shopping"", ""Food Tours""]",Low,"[""Urban"", ""Shopping""]",4-6 days
+"Tuscany, Italy","[""Historical Tours"", ""Wine Tasting""]",Low,"[""Adventure"", ""Beach""]",4-6 days
+"Dubai, UAE","[""Architecture Tours"", ""Water Parks"", ""Shopping"", ""Desert Safari"", ""Nightlife""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography""]",High,"[""Beach"", ""Relaxation""]",8-10 days
+"Tuscany, Italy","[""Art Museums"", ""Wine Tasting""]",Medium,"[""Urban"", ""Shopping""]",10-14 days
+"Bavaria, Germany","[""Beer Tours"", ""Hiking"", ""Castle Tours"", ""Historical Tours"", ""Mountain Tours""]",Medium,"[""Beach"", ""Relaxation""]",8-10 days
+"New York, USA","[""Museums"", ""Shopping""]",High,"[""Nature"", ""Photography""]",4-6 days
+"New York, USA","[""Museums"", ""Shopping"", ""Food Tours"", ""Theater""]",High,"[""Cultural"", ""Adventure""]",8-10 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Temple Visits"", ""Shopping""]",Low,"[""Nature"", ""Relaxation""]",6-8 days
+"Wyoming, USA","[""Camping"", ""Wildlife Safari"", ""Hiking""]",Low,"[""Nature"", ""Relaxation""]",4-6 days
+"Tuscany, Italy","[""Art Museums"", ""Historical Tours""]",Medium,"[""Cultural"", ""Adventure""]",6-8 days
+"Bali, Indonesia","[""Temple Visits"", ""Surfing"", ""Cultural Tours""]",High,"[""Adventure"", ""Nature""]",2-3 days
+"Bali, Indonesia","[""Cultural Tours"", ""Surfing""]",Medium,"[""Adventure"", ""Beach""]",6-8 days
+"Tuscany, Italy","[""Food Tours"", ""Historical Tours"", ""Wine Tasting""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours"", ""Hiking""]",High,"[""Cultural"", ""Historical""]",2-3 days
+"Colorado, USA","[""Skiing"", ""Mountain Biking""]",High,"[""Adventure"", ""Sports""]",4-6 days
+"British Columbia, Canada","[""Kayaking"", ""Hiking""]",Low,"[""Urban"", ""Shopping""]",2-3 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Cultural Tours""]",High,"[""Urban"", ""Shopping""]",4-6 days
+"Wyoming, USA","[""Wildlife Safari"", ""Photography"", ""Hiking""]",High,"[""Beach"", ""Relaxation""]",10-14 days
+"Queensland, Australia","[""Beach"", ""Wildlife Tours"", ""Snorkeling"", ""Hiking"", ""Theater""]",Medium,"[""Nature"", ""Photography""]",6-8 days
+"Colorado, USA","[""Hiking"", ""Rock Climbing"", ""Skiing""]",High,"[""Adventure"", ""Beach""]",8-10 days
+"Tuscany, Italy","[""Wine Tasting"", ""Food Tours"", ""Art Museums""]",Medium,"[""Urban"", ""Shopping""]",8-10 days
+"Tokyo, Japan","[""Shopping"", ""Temple Visits"", ""Cultural Shows"", ""Food Tours""]",High,"[""Cultural"", ""Historical""]",4-6 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours"", ""Hiking"", ""Kayaking"", ""Desert Safari""]",Medium,"[""Historical"", ""Educational""]",8-10 days
+"Queensland, Australia","[""Hiking"", ""Wildlife Tours"", ""Beach"", ""Snorkeling""]",High,"[""Nature"", ""Photography""]",8-10 days
+"Dubai, UAE","[""Water Parks"", ""Architecture Tours"", ""Desert Safari""]",High,"[""Urban"", ""Shopping""]",6-8 days
+"Hawaii, USA","[""Volcano Tours"", ""Beach"", ""Snorkeling"", ""Surfing"", ""River Rafting""]",Medium,"[""Nature"", ""Relaxation""]",8-10 days
+"Queensland, Australia","[""Wildlife Tours"", ""Hiking"", ""Snorkeling""]",Low,"[""Adventure"", ""Beach""]",10-14 days
+"Hawaii, USA","[""Surfing"", ""Snorkeling"", ""Volcano Tours""]",High,"[""Cultural"", ""Adventure""]",10-14 days
+"Colorado, USA","[""Mountain Biking"", ""Rock Climbing""]",Medium,"[""Urban"", ""Modern""]",4-6 days
+"British Columbia, Canada","[""Kayaking"", ""Skiing"", ""Hiking""]",Low,"[""Adventure"", ""Nature""]",4-6 days
+"Colorado, USA","[""Rock Climbing"", ""Skiing"", ""Hiking"", ""Mountain Biking"", ""Camping""]",High,"[""Beach"", ""Relaxation""]",2-3 days
+"Paris, France","[""Museums"", ""Historical Tours"", ""Shopping""]",High,"[""Urban"", ""Shopping""]",6-8 days
+"New York, USA","[""Food Tours"", ""Shopping"", ""Theater"", ""Museums"", ""Wildlife Tours""]",Low,"[""Nature"", ""Photography""]",4-6 days
+"British Columbia, Canada","[""Hiking"", ""Skiing"", ""Wildlife Tours"", ""Kayaking"", ""Castle Tours""]",Low,"[""Urban"", ""Shopping""]",6-8 days
+"Bangkok, Thailand","[""Shopping"", ""Cultural Shows""]",Low,"[""Beach"", ""Relaxation""]",8-10 days
+"Bavaria, Germany","[""Castle Tours"", ""Historical Tours"", ""Hiking"", ""Beer Tours"", ""Mountain Tours""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"Paris, France","[""Museums"", ""Shopping""]",High,"[""Nature"", ""Relaxation""]",4-6 days
+"Dubai, UAE","[""Water Parks"", ""Shopping"", ""Desert Safari"", ""Architecture Tours"", ""Scuba Diving""]",High,"[""Adventure"", ""Nature""]",4-6 days
+"Bangkok, Thailand","[""Cultural Shows"", ""Shopping"", ""Temple Visits""]",Low,"[""Adventure"", ""Sports""]",8-10 days
+"Colorado, USA","[""Rock Climbing"", ""Skiing"", ""Hiking"", ""Mountain Biking""]",High,"[""Cultural"", ""Historical""]",10-14 days
+"British Columbia, Canada","[""Hiking"", ""Kayaking"", ""Wildlife Tours"", ""Skiing""]",Low,"[""Urban"", ""Modern""]",6-8 days
+"Paris, France","[""Historical Tours"", ""Shopping"", ""Food Tours"", ""Museums""]",Medium,"[""Historical"", ""Educational""]",6-8 days
+"British Columbia, Canada","[""Skiing"", ""Wildlife Tours""]",Medium,"[""Adventure"", ""Sports""]",10-14 days
+"Bali, Indonesia","[""Beach"", ""Surfing"", ""Temple Visits""]",Medium,"[""Adventure"", ""Nature""]",2-3 days
+"Colorado, USA","[""Mountain Biking"", ""Rock Climbing"", ""Skiing"", ""Hiking"", ""Theater""]",Medium,"[""Adventure"", ""Nature""]",6-8 days
+"Dubai, UAE","[""Desert Safari"", ""Architecture Tours"", ""Shopping"", ""Water Parks"", ""Wine Tasting""]",Medium,"[""Urban"", ""Shopping""]",4-6 days
+"Tokyo, Japan","[""Cultural Shows"", ""Food Tours"", ""Temple Visits"", ""Shopping""]",High,"[""Nature"", ""Photography""]",8-10 days
+"Bangkok, Thailand","[""Temple Visits"", ""Cultural Shows"", ""Shopping""]",Low,"[""Cultural"", ""Food""]",8-10 days
+"British Columbia, Canada","[""Hiking"", ""Wildlife Tours""]",Medium,"[""Cultural"", ""Historical""]",2-3 days
+"New York, USA","[""Theater"", ""Food Tours"", ""Museums""]",High,"[""Urban"", ""Shopping""]",2-3 days
