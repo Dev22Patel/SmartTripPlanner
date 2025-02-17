@@ -6,7 +6,6 @@ import BentoGrid from '@/components/ui/BentoGrid';
 import ColourfulText from '@/components/ui/colourful-text';
 import { Spotlight } from '@/components/ui/spotlight-new';
 import SearchBar from '@/features/searchFunctionality/searchBar';
-import ResultsDisplay from '@/components/display-result';
 
 export default function Dashboard() {
   const [isClient, setIsClient] = useState(false);
