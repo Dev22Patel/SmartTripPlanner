@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '@/Pages/LandingPage';
 import PreferenceForm from '@/Pages/preferencesPage/PreferencesForm';
+import AboutPage from '@/Pages/AboutUsPage';
+import ItineraryBuilderPage from '@/Pages/ItineraryBuilderPage/itinerary-builder-page';
 
 
 export const AppRoutes = () => {
@@ -20,7 +22,13 @@ export const AppRoutes = () => {
                 <PreferenceForm />
             </ProtectedRoute>
         } />
+        <Route path='/itinerary-builder' element={
+            <ProtectedRoute>
+                <ItineraryBuilderPage />
+            </ProtectedRoute>
+        } />
         <Route path="/authentication" element={<Authentication />} />
+        <Route path="/about-us" element={<AboutPage />} />
       </Routes>
     );
   };

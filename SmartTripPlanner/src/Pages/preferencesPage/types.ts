@@ -4,6 +4,7 @@ export interface Preferences {
     budget: string;
     duration: string;
     activities: string[];
+    locationType:string;
   }
 
   export type DestinationType = 'Beaches' | 'Adventure' | 'Mountains' | 'Cities' |

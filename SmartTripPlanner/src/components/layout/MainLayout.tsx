@@ -11,7 +11,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-slate-100 dark:bg-gray-900 text-white">
+        <div className="flex flex-col min-h-screen bg-white dark:bg-zinc-950 text-white">
             <Header />
             <main className="flex-grow min-h-[calc(100vh-100px)]">{children}</main>
             <div className="bg-slate-200 dark:bg-gray-800 shadow-lg">

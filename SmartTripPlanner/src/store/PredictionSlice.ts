@@ -1,36 +1,51 @@
-// import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// interface AlternativeDestination {
-//   destination: string
-//   confidence: number
-// }
+interface PredictionResult {
+  predicted_destination: string;
+  confidence_score: number;
+  alternative_destinations: Array<{
+    destination: string;
+    confidence: number;
+  }>;
+}
 
-// export interface PredictionResult {
-//   predicted_destination: string
-//   confidence_score: number
-//   alternative_destinations: AlternativeDestination[]
-// }
+interface TravelState {
+  prediction: PredictionResult | null;
+}
 
-// interface PredictionState {
-//   prediction: PredictionResult | null
-// }
+// Initialize from localStorage
+const getInitialPrediction = (): PredictionResult | null => {
+  const storedPrediction = localStorage.getItem('travelPrediction');
+  if (storedPrediction) {
+    try {
+      return JSON.parse(storedPrediction);
+    } catch (error) {
+      console.error('Failed to parse stored prediction:', error);
+      return null;
+    }
+  }
+  return null;
+};
 
-// const initialState: PredictionState = {
-//   prediction: null,
-// }
+const initialState: TravelState = {
+  prediction: getInitialPrediction(),
+};
 
-// const predictionSlice = createSlice({
-//   name: 'prediction',
-//   initialState,
-//   reducers: {
-//     setPrediction: (state, action: PayloadAction<PredictionResult>) => {
-//       state.prediction = action.payload
-//     },
-//     clearPrediction: (state) => {
-//       state.prediction = null
-//     },
-//   },
-// })
+const travelSlice = createSlice({
+  name: 'travel',
+  initialState,
+  reducers: {
+    setTravelPrediction: (state, action: PayloadAction<PredictionResult>) => {
+      state.prediction = action.payload;
+      // Save to localStorage on every state change
+      localStorage.setItem('travelPrediction', JSON.stringify(action.payload));
+    },
+    clearTravelPrediction: (state) => {
+      state.prediction = null;
+      localStorage.removeItem('travelPrediction');
+    },
+  },
+});
 
-// export const { setPrediction, clearPrediction } = predictionSlice.actions
-// export default predictionSlice.reducer
+export const { setTravelPrediction, clearTravelPrediction } = travelSlice.actions;
+export default travelSlice.reducer;

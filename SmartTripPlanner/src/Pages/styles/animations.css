@@ -1,0 +1,87 @@
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
+    background-size: 200% 200%;
+  }
+
+
+@keyframes lightning {
+    0%, 100% {
+      opacity: 0;
+    }
+    0.5%, 1.5% {
+      opacity: 0.8;
+    }
+    2% {
+      opacity: 0;
+    }
+    3.5%, 4.5% {
+      opacity: 0.6;
+    }
+    5% {
+      opacity: 0;
+    }
+    85% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes lightning-fast {
+    0%, 100% {
+      opacity: 0;
+    }
+    2%, 2.5% {
+      opacity: 0.7;
+    }
+    3% {
+      opacity: 0;
+    }
+    15%, 15.5% {
+      opacity: 0.5;
+    }
+    16% {
+      opacity: 0;
+    }
+    65% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes lightning-slow {
+    0%, 100% {
+      opacity: 0;
+    }
+    5%, 6% {
+      opacity: 0.6;
+    }
+    6.5% {
+      opacity: 0;
+    }
+    45% {
+      opacity: 0;
+    }
+  }
+
+
+  .animate-lightning {
+    animation: lightning 0.5s infinite;
+  }
+
+  .animate-lightning-fast {
+    animation: lightning-fast 1s infinite;
+  }
+
+  .animate-lightning-slow {
+    animation: lightning-slow 2s infinite;
+  }

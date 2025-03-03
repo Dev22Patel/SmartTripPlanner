@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight, Check } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { setTravelPrediction } from "@/store/PredictionSlice" // Assuming you have this action creator
 import { destinationTypes, budgetOptions, durationOptions, activities } from "./data"
 import type { Preferences } from "./types"
 
@@ -22,10 +24,13 @@ const PreferenceForm: React.FC = () => {
     budget: "",
     duration: "",
     activities: [],
+    locationType: "", //india or abroad
   })
-  const [prediction, setPrediction] = useState<PredictionResult | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleMultiSelect = (category: keyof Preferences, value: string): void => {
     setPreferences((prev) => ({
@@ -66,47 +71,42 @@ const PreferenceForm: React.FC = () => {
     )
   }
 
-  const renderResults = () => {
-    if (!prediction) return null;
-
-    return (
-      <div className="space-y-6">
-        <h2 className="text-xl font-bold mb-6">Your Recommended Destinations</h2>
-
-        <div className="space-y-4">
-          <div className="bg-blue-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold">Top Recommendation</h3>
-            <p className="text-2xl font-bold text-blue-600">{prediction.predicted_destination}</p>
-            <p className="text-sm text-gray-600">
-              Confidence: {(prediction.confidence_score * 100).toFixed(1)}%
-            </p>
-          </div>
-
-          <div className="mt-6">
-            <h3 className="text-lg font-semibold mb-4">Alternative Destinations</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {prediction.alternative_destinations.map((alt, index) => (
-                <div key={index} className="border p-4 rounded-lg">
-                  <p className="font-medium">{alt.destination}</p>
-                  <p className="text-sm text-gray-600">
-                    Confidence: {(alt.confidence * 100).toFixed(1)}%
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const renderStep = (): JSX.Element | null => {
-    if (currentStep === 5) {
-      return renderResults();
-    }
-
     switch (currentStep) {
       case 1:
+        return (
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold mb-6">Where would you like to travel?</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                variant={preferences.locationType === "india" ? "default" : "outline"}
+                onClick={() => handleSingleSelect("locationType", "india")}
+                className={`h-24 w-full transition-all hover:scale-[1.02] hover:shadow-lg
+                  ${preferences.locationType === "india" ? "shadow-md" : ""}`}
+              >
+                <div className="flex flex-col items-center">
+                  <span className="text-lg font-medium">Explore India</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-300 mt-1">Discover beautiful destinations in India</span>
+                </div>
+                {preferences.locationType === "india" && <Check className="absolute top-3 right-3 h-5 w-5" />}
+              </Button>
+              <Button
+                variant={preferences.locationType === "worldwide" ? "default" : "outline"}
+                onClick={() => handleSingleSelect("locationType", "worldwide")}
+                className={`h-24 w-full transition-all hover:scale-[1.02] hover:shadow-lg
+                  ${preferences.locationType === "worldwide" ? "shadow-md" : ""}`}
+              >
+                <div className="flex flex-col items-center">
+                  <span className="text-lg font-medium">Worldwide</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-300 mt-1">Explore international destinations</span>
+                </div>
+                {preferences.locationType === "worldwide" && <Check className="absolute top-3 right-3 h-5 w-5" />}
+              </Button>
+            </div>
+          </div>
+        )
+
+      case 2:
         return (
           <div className="space-y-4">
             <h2 className="text-xl font-bold mb-6">Select Destination Types</h2>
@@ -114,7 +114,7 @@ const PreferenceForm: React.FC = () => {
           </div>
         )
 
-      case 2:
+      case 3:
         return (
           <div className="space-y-4">
             <h2 className="text-xl font-bold mb-6">Select Budget Range</h2>
@@ -122,7 +122,7 @@ const PreferenceForm: React.FC = () => {
           </div>
         )
 
-      case 3:
+      case 4:
         return (
           <div className="space-y-4">
             <h2 className="text-xl font-bold mb-6">Select Trip Duration</h2>
@@ -130,7 +130,7 @@ const PreferenceForm: React.FC = () => {
           </div>
         )
 
-      case 4:
+      case 5:
         return (
           <div className="space-y-4">
             <h2 className="text-xl font-bold mb-6">Select Activities</h2>
@@ -142,14 +142,17 @@ const PreferenceForm: React.FC = () => {
     }
   }
 
-  const navigate = useNavigate()
-
-  const handleSubmit = async (): Promise<void> => {
+  const handlePredictAndRedirect = async (): Promise<void> => {
     setIsLoading(true)
     setError(null)
 
     try {
-      const response = await fetch('http://localhost:8000/api/predict', {
+      // Determine which API endpoint to call based on location preference
+      const endpoint = preferences.locationType === "india"
+        ? 'http://localhost:8000/api/predict/india'
+        : 'http://localhost:8000/api/predict/not-india'
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -161,12 +164,15 @@ const PreferenceForm: React.FC = () => {
         throw new Error('Failed to get predictions')
       }
 
-      const data = await response.json()
-      setPrediction(data)
-      setCurrentStep(5)
+      const predictionData: PredictionResult = await response.json()
+
+      // Store prediction result in Redux
+      dispatch(setTravelPrediction(predictionData))
+
+      // Navigate to dashboard
+      navigate("/landing-page")
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
-    } finally {
       setIsLoading(false)
     }
   }
@@ -205,7 +211,7 @@ const PreferenceForm: React.FC = () => {
           {renderStep()}
 
           <div className="flex justify-between mt-8">
-            {currentStep > 1 && currentStep < 5 && (
+            {currentStep > 1 && (
               <Button
                 variant="outline"
                 onClick={() => setCurrentStep((prev) => prev - 1)}
@@ -216,30 +222,23 @@ const PreferenceForm: React.FC = () => {
               </Button>
             )}
 
-            {currentStep < 4 ? (
+            {currentStep < 5 ? (
               <Button
                 onClick={() => setCurrentStep((prev) => prev + 1)}
+                disabled={currentStep === 1 && !preferences.locationType}
                 className="shadow-sm hover:shadow-md transition-shadow"
               >
                 Next
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            ) : currentStep === 4 ? (
+            ) : (
               <Button
-                onClick={handleSubmit}
+                onClick={handlePredictAndRedirect}
                 disabled={isLoading}
                 className="shadow-sm hover:shadow-md transition-shadow"
               >
-                {isLoading ? 'Processing...' : 'Get Recommendations'}
-                {!isLoading && <Check className="ml-2 h-4 w-4" />}
-              </Button>
-            ) : (
-              <Button
-                onClick={() => navigate("/landing-page")}
-                className="shadow-sm hover:shadow-md transition-shadow"
-              >
-                Continue to Dashboard
-                <ArrowRight className="ml-2 h-4 w-4" />
+                {isLoading ? 'Processing...' : 'Go to Dashboard'}
+                {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
               </Button>
             )}
           </div>

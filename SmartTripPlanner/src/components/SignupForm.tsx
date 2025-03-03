@@ -38,6 +38,7 @@ export default function SignupForm() {
         setError(""); // Clear previous errors
 
         try {
+            console.log(`${API_BASE_URL}`)
             const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
                 method: "POST",
                 headers: {

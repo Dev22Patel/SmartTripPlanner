@@ -133,7 +133,7 @@ export const Header = () => {
             <nav className="flex space-x-8">
               <NavItem to="/services" label="Services" items={menuItems.services} type="services" />
               <NavItem to="/products" label="Products" items={menuItems.products} type="products" />
-              <NavItem to="/pricing" label="Pricing" />
+              <NavItem to="/about-us" label="About" />
             </nav>
 
             {/* Right section - theme toggle and auth */}

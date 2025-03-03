@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;

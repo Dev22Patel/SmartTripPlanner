@@ -9,7 +9,7 @@ export default function FooterGridBackground() {
         className="bg-gray-50 dark:bg-zinc-950" // Light gray in light mode, very dark in dark mode
       >
         <defs>
-          <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <linearGradient id="fadeGradient" x1="100%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" className="text-black dark:text-white" stopColor="currentColor" stopOpacity="0.1" />
             <stop offset="100%" className="text-black dark:text-white" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>

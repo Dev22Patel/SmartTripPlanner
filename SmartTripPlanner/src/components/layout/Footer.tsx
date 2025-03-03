@@ -1,7 +1,5 @@
-import ColourfulText from "../ui/colourful-text";
 import { motion } from "framer-motion";
 import FooterGridBackground from "../ui/FooterGridBackground";
-import { Cover } from "../ui/cover";
 
 export default function Footer() {
   return (
@@ -25,8 +23,8 @@ export default function Footer() {
                   animate={{ opacity: 0.5 }}
                   transition={{ duration: 1 }}
                 />
-                <h1 className="text-2xl md:text-5xl lg:text-7xl font-bold text-center relative z-2 font-mono">
-                  <Cover><ColourfulText text="Smart Trip Planner" /></Cover> <br />
+                <h1 className="text-2xl text-black dark:text-white md:text-5xl lg:text-7xl font-bold text-center relative z-2 font-mono">
+                  Smart Trip Planner <br />
                 </h1>
               </div>
             </div>
@@ -82,9 +80,6 @@ export default function Footer() {
             <p>© {new Date().getFullYear()} Dev Creations. All rights reserved.</p>
           </div>
         </div>
-
-        {/* Gradient Line */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500"></div>
       </footer>
     </>
   );
