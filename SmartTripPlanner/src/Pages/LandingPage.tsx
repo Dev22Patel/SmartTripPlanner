@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactEventHandler } from 'react';
+import { useState, useEffect} from 'react';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import RetroProjectBoard from '@/components/ui/smaple';

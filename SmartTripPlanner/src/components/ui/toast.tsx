@@ -99,9 +99,9 @@ function Toast({
     <div
       className={cn(
         "pointer-events-auto relative flex w-full items-center justify-between rounded-md border p-4 pr-8 shadow-lg animate-in slide-in-from-right-full",
-        variant === "default" && "bg-white border-gray-200",
-        variant === "destructive" && "border-red-500 bg-red-600 text-white",
-        variant === "success" && "border-green-500 bg-green-600 text-white"
+        variant === "default" ? "bg-white border-gray-200" : undefined,
+        variant === "destructive" ? "border-red-500 bg-red-600 text-white" : undefined,
+        variant === "success" ? "border-green-500 bg-green-600 text-white" : undefined
       )}
     >
       <div className="grid gap-1">

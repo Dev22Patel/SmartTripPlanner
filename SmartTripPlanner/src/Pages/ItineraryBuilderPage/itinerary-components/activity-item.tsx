@@ -3,15 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { Clock, DollarSign, Edit2, MapPin, Trash2 } from "lucide-react"
-
-interface Activity {
-  title: string
-  description: string
-  category: string | null
-  time?: string
-  location?: string
-  cost?: string
-}
+import type { Activity } from "./itinerary-builder"
 
 interface ActivityItemProps {
   activity: Activity
@@ -19,27 +11,39 @@ interface ActivityItemProps {
   onDelete: () => void
 }
 
-const getCategoryIcon = (category: string | null) => {
+const getCategoryIcon = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | undefined) => {
   // Implement your logic to get the icon based on category
   // For example:
   switch (category) {
-    case "Work":
+    case "food":
       return <Edit2 className="h-6 w-6" />
-    case "Personal":
+    case "attraction":
       return <Clock className="h-6 w-6" />
+    case "transport":
+      return <MapPin className="h-6 w-6" />
+    case "accommodation":
+      return <DollarSign className="h-6 w-6" />
+    case "other":
+      return <Edit2 className="h-6 w-6" />
     default:
       return <Edit2 className="h-6 w-6" />
   }
 }
 
-const getCategoryColor = (category: string | null) => {
+const getCategoryColor = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | undefined) => {
   // Implement your logic to get the color based on category
   // For example:
   switch (category) {
-    case "Work":
+    case "food":
       return "bg-blue-500 text-white"
-    case "Personal":
+    case "attraction":
       return "bg-green-500 text-white"
+    case "transport":
+      return "bg-yellow-500 text-white"
+    case "accommodation":
+      return "bg-red-500 text-white"
+    case "other":
+      return "bg-gray-500 text-white"
     default:
       return ""
   }
@@ -115,4 +119,3 @@ export default function ActivityItem({ activity, onEdit, onDelete }: ActivityIte
     </Card>
   )
 }
-

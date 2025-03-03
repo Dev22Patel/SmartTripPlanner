@@ -30,11 +30,11 @@ export default function ItineraryBuilderPage() {
     }
 
     // Add hover effect with JavaScript
-    const handleMouseEnter = (e) => {
+    const handleMouseEnter = (e:any) => {
       e.currentTarget.style.overflowY = 'scroll';
     }
 
-    const handleMouseLeave = (e) => {
+    const handleMouseLeave = (e:any) => {
       e.currentTarget.style.overflowY = 'auto';
     }
 
@@ -68,9 +68,9 @@ export default function ItineraryBuilderPage() {
             </div>
 
             {/* Right container with direct styles and event handlers */}
-            <div style={stickyContainerStyle}>
+            <div style={stickyContainerStyle as React.CSSProperties}>
               <div
-                style={scrollableContentStyle}
+                style={scrollableContentStyle as React.CSSProperties}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >

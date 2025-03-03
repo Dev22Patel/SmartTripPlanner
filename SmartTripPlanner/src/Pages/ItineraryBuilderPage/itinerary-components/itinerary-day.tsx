@@ -96,18 +96,18 @@ export default function ItineraryDay({ day, updateDay, removeDay }: ItineraryDay
         {day.activities.length === 0 ? (
           <div className="text-center py-6 text-muted-foreground">No activities planned for this day yet.</div>
         ) : (
-          <div className="space-y-3">
+        <div className="space-y-3">
             {day.activities
-              .sort((a, b) => a.time.localeCompare(b.time))
-              .map((activity) => (
-                <ActivityItem
-                  key={activity.id}
-                  activity={activity}
-                  onEdit={() => handleEditActivity(activity)}
-                  onDelete={() => removeActivity(activity.id)}
-                />
-              ))}
-          </div>
+                .sort((a, b) => a.time.localeCompare(b.time))
+                .map((activity) => (
+                    <ActivityItem
+                        key={activity.id}
+                        activity={activity}
+                        onEdit={() => handleEditActivity(activity)}
+                        onDelete={() => removeActivity(activity.id)}
+                    />
+                ))}
+        </div>
         )}
 
         <Button
