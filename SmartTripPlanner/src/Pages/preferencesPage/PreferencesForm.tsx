@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux"
 import { setTravelPrediction } from "@/store/PredictionSlice" // Assuming you have this action creator
 import { destinationTypes, budgetOptions, durationOptions, activities } from "./data"
 import type { Preferences } from "./types"
+import axios from "axios"
+
 
 interface PredictionResult {
   predicted_destination: string;
@@ -169,6 +171,34 @@ const PreferenceForm: React.FC = () => {
       // Store prediction result in Redux
       dispatch(setTravelPrediction(predictionData))
 
+      try {
+        // Get token from local storage or your auth state
+        const token = localStorage.getItem('token');
+        console.log('token:', token);
+        if (!token) {
+          console.warn('No auth token found, preferences will not be saved');
+          return;
+        }
+
+        // Save to database
+        await axios.post(
+          'http://localhost:5000/api/travel-preferences',
+          {
+            preferences: preferences,
+            predictionResult: predictionData,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            }
+          }
+        );
+
+        console.log('Travel preferences saved successfully');
+      } catch (error) {
+        console.error('Error saving travel preferences:', error);
+      }
       // Navigate to dashboard
       navigate("/landing-page")
     } catch (err) {

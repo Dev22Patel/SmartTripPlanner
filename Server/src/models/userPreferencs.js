@@ -1,14 +1,60 @@
-const mongoose = require("mongoose");
+// models/TravelPreference.js
+const mongoose = require('mongoose');
 
-const UserPreferenceSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, unique: true }, // Reference to User model
+const travelPreferenceSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   preferences: {
-    destinationType: { type: String, required: true }, // Example: "Beaches & Adventure"
-    budget: { type: String, required: true, enum: ["Low", "Medium", "High"] }, // Budget category
-    duration: { type: String, required: true }, // Example: "6-8 days"
-    activities: { type: [String], required: true }, // Example: ["Scuba Diving", "Snorkeling"]
+    locationType: {
+      type: String,
+      enum: ['india', 'worldwide'],
+      required: true
+    },
+    destinationType: {
+      type: [String],
+      default: []
+    },
+    budget: {
+      type: String,
+      default: ''
+    },
+    duration: {
+      type: String,
+      default: ''
+    },
+    activities: {
+      type: [String],
+      default: []
+    }
+  },
+  predictionResult: {
+    predicted_destination: {
+      type: String,
+      default: null
+    },
+    confidence_score: {
+      type: Number,
+      default: null
+    },
+    alternative_destinations: [{
+      destination: String,
+      confidence: Number
+    }]
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
   }
-}, { timestamps: true }); // Adds createdAt & updatedAt fields
+}, { timestamps: true });
 
-// Export the model
-module.exports = mongoose.model("UserPreference", UserPreferenceSchema);
+// Index for faster queries
+travelPreferenceSchema.index({ userId: 1 });
+
+module.exports = mongoose.model('TravelPreference', travelPreferenceSchema);

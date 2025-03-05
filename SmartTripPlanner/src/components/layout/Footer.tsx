@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import FooterGridBackground from "../ui/FooterGridBackground";
+import { Cover } from "../ui/cover";
 
 export default function Footer() {
   return (
@@ -24,7 +25,9 @@ export default function Footer() {
                   transition={{ duration: 1 }}
                 />
                 <h1 className="text-2xl text-black dark:text-white md:text-5xl lg:text-7xl font-bold text-center relative z-2 font-mono">
-                  Smart Trip Planner <br />
+                    <Cover>
+                  Smart Trip Planner
+                    </Cover>
                 </h1>
               </div>
             </div>

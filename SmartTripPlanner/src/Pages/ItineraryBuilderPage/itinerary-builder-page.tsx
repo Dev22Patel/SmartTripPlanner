@@ -12,7 +12,7 @@ export default function ItineraryBuilderPage() {
     const [isLoading, setIsLoading] = useState(true)
 
     // Define the scrollable container styles directly
-    const stickyContainerStyle = {
+    const stickyContainerStyle: React.CSSProperties = {
       position: 'sticky',
       top: '1rem',
       alignSelf: 'start',
@@ -20,7 +20,7 @@ export default function ItineraryBuilderPage() {
       overflow: 'hidden', // Start with hidden
     }
 
-    const scrollableContentStyle = {
+    const scrollableContentStyle: React.CSSProperties = {
       height: '100%',
       overflowY: 'auto',
       paddingRight: '1rem',
@@ -68,9 +68,9 @@ export default function ItineraryBuilderPage() {
             </div>
 
             {/* Right container with direct styles and event handlers */}
-            <div style={stickyContainerStyle as React.CSSProperties}>
+            <div style={stickyContainerStyle}>
               <div
-                style={scrollableContentStyle as React.CSSProperties}
+                style={scrollableContentStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >

@@ -6,14 +6,9 @@ export const menuItems = {
         description: 'Plan a day-by-day itinerary tailored to your preferences.',
       },
       {
-        title: 'Budget Planner',
-        href: '/budget-planner',
-        description: 'Estimate and manage your travel expenses effortlessly.',
-      },
-      {
-        title: 'Travel Assistance',
-        href: '/travel-assistance',
-        description: 'Get support for booking and travel-related queries.',
+        title: 'AI Itinerary Generator',
+        href: '/AI-itinerary-planner',
+        description: 'Get the best itinerary with AI',
       },
     ],
     products: [

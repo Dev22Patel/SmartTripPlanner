@@ -6,6 +6,8 @@ import Dashboard from '@/Pages/LandingPage';
 import PreferenceForm from '@/Pages/preferencesPage/PreferencesForm';
 import AboutPage from '@/Pages/AboutUsPage';
 import ItineraryBuilderPage from '@/Pages/ItineraryBuilderPage/itinerary-builder-page';
+import UserPreferencePage from '@/Pages/AI_itineraryPage/userPreference';
+import ItineraryPage from '@/Pages/testpage';
 
 
 export const AppRoutes = () => {
@@ -27,8 +29,14 @@ export const AppRoutes = () => {
                 <ItineraryBuilderPage />
             </ProtectedRoute>
         } />
+        <Route path='/destination/:place' element={
+            <ProtectedRoute>
+                <UserPreferencePage />
+            </ProtectedRoute>
+        } />
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/about-us" element={<AboutPage />} />
+        <Route path="/test" element={<ItineraryPage />} />
       </Routes>
     );
   };
