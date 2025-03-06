@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { Clock, DollarSign, Edit2, MapPin, Trash2, Utensils, Landmark, Bus, Home, Briefcase } from 'lucide-react'
-import Image from "next/image"
 import type { Activity } from "./itinerary-builder"
 
 interface ActivityItemProps {
@@ -55,10 +54,9 @@ export default function ActivityItem({ activity, onEdit, onDelete }: ActivityIte
         <div className="flex flex-col sm:flex-row">
           {activity.imageUrl && (
             <div className="relative w-full sm:w-1/4 h-40 sm:h-auto overflow-hidden">
-              <Image
+              <img
                 src={activity.imageUrl || "/placeholder.svg"}
                 alt={activity.title}
-                fill
                 className="object-cover"
                 sizes="(max-width: 640px) 100vw, 25vw"
               />
