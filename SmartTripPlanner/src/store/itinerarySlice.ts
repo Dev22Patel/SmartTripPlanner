@@ -3,6 +3,9 @@ import axios from 'axios';
 
 // Define interfaces for type safety
 interface Activity {
+  category: string;
+  cost: string;
+  location: string;
   id: string;
   title: string;
   description?: string;
@@ -11,6 +14,7 @@ interface Activity {
 }
 
 interface ItineraryDay {
+  description: string;
   id: string;
   day: number;
   title: string;
