@@ -1,10 +1,11 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { Clock, DollarSign, Edit2, MapPin, Trash2, Utensils, Landmark, Bus, Home, Briefcase } from 'lucide-react'
+import { Clock, DollarSign, Edit2, MapPin, Trash2, Utensils, Landmark, Bus, Home, Briefcase, Image as ImageIcon } from 'lucide-react'
 import type { Activity } from "./itinerary-builder"
 
 interface ActivityItemProps {
@@ -48,52 +49,77 @@ const getCategoryColor = (category: "food" | "attraction" | "transport" | "accom
 }
 
 export default function ActivityItem({ activity, onEdit, onDelete }: ActivityItemProps) {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+
+  // Function to handle image loading errors
+  const handleImageError = () => {
+    console.log(`Image error for: ${activity.title}`);
+    setImageError(true);
+    setImageLoading(false);
+  };
+
+  // Function to handle successful image load
+  const handleImageLoad = () => {
+    console.log(`Image loaded for: ${activity.title}`);
+    setImageLoading(false);
+  };
+
+  // Check if we have a valid image URL
+  const hasValidImageUrl = activity.imageUrl &&
+    typeof activity.imageUrl === 'string' &&
+    activity.imageUrl.trim() !== '' &&
+    !activity.imageUrl.includes('undefined');
+
+  // Determine if we should show the image section
+  const shouldShowImage = hasValidImageUrl && !imageError;
+
+  // Get a fallback image URL if needed
+  const getImageUrl = () => {
+    if (!shouldShowImage) {
+      // Create a placeholder with the activity title and category
+      const placeholderText = `${activity.title?.substring(0, 15) || "Activity"} (${activity.category || "misc"})`;
+      return `/api/placeholder/400/300?text=${encodeURIComponent(placeholderText)}`;
+    }
+    return activity.imageUrl;
+  };
+
   return (
     <Card className="overflow-hidden border-border/40 dark:border-border/40 bg-card/50 hover:shadow-md transition-shadow group">
       <CardContent className="p-0">
         <div className="flex flex-col sm:flex-row">
-          {activity.imageUrl && (
-            <div className="relative w-full sm:w-1/4 h-40 sm:h-auto overflow-hidden">
-              <img
-                src={activity.imageUrl || "/placeholder.svg"}
-                alt={activity.title}
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 25vw"
-              />
-              <Badge
-                variant="outline"
-                className={cn(
-                  "absolute top-2 left-2 text-xs font-medium",
-                  getCategoryColor(activity.category)
-                )}
-              >
-                <span className="flex items-center gap-1">
-                  {getCategoryIcon(activity.category)}
-                  <span>{activity.category?.charAt(0).toUpperCase() + activity.category?.slice(1) || "Other"}</span>
-                </span>
-              </Badge>
-            </div>
-          )}
-
-          <div className={cn(
-            "flex-1 p-4",
-            !activity.imageUrl && "pl-12" // Add padding when no image
-          )}>
-            {!activity.imageUrl && (
-              <Badge
-                variant="outline"
-                className={cn(
-                  "float-left -ml-8 mr-2 text-xs",
-                  getCategoryColor(activity.category)
-                )}
-              >
-                <span className="flex items-center gap-1">
-                  {getCategoryIcon(activity.category)}
-                  <span className="sr-only">{activity.category || "Other"}</span>
-                </span>
-              </Badge>
+          <div className="relative w-full sm:w-1/4 h-40 sm:h-auto overflow-hidden bg-muted">
+            {imageLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                <ImageIcon className="h-8 w-8 text-muted-foreground animate-pulse" />
+              </div>
             )}
+            <img
+              src={getImageUrl()}
+              alt={activity.title || "Activity image"}
+              className={cn(
+                "object-cover w-full h-full",
+                imageLoading && "opacity-0",
+                !imageLoading && "opacity-100 transition-opacity duration-300"
+              )}
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+            />
+            <Badge
+              variant="outline"
+              className={cn(
+                "absolute top-2 left-2 text-xs font-medium",
+                getCategoryColor(activity.category)
+              )}
+            >
+              <span className="flex items-center gap-1">
+                {getCategoryIcon(activity.category)}
+                <span>{((activity.category ?? "other").charAt(0).toUpperCase() + (activity.category ?? "other").slice(1))}</span>
+              </span>
+            </Badge>
+          </div>
 
+          <div className="flex-1 p-4">
             <div className="flex justify-between items-start">
               <div className="flex-1">
                 <h3 className="font-medium text-lg">{activity.title}</h3>

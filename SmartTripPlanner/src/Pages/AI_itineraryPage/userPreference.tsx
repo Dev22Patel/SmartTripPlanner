@@ -4,6 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/store/index';
 import { fetchItinerary, setDestination, updatePreferences } from '@/store/itinerarySlice';
 
+type Activity = {
+  title: string;
+  description?: string;
+  imageUrl?: string;
+};
+
 const UserPreferencePage: React.FC = () => {
     const { place } = useParams<{ place: string }>();
     const navigate = useNavigate();
@@ -381,14 +387,14 @@ const ItineraryView = () => (
           </div>
 
           <div className="space-y-6">
-            {itinerary[activeDay].activities.map((activity: { imageUrl: string | undefined; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined; description: any; }, actIndex: React.Key | null | undefined) => (
+            {itinerary[activeDay].activities.map((activity: Activity, actIndex: number) => (
               <div key={actIndex} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg overflow-hidden">
                 <div className="flex flex-col md:flex-row">
                   {activity.imageUrl && (
                     <div className="md:w-1/3 h-48 md:h-auto overflow-hidden">
                       <img
                         src={activity.imageUrl}
-                        alt={activity.title}
+                        alt={typeof activity.title === 'string' ? activity.title : undefined}
                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                         onError={(e) => {
                           e.currentTarget.src = "/api/placeholder/400/300"; // Fallback placeholder

@@ -67,7 +67,7 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
             location: activity.location || "",
             time: activity.time || "",
             cost: activity.cost || "",
-            category: activity.category || "other",
+            category: activity.category as "food" | "attraction" | "transport" | "accommodation" | "other" || "other",
             imageUrl: activity.imageUrl || `/placeholder.svg?height=200&width=300`,
           })),
         }))
@@ -225,6 +225,7 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
                   day={day}
                   updateDay={updateDay}
                   removeDay={removeDay}
+                  destination={destination}
                 />
               </TabsContent>
             ))}
