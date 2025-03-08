@@ -15,7 +15,7 @@ The core idea behind Smart Trip Planner is to simplify the travel planning proce
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: React, Tailwind CSS
+- **Frontend**: React + Vite, Tailwind CSS
 - **Backend**: FastAPI, Node.js, Express.js
 - **Database**: MongoDB
 - **APIs**: Google Places API for fetching reviews and place details
