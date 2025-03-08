@@ -8,6 +8,8 @@ import ColourfulText from '@/components/ui/colourful-text';
 import { Spotlight } from '@/components/ui/spotlight-new';
 import { Card, CardHeader, CardContent, CardTitle, CardFooter } from '@/components/ui/card';
 import { ArrowRight, Star, Calendar, MapPinned, PlaneLanding, Compass, Search, DollarSign, MessageSquare } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
 // Define interfaces for your Redux state
@@ -30,58 +32,105 @@ interface RootState {
   travel: TravelState;
 }
 
-// Action types for Redux
+// // Action types for Redux
 const SET_PREDICTION = 'travel/SET_PREDICTION';
 
-// Professional Search Component
+
 const ElegantSearchBar = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const dispatch = useDispatch();
+    const [searchValue, setSearchValue] = useState('');
+    const [suggestions, setSuggestions] = useState<any[]>([]);
+    const navigate = useNavigate();
 
-  const handleSearch = (e:any) => {
-    e.preventDefault();
-
-    // Mock prediction for demo purposes
-    if (searchValue.trim()) {
-      const mockPrediction = {
-        predicted_destination: "Paris, France",
-        confidence_score: 0.92,
-        alternative_destinations: [
-          { destination: "Rome, Italy", confidence: 0.85 },
-          { destination: "Barcelona, Spain", confidence: 0.79 },
-          { destination: "Vienna, Austria", confidence: 0.72 }
-        ]
+    // Fetch suggestions from the RapidAPI endpoint
+    const fetchSuggestions = async (input: string) => {
+      const options = {
+        method: 'GET',
+        url: 'https://place-autocomplete1.p.rapidapi.com/autocomplete/json',
+        params: { input, radius: '500' },
+        headers: {
+          'x-rapidapi-key': import.meta.env.VITE_X_RAPIDAPI_KEY,
+          'x-rapidapi-host': import.meta.env.VITE_RAPIDAPI_HOST
+        }
       };
 
-      dispatch({ type: SET_PREDICTION, payload: mockPrediction });
-    }
-  };
+      try {
+        const response = await axios.request(options);
+        // Ensure response data has predictions before updating state
+        if (response.data && response.data.predictions) {
+          setSuggestions(response.data.predictions);
+        } else {
+          setSuggestions([]);
+        }
+      } catch (error) {
+        console.error('Error fetching suggestions:', error);
+        setSuggestions([]);
+      }
+    };
 
-  return (
-    <div className="relative max-w-3xl mx-auto">
-      <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center">
-        <div className="relative w-full">
-          <input
-            type="text"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Where would you like to go?"
-            className="w-full pl-5 pr-12 py-4 bg-white dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent text-gray-800 dark:text-gray-200 transition-all"
-          />
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <Search className="h-5 w-5 text-gray-400" />
+    // Update input and fetch suggestions if input is longer than 2 characters
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const input = e.target.value;
+      setSearchValue(input);
+      if (input.length > 2) {
+        fetchSuggestions(input);
+      } else {
+        setSuggestions([]);
+      }
+    };
+
+    // Set input value to the clicked suggestion and clear suggestions
+    const handleSuggestionClick = (suggestion: string) => {
+      setSearchValue(suggestion);
+      setSuggestions([]);
+    };
+
+    // Navigate to the destination page with the search value as a query parameter
+    const handleSearch = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (searchValue.trim()) {
+        navigate(`/destination/${searchValue}`);
+      }
+    };
+
+    return (
+      <div className="relative max-w-3xl mx-auto">
+        <form onSubmit={handleSearch} className="flex flex-col md:flex-row items-center">
+          <div className="relative w-full">
+            <input
+              type="text"
+              value={searchValue}
+              onChange={handleInputChange}
+              placeholder="Where would you like to go?"
+              className="w-full pl-5 pr-12 py-4 bg-white dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent text-gray-800 dark:text-gray-200 transition-all"
+            />
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400" />
+            </div>
+            {/* Display suggestions if available */}
+            {suggestions.length > 0 && (
+              <ul className="absolute z-10 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mt-1 rounded-lg shadow-lg">
+                {suggestions.map((suggestion, index) => (
+                  <li
+                    key={index}
+                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                    onClick={() => handleSuggestionClick(suggestion.description)}
+                  >
+                    {suggestion.description}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-        </div>
-        <button
-          type="submit"
-          className="mt-3 md:mt-0 md:ml-4 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-200 whitespace-nowrap"
-        >
-          Find Destinations
-        </button>
-      </form>
-    </div>
-  );
-};
+          <button
+            type="submit"
+            className="mt-3 md:mt-0 md:ml-4 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-200 whitespace-nowrap"
+          >
+            Build Itinerary
+          </button>
+        </form>
+      </div>
+    );
+  };
 
 export default function Dashboard() {
   const [isClient, setIsClient] = useState(false);
