@@ -8,6 +8,7 @@ import AboutPage from '@/Pages/AboutUsPage';
 import ItineraryBuilderPage from '@/Pages/ItineraryBuilderPage/itinerary-builder-page';
 import UserPreferencePage from '@/Pages/AI_itineraryPage/userPreference';
 import ItineraryPage from '@/Pages/testpage';
+import Profile from '@/Pages/Profile';
 
 
 export const AppRoutes = () => {
@@ -37,6 +38,7 @@ export const AppRoutes = () => {
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/test" element={<ItineraryPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     );
   };
