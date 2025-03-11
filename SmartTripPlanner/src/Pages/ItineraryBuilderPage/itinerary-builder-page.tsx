@@ -11,6 +11,7 @@ import { MapPin, Calendar, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import "./itinerary.css"
+import ColourfulText from "@/components/ui/colourful-text"
 
 export default function ItineraryBuilderPage() {
   const [searchParams] = useSearchParams()
@@ -53,12 +54,12 @@ export default function ItineraryBuilderPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background transition-colors duration-300">
+    <div className="min-h-screen bg-background transition-colors duration-300 mt-20">
       <div className="container mx-auto px-4 py-6 max-w-7xl mb-32">
         <div className="flex flex-col items-center mb-6">
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-4">
             <Calendar className="h-5 w-5 text-primary" />
-            <h1 className="text-4xl font-bold tracking-tight text-black dark:text-white">Trip Planner</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-black dark:text-white"><ColourfulText text="Trip Planner"/></h1>
           </div>
 
           <div className="flex items-center justify-center text-lg text-muted-foreground">
@@ -88,7 +89,7 @@ export default function ItineraryBuilderPage() {
           </div>
         </div>
 
-        <Separator className="my-6" />
+        <Separator className="my-6 mt-3 mb-10" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left container - ItineraryBuilder - No scrolling, full height */}

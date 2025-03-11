@@ -56,10 +56,11 @@ const ElegantSearchBar = () => {
       try {
         const response = await axios.request(options);
         // Ensure response data has predictions before updating state
-        if (response.data && response.data.predictions) {
-          setSuggestions(response.data.predictions);
-        } else {
-          setSuggestions([]);
+        if (response.data && response.data.predictions.length > 0) {
+            setSuggestions([response.data.predictions[0]]); // Only store the first result
+            console.log(response.data.predictions[0]);
+          } else {
+            setSuggestions([]);
         }
       } catch (error) {
         console.error('Error fetching suggestions:', error);
@@ -106,19 +107,16 @@ const ElegantSearchBar = () => {
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
-            {/* Display suggestions if available */}
+            {/* Display suggestion  */}
             {suggestions.length > 0 && (
-              <ul className="absolute z-10 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mt-1 rounded-lg shadow-lg">
-                {suggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-                    onClick={() => handleSuggestionClick(suggestion.description)}
-                  >
-                    {suggestion.description}
-                  </li>
-                ))}
-              </ul>
+            <ul className="absolute z-10 w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mt-1 rounded-lg shadow-lg">
+                <li
+                className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                onClick={() => handleSuggestionClick(suggestions[0].description)}
+                >
+                {suggestions[0].description}
+                </li>
+            </ul>
             )}
           </div>
           <button
@@ -380,6 +378,10 @@ export default function Dashboard() {
         <div className="-mb-32">
           <h2 className="mt-20 -mb-20 text-center font-mono text-4xl font-bold text-gray-900 dark:text-white">How We Deliver</h2>
           <RetroDiagram />
+        </div>
+
+        <div className=''>
+
         </div>
       </main>
     </div>
