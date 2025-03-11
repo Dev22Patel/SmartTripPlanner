@@ -32,7 +32,6 @@ app.get('/api/list-models', async (req, res) => {
  * Enhanced itinerary generation API endpoint with image integration
  * This provides rich, visual travel plans with detailed descriptions
  */
-
 app.post("/api/generate-itinerary", async (req, res) => {
     try {
         const { destination, preferences } = req.body;
@@ -53,18 +52,22 @@ app.post("/api/generate-itinerary", async (req, res) => {
 
         // Optimized AI Prompt for Itinerary Generation
         const prompt = `
-        Create a highly optimized ${finalPreferences.days}-day travel itinerary for ${destination}, ensuring that each day includes activities **close to each other** to minimize travel time.
+        Create a optimized ${finalPreferences.days}-day travel itinerary for ${destination}, ensuring that each day includes activities with all the main ** tourist activities ** things covered.
 
         #### **PREFERENCES:**
         - Budget: ${finalPreferences.budget}
         - Interests: ${finalPreferences.interests}
         - Pace: ${finalPreferences.pace}
-        - Activities per day: ${finalPreferences.activitiesPerDay} (Varies based on feasibility)
+        - Activities per day: ${finalPreferences.activitiesPerDay} to ${finalPreferences.activitiesPerDay + 2} depends(Varies based on feasibility)
 
         #### **ITINERARY OPTIMIZATION:**
-        - Group activities by **proximity** to minimize travel time.
         - Arrange activities **logically based on best visiting hours** (e.g., morning attractions, lunch at a nearby restaurant, then an evening activity within the same zone).
         - Suggest **local transport options** (walk, taxi, metro, bus) for efficient travel.
+
+        #### **LOCATION VERIFICATION REQUIREMENT:**
+        - All locations must be real, existing places that can be verified on Google Maps
+        - Provide accurate, specific location names that will yield successful search results when entered into Google Maps
+        - For each activity, include the full official name of the location
 
         #### **FOR EACH DAY, INCLUDE:**
         - A short, descriptive day title (e.g., "Historical Marvels in Downtown")
@@ -74,37 +77,43 @@ app.post("/api/generate-itinerary", async (req, res) => {
         #### **FOR EACH ACTIVITY, INCLUDE:**
         - A catchy, descriptive title (15 words max)
         - A compelling description (50-70 words) highlighting what makes it special
-        - Exact location & nearby landmarks
+        - Exact location name that will match Google Maps search results
         - Estimated cost category ($, $$, $$$)
         - Best time to visit
         - Activity category (attraction, food, transport, accommodation, entertainment)
         - **Optimal travel mode & estimated travel time** from the previous activity
         - A detailed image description for visual representation
 
+        #### **IMPORTANT REQUIREMENTS:**
+        - Provide a COMPLETE itinerary for ALL ${finalPreferences.days} days
+        - Do not use placeholders, comments or "continue this pattern" notes
+        - Each day must have exactly ${finalPreferences.activitiesPerDay} fully detailed activities
+        - All locations must be verifiable through Google Maps
+        - Provide the entire response in valid JSON format without any interruptions or comments
+
         #### **JSON OUTPUT FORMAT:**
         {
-          "itinerary": [
+        "itinerary": [
             {
-              "day": 1,
-              "title": "string",
-              "description": "string",
-              "activities": [
+            "day": 1,
+            "title": "string",
+            "description": "string",
+            "activities": [
                 {
-                  "title": "string",
-                  "description": "string",
-                  "location": "string",
-                  "cost": "string",
-                  "time": "string",
-                  "category": "string",
-                  "travelMode": "string",
-                  "travelTimeFromPrevious": "string",
-                  "imageQuery": "detailed description for image generation"
+                "title": "string",
+                "description": "string",
+                "location": "string",
+                "cost": "string",
+                "time": "string",
+                "category": "string",
+                "travelMode": "string",
+                "travelTimeFromPrevious": "string",
+                "imageQuery": "detailed description for image generation"
                 }
-              ]
+            ]
             }
-          ]
+        ]
         }
-        Ensure that the **entire itinerary follows an optimized path**, reducing unnecessary travel and enhancing the user experience.
         `;
 
         // Call AI model to generate the itinerary
@@ -113,55 +122,80 @@ app.post("/api/generate-itinerary", async (req, res) => {
 
         try {
             // Extract and parse the JSON response
-            const responseText = result.response.text();
-            const jsonMatch = responseText.match(/```json\n([\s\S]*?)\n```/) ||
-                              responseText.match(/```\n([\s\S]*?)\n```/) ||
-                              [null, responseText];
+            const responseText = await result.response.text();
 
-            const jsonContent = jsonMatch[1] || responseText;
-            itineraryData = JSON.parse(jsonContent);
+            // Look for code blocks that might contain JSON
+            let jsonContent;
+            const jsonRegex = /```(?:json)?\s*({[\s\S]*?})\s*```/;
+            const jsonMatch = responseText.match(jsonRegex);
 
-            // Validate the parsed data structure
-            if (!itineraryData.itinerary || !Array.isArray(itineraryData.itinerary)) {
-                throw new Error("Invalid itinerary structure");
+            if (jsonMatch && jsonMatch[1]) {
+                // Found JSON inside code blocks
+                jsonContent = jsonMatch[1];
+            } else {
+                // Try to extract JSON directly
+                const jsonStart = responseText.indexOf("{");
+                const jsonEnd = responseText.lastIndexOf("}");
+
+                if (jsonStart === -1 || jsonEnd === -1) {
+                    throw new Error("AI response does not contain valid JSON");
+                }
+
+                jsonContent = responseText.substring(jsonStart, jsonEnd + 1);
+            }
+
+            // Remove any comments from the JSON content before parsing
+            jsonContent = jsonContent.replace(/\/\/.*$/gm, "");
+
+            try {
+                itineraryData = JSON.parse(jsonContent);
+            } catch (parseError) {
+                console.error("Error parsing AI response:", parseError, "Response received:", responseText);
+                return res.status(500).json({ error: "Failed to parse itinerary data" });
             }
         } catch (parseError) {
             console.error("Error parsing AI response:", parseError);
             return res.status(500).json({ error: "Failed to parse itinerary data" });
         }
 
-        // Process the itinerary to add images for each activity
+        // Process the itinerary to add images and place info for each activity
         const enhancedItinerary = await Promise.all(
             itineraryData.itinerary.map(async (day) => {
-                const activitiesWithImages = await Promise.all(
+                const activitiesWithPlaceInfo = await Promise.all(
                     day.activities.map(async (activity, index) => {
                         try {
-                            // Create a meaningful image query if none exists
-                            const imageQuery = activity.imageQuery ||
-                                `${activity.title} ${activity.category || ''} ${activity.location || ''}`.trim();
+                            // Create a meaningful search query
+                            const searchQuery = activity.location ||
+                                               activity.title ||
+                                               `${activity.category || ''} in ${destination}`.trim();
 
                             // Ensure we have a clean destination string
                             const cleanDestination = destination.trim();
 
-                            // Generate or fetch an appropriate image
-                            const imageUrl = await getImageForActivity(imageQuery, cleanDestination);
-
-                            // Verify the imageUrl is valid
-                            if (!imageUrl || typeof imageUrl !== 'string' || imageUrl.trim() === '') {
-                                throw new Error("Invalid image URL returned");
-                            }
+                            // Get place info and image from Google Places API
+                            const { imageUrl, placeInfo } = await getPlaceInfoForActivity(searchQuery, cleanDestination);
 
                             // If it's the first activity of the day, travel time is 0
                             const travelTime = index === 0 ? "Start of the day" : activity.travelTimeFromPrevious;
 
+                            // Enhance the activity with place data from Google
                             return {
                                 ...activity,
                                 travelTimeFromPrevious: travelTime,
-                                imageUrl
+                                imageUrl,
+                                // Add Google Places specific details if available
+                                ...(placeInfo && {
+                                    googlePlaceId: placeInfo.placeId,
+                                    coordinates: placeInfo.coordinates,
+                                    rating: placeInfo.rating,
+                                    userRatingsTotal: placeInfo.userRatingsTotal,
+                                    formattedAddress: placeInfo.address,
+                                    placeTypes: placeInfo.types
+                                })
                             };
-                        } catch (imageError) {
-                            console.warn(`Couldn't get image for ${activity.title}:`, imageError);
-                            // Provide a meaningful fallback image with proper encoding
+                        } catch (placeError) {
+                            console.warn(`Couldn't get place info for ${activity.title}:`, placeError);
+                            // Provide a meaningful fallback
                             const activityName = activity.title ? activity.title.substring(0, 30) : "Activity";
                             const fallbackImageUrl = `/api/placeholder/400/300?text=${encodeURIComponent(activityName)}`;
                             return {
@@ -177,7 +211,7 @@ app.post("/api/generate-itinerary", async (req, res) => {
                     ...day,
                     title: day.title || `Day ${day.day} in ${destination}`,
                     description: day.description || `Explore ${destination} on day ${day.day} of your journey.`,
-                    activities: activitiesWithImages
+                    activities: activitiesWithPlaceInfo
                 };
             })
         );
@@ -189,106 +223,122 @@ app.post("/api/generate-itinerary", async (req, res) => {
     }
 });
 
-/**
- * Helper function to get an appropriate image for each activity
- * This could be replaced with an actual API call to Unsplash, Pexels, etc.
- */
-/**
- * Improved helper function to get an appropriate image for each activity
- */
-async function getImageForActivity(imageQuery, destination) {
+
+async function getPlaceInfoForActivity(activityQuery, destination) {
     try {
-        const PIXABAY_API_KEY = "49234951-834e3e16ef313cb997093d479"; // Your API key
+        const GOOGLE_API_KEY = "AIzaSyBBBRyJOLB08fUPndqiNdC_nkhJrkKi58Y"; // Your Google API key
 
         // Clean and format the search query
         const cleanDestination = destination.trim();
-        const cleanImageQuery = (imageQuery || "").trim();
+        const cleanActivityQuery = (activityQuery || "").trim();
 
-        if (!cleanImageQuery && !cleanDestination) {
+        if (!cleanActivityQuery && !cleanDestination) {
             // If both are empty, return a placeholder
-            return `/api/placeholder/400/300?text=${encodeURIComponent("Travel Activity")}`;
+            return {
+                imageUrl: `/api/placeholder/400/300?text=${encodeURIComponent("Travel Activity")}`,
+                placeInfo: null
+            };
         }
 
-        // Create a more specific search query by extracting key terms
-        // This helps create better image search queries
-        const extractKeyTerms = (query) => {
-            if (!query) return "";
-            // Extract main subjects and remove common words
-            return query.split(/\s+/)
-                .filter(word =>
-                    word.length > 3 &&
-                    !['the', 'and', 'for', 'with', 'description', 'detailed', 'generation', 'image'].includes(word.toLowerCase())
-                )
-                .slice(0, 4) // Take only first 4 meaningful words
-                .join(' ');
-        };
-
-        // Create primary search query
-        const primaryKeywords = extractKeyTerms(cleanImageQuery);
-        const searchQuery = `${primaryKeywords} ${cleanDestination}`.trim();
-
-        console.log(`Searching Pixabay for: "${searchQuery}"`);
-
-        // Try with the combined query first
-        const response = await fetch(
-            `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=${encodeURIComponent(searchQuery)}&image_type=photo&per_page=3&safesearch=true`
-        );
-
-        if (!response.ok) {
-            throw new Error(`Pixabay API Error: ${response.statusText}`);
+        // Add a cache to prevent duplicate API queries
+        if (!global.placesCache) {
+            global.placesCache = new Map();
         }
 
-        const data = await response.json();
+        // Create several search query variations to try
+        const searchQueries = [
+            // Try specific activity with destination
+            `${cleanActivityQuery} ${cleanDestination}`.trim(),
+            // Try with just the activity query
+            cleanActivityQuery,
+            // Try destination with category extracted from query
+            `${cleanDestination} ${cleanActivityQuery.includes('temple') ? 'temple' :
+                                  cleanActivityQuery.includes('palace') ? 'palace' :
+                                  cleanActivityQuery.includes('market') ? 'market' :
+                                  cleanActivityQuery.includes('beach') ? 'beach' :
+                                  cleanActivityQuery.includes('restaurant') ? 'restaurant' :
+                                  cleanActivityQuery.includes('park') ? 'park' : 'attraction'}`.trim()
+        ].filter(q => q.length > 3); // Filter out any too-short queries
 
-        // If we have results, return the first image URL
-        if (data.hits && data.hits.length > 0) {
-            console.log(`Found ${data.hits.length} images for "${searchQuery}"`);
-            return data.hits[0].webformatURL;
+        // Generate a cache key based on all search variations
+        const cacheKey = searchQueries.join('|');
+
+        // Check if we've already searched for this
+        if (global.placesCache.has(cacheKey)) {
+            console.log(`Using cached place data for "${cacheKey}"`);
+            return global.placesCache.get(cacheKey);
         }
 
-        // If no results with combined query, try with destination only if not already tried
-        if (searchQuery !== cleanDestination && cleanDestination) {
-            console.log(`No results for "${searchQuery}", trying destination only: "${cleanDestination}"`);
+        // Try each search query until we find results
+        for (const query of searchQueries) {
+            console.log(`Searching Google Places for: "${query}"`);
 
-            const fallbackResponse = await fetch(
-                `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=${encodeURIComponent(cleanDestination)}&image_type=photo&per_page=3&safesearch=true`
+            const response = await fetch(
+                `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&key=${GOOGLE_API_KEY}`
             );
 
-            if (fallbackResponse.ok) {
-                const fallbackData = await fallbackResponse.json();
-                if (fallbackData.hits && fallbackData.hits.length > 0) {
-                    console.log(`Found ${fallbackData.hits.length} images for destination "${cleanDestination}"`);
-                    return fallbackData.hits[0].webformatURL;
+            if (!response.ok) continue;
+
+            const data = await response.json();
+
+            if (data.results && data.results.length > 0) {
+                console.log(`Found ${data.results.length} places for "${query}"`);
+
+                // Get the first (most relevant) result
+                const place = data.results[0];
+
+                // Extract useful information
+                const placeInfo = {
+                    name: place.name,
+                    address: place.formatted_address,
+                    rating: place.rating,
+                    userRatingsTotal: place.user_ratings_total,
+                    coordinates: `${place.geometry.location.lat},${place.geometry.location.lng}`,
+                    placeId: place.place_id,
+                    types: place.types
+                };
+
+                // Get a photo if available
+                let imageUrl = `/api/placeholder/400/300?text=${encodeURIComponent(place.name)}`;
+
+                if (place.photos && place.photos.length > 0) {
+                    const photoReference = place.photos[0].photo_reference;
+                    imageUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${GOOGLE_API_KEY}`;
                 }
-            }
-        }
 
-        // Try with just the activity keywords if destination search failed
-        if (primaryKeywords && searchQuery !== primaryKeywords) {
-            console.log(`No results for destination, trying activity keywords only: "${primaryKeywords}"`);
+                const result = {
+                    imageUrl,
+                    placeInfo
+                };
 
-            const keywordResponse = await fetch(
-                `https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=${encodeURIComponent(primaryKeywords)}&image_type=photo&per_page=3&safesearch=true`
-            );
+                // Cache the result
+                global.placesCache.set(cacheKey, result);
 
-            if (keywordResponse.ok) {
-                const keywordData = await keywordResponse.json();
-                if (keywordData.hits && keywordData.hits.length > 0) {
-                    console.log(`Found ${keywordData.hits.length} images for keywords "${primaryKeywords}"`);
-                    return keywordData.hits[0].webformatURL;
-                }
+                return result;
             }
         }
 
         // Ultimate fallback: use a descriptive placeholder
-        console.log(`No images found for "${searchQuery}". Using placeholder.`);
-        const placeholderText = cleanDestination || primaryKeywords || "Travel Activity";
-        return `/api/placeholder/400/300?text=${encodeURIComponent(placeholderText)}`;
+        console.log(`No places found for "${cleanActivityQuery}". Using placeholder.`);
+        const placeholderText = cleanActivityQuery || cleanDestination || "Travel Activity";
+        const result = {
+            imageUrl: `/api/placeholder/400/300?text=${encodeURIComponent(placeholderText)}`,
+            placeInfo: null
+        };
+
+        // Cache even the placeholder to be consistent
+        global.placesCache.set(cacheKey, result);
+
+        return result;
     } catch (error) {
-        console.error("Error fetching image from Pixabay:", error);
-        return `/api/placeholder/400/300?text=${encodeURIComponent("Travel Activity")}`;
+        console.error("Error fetching data from Google Places API:", error);
+        return {
+            imageUrl: `/api/placeholder/400/300?text=${encodeURIComponent("Travel Activity")}`,
+            placeInfo: null
+        };
     }
 }
+
 
   app.post('/api/routes', async (req, res) => {
     try {
