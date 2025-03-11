@@ -38,21 +38,30 @@ The core idea behind Smart Trip Planner is to simplify the travel planning proce
     ```
 3. **Install dependencies for the backend**:
     ```bash
-    cd backend
+    cd Backend-FastAPI
     pip install -r requirements.txt
     ```
-4. **Install dependencies for the frontend**:
-    ```bash
-    cd frontend
-    npm install
-    ```
-5. **Run the backend server**:
+4. **Run the backend server**:
     ```bash
     uvicorn main:app --reload
     ```
-6. **Run the frontend server**:
+5. **Open a new terminal window** and navigate to the project directory:
     ```bash
-    npm start
+    cd Server
+    npm install
+    ```
+6. **Run the backend server**:
+    ```bash
+    npm run dev
+    ```
+7. **Install dependencies for the frontend**:
+    ```bash
+    cd SmartTripPlanner
+    npm install
+    ```
+8. **Run the frontend server**:
+    ```bash
+    npm run dev
     ```
 
 ## 🤝 Contributing
