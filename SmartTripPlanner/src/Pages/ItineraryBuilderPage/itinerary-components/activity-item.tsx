@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { Clock, DollarSign, Edit2, MapPin, Trash2, Utensils, Landmark, Bus, Home, Briefcase, Image as ImageIcon } from 'lucide-react'
+import { Clock, DollarSign, Edit2, MapPin, Trash2, Utensils, Landmark, Bus, Home, Briefcase, ImageIcon } from 'lucide-react'
 import type { Activity } from "./itinerary-builder"
 
 interface ActivityItemProps {
@@ -34,17 +34,17 @@ const getCategoryIcon = (category: "food" | "attraction" | "transport" | "accomm
 const getCategoryColor = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | undefined) => {
   switch (category) {
     case "food":
-      return "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+      return "bg-blue-100/90 text-blue-800 border-blue-300 dark:bg-blue-900/80 dark:text-blue-300 dark:border-blue-700"
     case "attraction":
-      return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+      return "bg-green-100/90 text-green-800 border-green-300 dark:bg-green-900/80 dark:text-green-300 dark:border-green-700"
     case "transport":
-      return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
+      return "bg-yellow-100/90 text-yellow-800 border-yellow-300 dark:bg-yellow-900/80 dark:text-yellow-300 dark:border-yellow-700"
     case "accommodation":
-      return "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+      return "bg-red-100/90 text-red-800 border-red-300 dark:bg-red-900/80 dark:text-red-300 dark:border-red-700"
     case "other":
-      return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400"
+      return "bg-gray-100/90 text-gray-800 border-gray-300 dark:bg-gray-900/80 dark:text-gray-300 dark:border-gray-700"
     default:
-      return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400"
+      return "bg-gray-100/90 text-gray-800 border-gray-300 dark:bg-gray-900/80 dark:text-gray-300 dark:border-gray-700"
   }
 }
 
@@ -95,7 +95,7 @@ export default function ActivityItem({ activity, onEdit, onDelete }: ActivityIte
               </div>
             )}
             <img
-              src={getImageUrl()}
+              src={getImageUrl() || "/placeholder.svg"}
               alt={activity.title || "Activity image"}
               className={cn(
                 "object-cover w-full h-full",
@@ -105,10 +105,12 @@ export default function ActivityItem({ activity, onEdit, onDelete }: ActivityIte
               onError={handleImageError}
               onLoad={handleImageLoad}
             />
+            {/* Semi-transparent overlay to improve badge visibility */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent h-16 pointer-events-none"></div>
             <Badge
               variant="outline"
               className={cn(
-                "absolute top-2 left-2 text-xs font-medium",
+                "absolute top-2 left-2 text-xs font-medium backdrop-blur-sm shadow-sm",
                 getCategoryColor(activity.category)
               )}
             >
