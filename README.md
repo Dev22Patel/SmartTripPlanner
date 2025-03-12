@@ -2,12 +2,28 @@
 
 A MERN Stack + FastAPI based application that helps users select a destination and retrieve top-rated places based on Google reviews.
 
+
 ## 🚀 Features
 
 - **Destination-based place recommendations**: Users can select a destination and receive tailored recommendations for top-rated places to visit.
 - **Google reviews integration**: The application integrates with Google reviews to ensure that users receive reliable and up-to-date information about various places.
 - **FastAPI backend**: Utilizes FastAPI for efficient data handling and processing, ensuring quick and responsive interactions.
 - **MERN stack front-end**: Built with MongoDB, Express.js, React, and Node.js to deliver a dynamic and responsive user interface.
+- **Interactive map visualization**: The application integrates a map feature, allowing users to easily visualize their destinations. Additionally, it calculates the **distance and estimated travel time** for upcoming locations, providing a seamless travel planning experience.
+
+---
+
+## 🗺️ How the Map Feature Works
+
+The map functionality enables users to see their destinations on an interactive interface while also calculating route details such as distance and estimated travel time. Below is a **sequence diagram** that illustrates how the system processes user requests to display routes and calculate travel times dynamically.
+
+### 📌 Sequence Diagram: Map Activity
+
+![Map Activity Sequence Diagram](path/to/your/sequence-diagram.png)
+
+> *This diagram visually represents the interaction between the user, the frontend (React), backend services (FastAPI and Node.js), external APIs (Google Maps or OSRM), and the response flow.*
+
+---
 
 ## 🌟 Project Idea
 
