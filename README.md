@@ -19,7 +19,7 @@ The map functionality enables users to see their destinations on an interactive 
 
 ### 📌 Sequence Diagram: Map Activity
 
-![Map Activity Sequence Diagram](path/to/your/sequence-diagram.png)
+<img src="SmartTripPlanner\src\assets\image\map-seq.png" alt="Map Activity" width="900">
 
 > *This diagram visually represents the interaction between the user, the frontend (React), backend services (FastAPI and Node.js), external APIs (Google Maps or OSRM), and the response flow.*
 
