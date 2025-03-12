@@ -9,6 +9,7 @@ const app = express();
 const genAI = new GoogleGenerativeAI("AIzaSyCM_kkJJghMVko8xhVjuYs8sbd_njOLNWw");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const axios = require('axios');
+const userRoutes = require('./routes/userRoutes');
 
 
 // Middleware
@@ -18,6 +19,7 @@ app.use(cors());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/travel-preferences", travelPreferenceRoutes);
+app.use('/api/user', userRoutes); // Use the user routes
 app.get('/api/list-models', async (req, res) => {
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" }); // or the model name you get from the API
