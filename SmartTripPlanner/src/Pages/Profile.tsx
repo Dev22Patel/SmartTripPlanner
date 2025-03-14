@@ -49,6 +49,30 @@ export default function Profile() {
     fetchUser();
   }, []);
 
+  const handleDeleteAccount = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found, please login again.");
+
+      const response = await fetch("https://smarttripplanner.onrender.com/api/user", {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to delete account.");
+
+      // Handle successful account deletion (e.g., redirect to login page)
+      alert("Account deleted successfully.");
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    } catch (err) {
+      setError((err as Error).message); // Explicitly cast err as Error
+    }
+  }
+
   if (loading) return <p className="text-center text-lg">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
@@ -106,7 +130,7 @@ export default function Profile() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction className="bg-red-600">Delete</AlertDialogAction>
+                  <AlertDialogAction className="bg-red-600" onClick={handleDeleteAccount}>Delete</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
