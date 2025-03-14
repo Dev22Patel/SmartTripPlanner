@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import dev from "@/assets/image/dev-bg.png"
+import jeet from "@/assets/image/jeet.png"
 import stp from "@/assets/image/stp.jpg"
 import "../Pages/styles/animations.css"
 
@@ -185,6 +186,98 @@ export default function AboutPage() {
             )}
           </div>
         </motion.div>
+      </motion.div>
+    </motion.div>
+  </div>
+</motion.section>
+
+<motion.section
+      className="px-4 py-16 md:px-6 lg:py-24 bg-gray-100 dark:bg-black/90 overflow-hidden"
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={stagger}
+>
+  <div className="mx-auto max-w-6xl">
+    <motion.div className="grid gap-12 md:grid-cols-2 items-center mt-10" variants={fadeIn}>
+    <motion.div className="flex flex-col justify-center space-y-6" variants={fadeIn}>
+        <motion.span
+          className="inline-block px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-900/30 rounded-full w-fit"
+          variants={fadeIn}
+          >
+          The Team
+        </motion.span>
+        <div>
+          <motion.h2
+            className="text-3xl font-bold tracking-tighter sm:text-4xl text-zinc-800 dark:text-blue-50"
+            variants={fadeIn}
+            >
+            Meet the Creator
+          </motion.h2>
+          <motion.p className="mt-2 text-sm text-zinc-600 dark:text-blue-300" variants={fadeIn}>
+            Co-Founder & Assistant Developer
+          </motion.p>
+        </div>
+        <motion.p className="text-zinc-700 dark:text-gray-300 leading-relaxed" variants={fadeIn}>
+          When Problems, Mind and Opportunity aligns, It's Engineer's job to comeup with a solution, and so did we, Smart Trip Planner felt like a need to me as many rookies don't know how they can easily cover their loved places with a finger tap. Well! Here we are, with Comprehensive Travel Guides, Local Insights and Tips, and Real-time adaptability.
+        </motion.p>
+        <motion.div className="space-y-4" variants={fadeIn}>
+          <h3 className="text-xl font-semibold text-zinc-800 dark:text-blue-50">Expertise</h3>
+          <div className="flex flex-wrap gap-2">
+            {["Cloud", "Full Stack Development", "UI Designer"].map(
+                (skill, i) => (
+                    <motion.span
+                    key={skill}
+                    className="rounded-full bg-blue-100/80 dark:bg-blue-900/40 px-3 py-1 text-sm font-medium text-blue-700 dark:text-blue-300"
+                    variants={{
+                        initial: { opacity: 0, scale: 0.8 },
+                        animate: { opacity: 1, scale: 1, transition: { delay: i * 0.1 } },
+                    }}
+                    >
+                  {skill}
+                </motion.span>
+              ),
+            )}
+          </div>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        className="relative group"
+        variants={{
+            initial: { opacity: 0, scale: 0.9 },
+            animate: { opacity: 1, scale: 1 },
+        }}
+        >
+        {/* Lightning effect wrapper - Different for light/dark mode */}
+        <div className="absolute inset-0">
+        {/* Primary lightning flash - Only in dark mode */}
+        <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-transparent dark:via-blue-400/70 dark:to-transparent dark:blur-xl dark:opacity-0 dark:group-hover:opacity-60 transition-opacity duration-300 animate-lightning"></div>
+
+        {/* Secondary lightning flashes - Only in dark mode */}
+        <div className="absolute inset-0 dark:bg-gradient-to-tr dark:from-transparent dark:via-cyan-300/50 dark:to-transparent dark:blur-xl dark:opacity-0 dark:group-hover:opacity-40 transition-opacity duration-200 animate-lightning-fast"></div>
+
+        <div className="absolute inset-0 dark:bg-gradient-to-bl dark:from-transparent dark:via-indigo-400/60 dark:to-transparent dark:blur-xl dark:opacity-0 dark:group-hover:opacity-50 transition-opacity duration-500 animate-lightning-slow"></div>
+        </div>
+
+        {/* Remove the previous dark blue glow */}
+        <div className="absolute -inset-1 dark:bg-none rounded-2xl dark:blur dark:opacity-0"></div>
+
+
+        {/* Subtle electric current effect */}
+        <div className="absolute inset-0 overflow-hidden rounded-xl">
+          <div className="absolute inset-0 opacity-10 group-hover:opacity-30 dark:opacity-20 dark:group-hover:opacity-40 transition-opacity">
+            <div className="absolute h-20 w-1 bg-blue-300/60 dark:bg-blue-400/80 blur-sm -left-10 top-1/4 rotate-45 animate-lightning-travel"></div>
+            <div className="absolute h-20 w-1 bg-cyan-200/60 dark:bg-cyan-300/80 blur-sm -right-10 top-3/4 -rotate-45 animate-lightning-travel-reverse"></div>
+          </div>
+        </div>
+
+        <a href="https://github.com/JeetBhuptani">
+        <img
+          src={jeet || "/placeholder.svg"}
+          alt="Profile Picture"
+          className="relative w-full h-auto max-w-md mx-auto rounded-xl z-10"
+          />
+        </a>
       </motion.div>
     </motion.div>
   </div>
