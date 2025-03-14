@@ -1,9 +1,14 @@
-
 import { useEffect, useState } from "react"
 import { AppDispatch } from "@/store/index"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/index"
-import { fetchItinerary, updatePreferences, setDestination } from "@/store/itinerarySlice"
+import {
+  fetchItinerary,
+  updatePreferences,
+  setDestination,
+  saveItineraryToDb,
+  getSavedItinerary
+} from "@/store/itinerarySlice"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Plus, Save, Calendar, Loader2 } from 'lucide-react'
@@ -24,25 +29,25 @@ export interface Activity {
 }
 
 export interface Day {
-    id: string
-    dayNumber: number
-    date: string
-    description?: string
-    activities: Activity[]
+  id: string
+  dayNumber: number
+  date: string
+  description?: string
+  activities: Activity[]
 }
-
 
 export default function ItineraryBuilder({ isLoading = false, destination = "Unknown Destination" }) {
   const { toast } = useToast()
   const dispatch: AppDispatch = useDispatch()
 
   // Get itinerary state from Redux
-  const { itinerary, loading, error, preferences } = useSelector((state: RootState) => state.itinerary)
+  const { itinerary, loading, error, preferences, saveLoading, saveError } = useSelector((state: RootState) => state.itinerary)
   const [days, setDays] = useState<Day[]>([])
   const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [activeTab, setActiveTab] = useState("0")
 
   useEffect(() => {
+    // Then set destination and fetch itinerary if needed
     dispatch(setDestination(destination))
     dispatch(fetchItinerary({ destination, preferences }))
   }, [dispatch, destination, preferences])
@@ -109,6 +114,7 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
     // Set the active tab to the new day
     setActiveTab(String(days.length))
   }
+
   const removeDay = (dayId: string) => {
     if (days.length === 1) {
       toast({
@@ -136,12 +142,42 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
     setDays(days.map((day) => (day.id === updatedDay.id ? updatedDay : day)))
   }
 
-  const saveItinerary = () => {
+  const saveItinerary = async (e:any) => {
+    // Update local preferences
+    e.preventDefault()
     dispatch(updatePreferences({ days: days.length }))
-    toast({
-      title: "Itinerary saved",
-      description: `Your ${destination} itinerary has been saved successfully.`,
-    })
+
+    try {
+      // Save to database
+      await dispatch(saveItineraryToDb({
+        destination,
+        days: days.map(day => ({
+          dayNumber: day.dayNumber,
+          date: day.date,
+          description: day.description || "",
+          activities: day.activities.map(activity => ({
+            title: activity.title,
+            time: activity.time || "",
+            description: activity.description || "",
+            location: activity.location || "",
+            cost: activity.cost || "",
+            category: activity.category || "other",
+            imageUrl: activity.imageUrl || ""
+          }))
+        }))
+      })).unwrap();
+
+      toast({
+        title: "Itinerary saved",
+        description: `Your ${destination} itinerary has been saved successfully.`,
+      })
+    } catch (error) {
+      toast({
+        title: "Save failed",
+        description: "There was a problem saving your itinerary. Please try again.",
+        variant: "destructive",
+      })
+    }
   }
 
   if (isInitialLoad || loading || isLoading) {
@@ -189,9 +225,23 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
             </CardTitle>
             <CardDescription>Build your day-by-day plan for an unforgettable trip</CardDescription>
           </div>
-          <Button onClick={saveItinerary} size="sm" className="flex items-center gap-1">
-            <Save className="h-4 w-4" />
-            Save
+          <Button
+            onClick={saveItinerary}
+            size="sm"
+            className="flex items-center gap-1"
+            disabled={saveLoading}
+          >
+            {saveLoading ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Saving...
+              </>
+            ) : (
+              <>
+                <Save className="h-4 w-4" />
+                Save
+              </>
+            )}
           </Button>
         </div>
       </CardHeader>

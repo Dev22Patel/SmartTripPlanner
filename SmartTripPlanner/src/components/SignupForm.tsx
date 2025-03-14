@@ -39,7 +39,7 @@ export default function SignupForm() {
 
         try {
             console.log(`${API_BASE_URL}`)
-            const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+            const response = await fetch(`http://localhost:5000/api/auth/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

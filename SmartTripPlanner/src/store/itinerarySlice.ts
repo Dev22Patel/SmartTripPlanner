@@ -11,6 +11,8 @@ interface Activity {
   description?: string;
   imageUrl?: string;
   time?: string;
+  saveLoading: boolean;
+  saveError: string | null;
 }
 
 interface ItineraryDay {
@@ -33,11 +35,13 @@ interface ItineraryPreferences {
 }
 
 interface ItineraryState {
-  destination: string;
-  preferences: ItineraryPreferences;
-  itinerary: ItineraryDay[];
-  loading: boolean;
-  error: string | null;
+    destination: string;
+    preferences: ItineraryPreferences;
+    itinerary: ItineraryDay[];
+    loading: boolean;
+    error: string | null;
+    saveLoading: boolean;   // Add this property
+    saveError: string | null;  // Add this property
 }
 
 // Initial state
@@ -55,6 +59,8 @@ const initialState: ItineraryState = {
   itinerary: [],
   loading: false,
   error: null,
+  saveLoading: false,
+  saveError: null,
 };
 
 // Async thunk for fetching itinerary
@@ -76,6 +82,41 @@ export const fetchItinerary = createAsyncThunk(
     }
   }
 );
+
+
+export const saveItineraryToDb = createAsyncThunk(
+    'itinerary/saveItineraryToDb',
+    async ({ destination, days }: { destination: string; days: any[] }, { rejectWithValue }) => {
+      try {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+          return rejectWithValue('No authentication token found');
+        }
+
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Changed to match what your middleware expects
+          }
+        };
+
+        const response = await axios.post(
+          `http://localhost:5000/api/save-itinerary`,
+          {
+            destination,
+            days
+          }, // No need to send userId as we'll get it from the token
+          config
+        );
+
+        return response.data;
+      } catch (error: any) {
+        return rejectWithValue(error.response?.data?.message || error.message || 'Failed to save itinerary');
+      }
+    }
+);
+
 
 // Create the slice
 const itinerarySlice = createSlice({
@@ -121,23 +162,37 @@ const itinerarySlice = createSlice({
       }
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchItinerary.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchItinerary.fulfilled, (state, action) => {
-        state.loading = false;
-        state.itinerary = action.payload;
-        state.error = null;
-      })
-      .addCase(fetchItinerary.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.itinerary = [];
-      });
-  },
+ extraReducers: (builder) => {
+  builder
+    // Existing fetchItinerary cases
+    .addCase(fetchItinerary.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    })
+    .addCase(fetchItinerary.fulfilled, (state, action) => {
+      state.loading = false;
+      state.itinerary = action.payload;
+      state.error = null;
+    })
+    .addCase(fetchItinerary.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload as string;
+      state.itinerary = [];
+    })
+    // Add saveItineraryToDb cases
+    .addCase(saveItineraryToDb.pending, (state) => {
+      state.saveLoading = true;
+      state.saveError = null;
+    })
+    .addCase(saveItineraryToDb.fulfilled, (state) => {
+      state.saveLoading = false;
+      state.saveError = null;
+    })
+    .addCase(saveItineraryToDb.rejected, (state, action) => {
+      state.saveLoading = false;
+      state.saveError = action.payload as string;
+    });
+},
 });
 
 // Export actions

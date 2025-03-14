@@ -10,7 +10,9 @@ const genAI = new GoogleGenerativeAI("AIzaSyCM_kkJJghMVko8xhVjuYs8sbd_njOLNWw");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const axios = require('axios');
 const userRoutes = require('./routes/userRoutes');
-
+const Itinerary = require('./models/itinerary');
+const { auth } = require("google-auth-library");
+const protect = require("./middlewares/authMiddleware");
 
 // Middleware
 app.use(express.json());
@@ -551,6 +553,61 @@ app.get('/api/geocode', async (req, res) => {
     }
   });
 
+app.get('/get-itinerary', async (req, res) => {
+    try {
+      const itinerary = await Itinerary.findOne({ userId: req.user.id });
+
+      if (!itinerary) {
+        return res.status(404).json({ msg: 'No itinerary found for this user' });
+      }
+
+      res.json(itinerary);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
+
+  // Then update your route:
+  app.post('/api/save-itinerary', protect, async (req, res) => {
+      const { destination, days } = req.body;
+      console.log('Save itinerary request:', req.body);
+
+      try {
+          // Get user ID from the authenticated user
+          const userIdentifier = req.user.id;
+
+          if (!userIdentifier) {
+              return res.status(401).json({ message: 'User ID not found. Authentication required.' });
+          }
+
+          let itinerary = await Itinerary.findOne({ userId: userIdentifier });
+
+          if (itinerary) {
+              // Update existing itinerary
+              itinerary.destination = destination;
+              itinerary.days = days;
+              itinerary.updatedAt = Date.now();
+
+              await itinerary.save();
+              return res.json(itinerary);
+          }
+
+          // Create new itinerary
+          itinerary = new Itinerary({
+              userId: userIdentifier,
+              destination,
+              days
+          });
+
+          await itinerary.save();
+          res.json(itinerary);
+      } catch (err) {
+          console.error(err.message);
+          res.status(500).send('Server Error');
+      }
+  });
 
 // Start Server
 const PORT = process.env.PORT || 5000;
