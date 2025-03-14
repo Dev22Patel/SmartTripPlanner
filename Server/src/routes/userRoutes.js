@@ -17,4 +17,17 @@ router.get("/", protect, async (req, res) => {
     }
 });
 
+router.delete("/", protect, async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.user.email }).select("-password");
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        await User.deleteOne({ email: req.user.email });
+        res.json({ message: "User account deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+})
+
 module.exports = router;
