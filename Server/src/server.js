@@ -553,7 +553,7 @@ app.get('/api/geocode', async (req, res) => {
     }
   });
 
-app.get('/get-itinerary', async (req, res) => {
+app.get('/get-itinerary',protect, async (req, res) => {
     try {
       const itinerary = await Itinerary.findOne({ userId: req.user.id });
 
@@ -568,9 +568,7 @@ app.get('/get-itinerary', async (req, res) => {
     }
   });
 
-
-  // Then update your route:
-  app.post('/api/save-itinerary', protect, async (req, res) => {
+ app.post('/api/save-itinerary', protect, async (req, res) => {
       const { destination, days } = req.body;
       console.log('Save itinerary request:', req.body);
 

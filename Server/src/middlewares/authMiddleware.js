@@ -13,9 +13,11 @@ const protect = async (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    // Verify JWT token
-    console.log("JWT_SECRET:", process.env.JWT_SECRET);
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    // Make sure the JWT_SECRET exactly matches what was used to sign the token
+    const JWT_SECRET = process.env.JWT_SECRET || "DevKing"; // fallback to the secret if env var not set
+    console.log("Using JWT_SECRET for verification");
+
+    const verified = jwt.verify(token, JWT_SECRET);
     req.user = verified;
     console.log("Verified user:", verified);
     return next();

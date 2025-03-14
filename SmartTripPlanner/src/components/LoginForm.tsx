@@ -14,8 +14,9 @@ export default function LoginForm() {
         password: "",
     });
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-    console.log(API_BASE_URL);
+
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
@@ -30,8 +31,10 @@ export default function LoginForm() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError(""); // Clear previous errors
+        setLoading(true);
 
         try {
+            console.log("Submitting login form to:", `${API_BASE_URL}/api/auth/login`);
             const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
                 method: "POST",
                 headers: {
@@ -41,30 +44,39 @@ export default function LoginForm() {
             });
 
             const data = await response.json();
+            console.log("Login response:", data);
 
             if (!response.ok) {
                 setError(data.message || "Login failed. Please try again.");
+                setLoading(false);
                 return;
             }
-
+            
             // Save token and authenticate user
             await login(data.token);
+            // Navigation happens in useEffect
         } catch (err) {
+            console.error("Login error:", err);
             setError("Something went wrong. Please try again.");
+            setLoading(false);
         }
     };
 
     const handleGoogleLoginSuccess = async (credentialResponse: any) => {
         try {
-          const token = credentialResponse.credential;
-          if (token) {
-            await login(token);
-            // The navigation will happen automatically due to the useEffect above
-          }
+            setLoading(true);
+            const token = credentialResponse.credential;
+            console.log("Google login success, processing token");
+            if (token) {
+                await login(token);
+                // The navigation will happen automatically due to the useEffect above
+            }
         } catch (error) {
-          console.error("Error processing Google login:", error);
+            console.error("Error processing Google login:", error);
+            setError("Failed to process Google login");
+            setLoading(false);
         }
-      };
+    };
 
     return (
         <div className="px-8 pt-6">
@@ -113,8 +125,9 @@ export default function LoginForm() {
                 <button
                     className="relative w-full h-10 dark:bg-gray-800 text-black dark:text-white rounded-lg font-medium shadow-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 group/btn"
                     type="submit"
+                    disabled={loading}
                 >
-                    Enter
+                    {loading ? "Loading..." : "Enter"}
                     <BottomGradient />
                 </button>
 

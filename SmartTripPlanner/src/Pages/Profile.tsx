@@ -1,4 +1,3 @@
-"use client";
 
 import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -28,7 +27,7 @@ export default function Profile() {
         console.log(token);
         if (!token) throw new Error("No token found, please login again.");
 
-        const response = await fetch("http://localhost:5000/api/user", {
+        const response = await fetch("https://smarttripplanner.onrender.com/api/user", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,

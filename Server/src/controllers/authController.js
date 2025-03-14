@@ -5,18 +5,18 @@ require("dotenv").config();
 
 // Generate JWT Token
 const generateToken = (user) => {
-    return jwt.sign(
-      {
-        id: user._id,
-        email: user.email,
-        name: `${user.firstname} ${user.lastname}` // Add name field
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "7d",
-      }
-    );
-  };
+  return jwt.sign(
+    {
+      id: user._id,
+      email: user.email,
+      name: `${user.firstname} ${user.lastname}`,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "7d",
+    }
+  );
+};
 
 // Signup Controller
 exports.signup = async (req, res) => {
@@ -30,29 +30,54 @@ exports.signup = async (req, res) => {
     await newUser.save();
 
     const token = generateToken(newUser);
-    res.status(201).json({ message: "User registered successfully", token });
+    res.status(201).json({
+      message: "User registered successfully",
+      token,
+      user: {
+        email: newUser.email,
+        name: `${newUser.firstname} ${newUser.lastname}`
+      }
+    });
   } catch (error) {
+    console.error("Signup error:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
 // Login Controller
+// Login Controller
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "User not found" });
+    const { email, password } = req.body;
+    try {
+      // Find the user and select all necessary fields explicitly
+      const user = await User.findOne({ email }).select('+firstname +lastname +email +password');
+      if (!user) return res.status(404).json({ message: "User not found" });
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) return res.status(401).json({ message: "Invalid credentials" });
+      const isValidPassword = await bcrypt.compare(password, user.password);
+      if (!isValidPassword) return res.status(401).json({ message: "Invalid credentials" });
 
-    const token = generateToken(user);
-    res.status(200).json({ message: "Login successful", token });
-  } catch (error) {
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-};
+      // Make sure all needed user data is available for token generation
+      console.log("Login user data:", {
+        _id: user._id,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname
+      });
 
-// exports.test = (req,res) => {
-//     res.send("hello world");
-// }
+      const token = generateToken(user);
+      console.log("Generated token during login");
+
+      res.status(200).json({
+        message: "Login successful",
+        token,
+        user: {
+          id: user._id,
+          email: user.email,
+          name: `${user.firstname} ${user.lastname}`
+        }
+      });
+    } catch (error) {
+      console.error("Login error:", error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
