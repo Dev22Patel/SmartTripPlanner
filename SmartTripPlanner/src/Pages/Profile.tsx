@@ -54,7 +54,7 @@ export default function Profile() {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found, please login again.");
 
-      const response = await fetch("http://localhost:5000/api/user", {
+      const response = await fetch("https://smarttripplanner.onrender.com/api/user", {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -67,7 +67,7 @@ export default function Profile() {
       // Handle successful account deletion (e.g., redirect to login page)
       alert("Account deleted successfully.");
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      window.location.href = "/authentication";
     } catch (err) {
       setError((err as Error).message); // Explicitly cast err as Error
     }

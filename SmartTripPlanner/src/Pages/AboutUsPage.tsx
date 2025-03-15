@@ -199,7 +199,7 @@ export default function AboutPage() {
       variants={stagger}
 >
   <div className="mx-auto max-w-6xl">
-    <motion.div className="grid gap-12 md:grid-cols-2 items-center mt-10" variants={fadeIn}>
+    <motion.div className="grid gap-12 md:grid-cols-2 items-center -mt-2" variants={fadeIn}>
     <motion.div className="flex flex-col justify-center space-y-6" variants={fadeIn}>
         <motion.span
           className="inline-block px-3 py-1 text-sm font-medium text-blue-600 dark:text-blue-300 bg-blue-100/80 dark:bg-blue-900/30 rounded-full w-fit"
