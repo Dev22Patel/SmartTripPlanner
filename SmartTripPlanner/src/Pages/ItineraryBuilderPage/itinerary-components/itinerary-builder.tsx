@@ -16,6 +16,7 @@ import ItineraryDay from "./itinerary-day"
 import { v4 as uuidv4 } from "uuid"
 import { useToast } from "@/components/ui/toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Navigate, useNavigate } from "react-router-dom"
 
 export interface Activity {
   id: string
@@ -39,7 +40,7 @@ export interface Day {
 export default function ItineraryBuilder({ isLoading = false, destination = "Unknown Destination" }) {
   const { toast } = useToast()
   const dispatch: AppDispatch = useDispatch()
-
+    const navigate = useNavigate()
   // Get itinerary state from Redux
   const { itinerary, loading, error, preferences, saveLoading, saveError } = useSelector((state: RootState) => state.itinerary)
   const [days, setDays] = useState<Day[]>([])
@@ -144,9 +145,11 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
 
   const saveItinerary = async (e:any) => {
     // Update local preferences
-    e.preventDefault()
+    if (e && e.preventDefault) {
+        e.preventDefault();
+    }
     dispatch(updatePreferences({ days: days.length }))
-
+    navigate('/profile')
     try {
       // Save to database
       await dispatch(saveItineraryToDb({
@@ -171,6 +174,7 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
         title: "Itinerary saved",
         description: `Your ${destination} itinerary has been saved successfully.`,
       })
+
     } catch (error) {
       toast({
         title: "Save failed",
@@ -178,6 +182,8 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
         variant: "destructive",
       })
     }
+
+
   }
 
   if (isInitialLoad || loading || isLoading) {
@@ -226,7 +232,10 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
             <CardDescription>Build your day-by-day plan for an unforgettable trip</CardDescription>
           </div>
           <Button
-            onClick={saveItinerary}
+            onClick={(e) => {
+                e.preventDefault();
+                saveItinerary(e);
+              }}
             size="sm"
             className="flex items-center gap-1"
             disabled={saveLoading}

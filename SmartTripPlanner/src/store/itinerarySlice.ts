@@ -102,7 +102,7 @@ export const saveItineraryToDb = createAsyncThunk(
         };
 
         const response = await axios.post(
-          `http://localhost:5000/api/save-itinerary`,
+          `https://smarttripplanner.onrender.com/api/save-itinerary`,
           {
             destination,
             days
