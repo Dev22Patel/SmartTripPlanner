@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -55,13 +56,13 @@ interface Itinerary {
   createdAt: string;
   updatedAt: string;
 }
-
 export default function Profile() {
   const [user, setUser] = useState<User | null>(null);
   const [itineraries, setItineraries] = useState<Itinerary[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -296,6 +297,7 @@ export default function Profile() {
               <Card
                 key={trip._id}
                 className="h-60 bg-transparent border-black dark:border-white/20 rounded-md"
+                onClick={() => navigate(`/trip/${trip._id}`, {state: {trip}})}
               >
                 <CardHeader>
                   <CardTitle>{trip.destination}</CardTitle>
