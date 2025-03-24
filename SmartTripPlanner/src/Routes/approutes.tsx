@@ -9,6 +9,7 @@ import ItineraryBuilderPage from '@/Pages/ItineraryBuilderPage/itinerary-builder
 import UserPreferencePage from '@/Pages/AI_itineraryPage/userPreference';
 import ItineraryPage from '@/Pages/testpage';
 import Profile from '@/Pages/Profile';
+import TripDetails from '@/Pages/TripDetails';
 
 
 export const AppRoutes = () => {
@@ -39,6 +40,7 @@ export const AppRoutes = () => {
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/test" element={<ItineraryPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/trip/:id" element={<TripDetails />} />
       </Routes>
     );
   };
