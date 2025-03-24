@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String },
   googleId: { type: String }, // For Google OAuth
+  image: {type: String, default:""},
 });
 
 module.exports = mongoose.model("User", UserSchema);
