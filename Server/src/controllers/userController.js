@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const Itinerary = require("../models/itinerary");
+
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -13,7 +15,14 @@ const getUser = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        res.json(user);
+
+        // Fetch itineraries linked to the user
+        const itineraries = await Itinerary.find({ userId: user._id });
+
+        res.json({ 
+            user, 
+            itineraries 
+        });
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message });
     }

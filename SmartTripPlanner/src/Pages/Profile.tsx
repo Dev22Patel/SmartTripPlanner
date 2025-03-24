@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -24,33 +32,70 @@ interface User {
   image?: string; // Optional field
 }
 
+interface Activity {
+  title: string;
+  time?: string;
+  description?: string;
+  location?: string;
+  cost?: string;
+  category?: string;
+  imageUrl?: string;
+}
+
+interface Day {
+  dayNumber: number;
+  date: string;
+  description?: string;
+  activities: Activity[];
+}
+
+interface Itinerary {
+  _id: string;
+  destination: string;
+  days: Day[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export default function Profile() {
   const [user, setUser] = useState<User | null>(null);
+  const [itineraries, setItineraries] = useState<Itinerary[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("No token found, please login again.");
 
-        const response = await fetch(
-          "https://smarttripplanner.onrender.com/api/user",
-          {
+        const [userResponse, itineraryResponse] = await Promise.all([
+          fetch("https://smarttripplanner.onrender.com/api/user", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
-          }
-        );
+          }),
+          fetch("https://smarttripplanner.onrender.com/api/itinerary", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }),
+        ]);
 
-        if (!response.ok) throw new Error("Failed to fetch user data.");
+        if (!userResponse.ok) throw new Error("Failed to fetch user data.");
+        if (!itineraryResponse.ok)
+          throw new Error("Failed to fetch itineraries.");
 
-        const data: User = await response.json();
-        setUser(data);
+        const userData: User = await userResponse.json();
+        const itineraryData: Itinerary[] = await itineraryResponse.json();
+
+        setUser(userData);
+        setItineraries(itineraryData);
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -58,7 +103,7 @@ export default function Profile() {
       }
     };
 
-    fetchUser();
+    fetchData();
   }, []);
 
   const handleDeleteAccount = async () => {
@@ -252,6 +297,40 @@ export default function Profile() {
               </AlertDialogContent>
             </AlertDialog>
           </div>
+        </div>
+      </div>
+      <div className="space-y-4 pt-6">
+        <h2 className="text-2xl font-bold mt-6">SAVED TRIPS</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {itineraries.length > 0 ? (
+            itineraries.map((trip) => (
+              <Card
+                key={trip._id}
+                className="h-60 bg-transparent border-black dark:border-white/20 rounded-md"
+              >
+                <CardHeader>
+                  <CardTitle>{trip.destination}</CardTitle>
+                  <CardDescription>{trip.days.length} Days</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {trip.days[0]?.activities[0]?.imageUrl ? (
+                    <img
+                      src={trip.days[0].activities[0].imageUrl}
+                      alt="Trip"
+                      className="h-32 w-full object-cover rounded-md"
+                    />
+                  ) : (
+                    <p>No Image Available</p>
+                  )}
+                </CardContent>
+                <CardFooter>
+                  <p>Created on: {new Date(trip.createdAt).toDateString()}</p>
+                </CardFooter>
+              </Card>
+            ))
+          ) : (
+            <p>No saved trips yet.</p>
+          )}
         </div>
       </div>
     </div>
