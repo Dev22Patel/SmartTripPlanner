@@ -1,33 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
-const protect = require('../middlewares/authMiddleware'); 
+const { getUser, deleteUser, uploadProfilePicture } = require("../controllers/userController");
+const protect = require("../middlewares/authMiddleware");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const dotenv = require("dotenv");
+dotenv.config();
 
-router.get("/", protect, async (req, res) => {
-    try {
-        console.log("Decoded User:", req.user); // Debugging
-        
-        const user = await User.findOne({ email: req.user.email }).select("-password"); // Find by email
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.json(user);
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message });
-    }
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-router.delete("/", protect, async (req, res) => {
-    try {
-        const user = await User.findOne({ email: req.user.email }).select("-password");
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        await User.deleteOne({ email: req.user.email });
-        res.json({ message: "User account deleted successfully" });
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message });
-    }
-})
+// Configure Multer Storage for Cloudinary
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: "profile_pictures", // Folder name in Cloudinary
+        allowed_formats: ["jpg", "jpeg", "png"], // Allowed file formats
+    },
+});
+const upload = multer({ storage });
+
+// Routes
+router.get("/", protect, getUser); // Fetch user details
+router.delete("/", protect, deleteUser); // Delete user account
+router.post("/upload", protect, upload.single("profilePicture"), uploadProfilePicture); // Upload profile picture
 
 module.exports = router;
