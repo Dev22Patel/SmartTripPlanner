@@ -24,12 +24,11 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Pencil } from "lucide-react";
 
-// Define a type for the user object
 interface User {
   firstname: string;
   lastname: string;
   email: string;
-  image?: string; // Optional field
+  image?: string;
 }
 
 interface Activity {
@@ -65,37 +64,29 @@ export default function Profile() {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("No token found, please login again.");
 
-        const [userResponse, itineraryResponse] = await Promise.all([
-          fetch("https://smarttripplanner.onrender.com/api/user", {
+        const response = await fetch(
+          "https://smarttripplanner.onrender.com/api/user",
+          {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
-          }),
-          fetch("https://smarttripplanner.onrender.com/api/itinerary", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }),
-        ]);
+          }
+        );
 
-        if (!userResponse.ok) throw new Error("Failed to fetch user data.");
-        if (!itineraryResponse.ok)
-          throw new Error("Failed to fetch itineraries.");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.statusText}`);
+        }
 
-        const userData: User = await userResponse.json();
-        const itineraryData: Itinerary[] = await itineraryResponse.json();
-
-        setUser(userData);
-        setItineraries(itineraryData);
+        const data = await response.json();
+        setUser(data.user);
+        setItineraries(data.itineraries);
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -103,7 +94,7 @@ export default function Profile() {
       }
     };
 
-    fetchData();
+    fetchUserData();
   }, []);
 
   const handleDeleteAccount = async () => {
@@ -132,56 +123,58 @@ export default function Profile() {
     }
   };
 
-  const changeProfilePicture = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const changeProfilePicture = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       const file = event.target.files?.[0];
       if (!file) return;
-
+  
       // Validate file type
       if (!file.type.startsWith("image/")) {
         setError("Invalid file type. Please upload an image.");
         return;
       }
-
-      // Validate file size (limit to 2MB)
+  
+      // Validate file size (2MB max)
       if (file.size > 2 * 1024 * 1024) {
         setError("File is too large. Please upload an image smaller than 2MB.");
         return;
       }
-
+  
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found, please login again.");
-
+  
+      // Ensure FormData is correctly structured
       const formData = new FormData();
-      formData.append("profilePicture", file);
-
-      // Show preview before uploading
-      setPreviewImage(URL.createObjectURL(file));
-
-      const response = await fetch(
-        "https://smarttripplanner.onrender.com/api/user/upload",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
-
-      if (!response.ok) throw new Error("Failed to upload profile picture.");
-
+      formData.append("profilePicture", file); // Make sure the key matches the backend
+  
+      console.log("Sending FormData:", formData.get("profilePicture"));
+  
+      const response = await fetch("https://smarttripplanner.onrender.com/api/user/upload", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, // DO NOT add Content-Type manually, let FormData set it
+        },
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        const errorResponse = await response.json().catch(() => null);
+        console.error("API Error Response:", errorResponse);
+        throw new Error(errorResponse?.message || "Failed to upload profile picture.");
+      }
+  
       const data = await response.json();
+      console.log("Upload Success:", data);
+  
       setUser((prevUser) =>
-        prevUser ? { ...prevUser, image: data.image } : null
+        prevUser ? { ...prevUser, image: data.picture } : null
       );
       setPreviewImage(null);
     } catch (err) {
       setError((err as Error).message);
     }
   };
+  
 
   if (loading) return <p className="text-center text-lg">Loading...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
@@ -189,11 +182,10 @@ export default function Profile() {
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-8 text-black dark:text-white m-10">
       <div className="grid md:grid-cols-[300px_1fr] gap-8">
-        {/* Profile Picture Section */}
         <div className="relative flex flex-col items-center">
           <Avatar className="h-[250px] w-[250px] border-2 border-black dark:border-white/20">
             <AvatarImage
-              src={previewImage || user?.image || "/default-profile.jpg"}
+              src={previewImage || user?.image || "https://via.placeholder.com/150"}
               alt="Profile picture"
             />
             <AvatarFallback>
@@ -202,9 +194,8 @@ export default function Profile() {
             </AvatarFallback>
           </Avatar>
 
-          {/* Edit Profile Picture Button */}
           <div className="absolute bottom-1 right-12 md:right-8">
-            <label className="cursor-pointer">
+          <label className="cursor-pointer">
               <input
                 id="profilePictureUpload"
                 type="file"
@@ -227,7 +218,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Profile Information Form */}
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -267,7 +257,6 @@ export default function Profile() {
             />
           </div>
 
-          {/* Delete Account Button */}
           <div className="grid grid-cols-1 gap-4 pt-4">
             <AlertDialog>
               <AlertDialogTrigger asChild>
