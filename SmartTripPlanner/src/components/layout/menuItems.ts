@@ -7,7 +7,7 @@ export const menuItems = {
       },
       {
         title: 'AI Itinerary Generator',
-        href: '/AI-itinerary-planner',
+        href: '/destination',
         description: 'Get the best itinerary with AI',
       },
     ],

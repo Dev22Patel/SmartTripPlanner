@@ -14,6 +14,8 @@ const Itinerary = require('./models/itinerary');
 const { auth } = require("google-auth-library");
 const protect = require("./middlewares/authMiddleware");
 const itineraryRoutes = require('./routes/itineraryRoutes');
+const recommendationsRoute = require('./routes/recommandationRoutes');
+
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -23,6 +25,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/travel-preferences", travelPreferenceRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/itineraries', itineraryRoutes); // Use the user routes
+app.use('/api/recommendations', recommendationsRoute);
+
 app.get('/api/list-models', async (req, res) => {
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" }); // or the model name you get from the API

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/store/index';
 import { fetchItinerary, setDestination, updatePreferences } from '@/store/itinerarySlice';
+import debounce from 'lodash/debounce'; // Install lodash if not already
 
 type Activity = {
   title: string;
@@ -11,42 +12,100 @@ type Activity = {
 };
 
 const UserPreferencePage: React.FC = () => {
-    const { place } = useParams<{ place: string }>();
-    const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();
+  console.log('Rendering UserPreferencePage');
+  const { place } = useParams<{ place: string }>();
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
-    const destination = place || 'Unknown Destination';
+  const preferences = useSelector((state: RootState) => state.itinerary.preferences);
+  const itinerary = useSelector((state: RootState) => state.itinerary.itinerary);
+  const loading = useSelector((state: RootState) => state.itinerary.loading);
+  const error = useSelector((state: RootState) => state.itinerary.error);
 
-    const preferences = useSelector((state: RootState) => state.itinerary.preferences);
-    const itinerary = useSelector((state: RootState) => state.itinerary.itinerary);
-    const loading = useSelector((state: RootState) => state.itinerary.loading);
-    const error = useSelector((state: RootState) => state.itinerary.error);
+  const [showItinerary, setShowItinerary] = useState(false);
+  const [activeDay, setActiveDay] = useState(0);
+  const [showDestinationModal, setShowDestinationModal] = useState(!place);
+  const [tempDestination, setTempDestination] = useState('');
+  const [localInterests, setLocalInterests] = useState(preferences.interests || ''); // Local buffer for interests
 
-    const [showItinerary, setShowItinerary] = useState(false);
-    const [activeDay, setActiveDay] = useState(0);
+  const destination = place || 'Unknown Destination';
 
-    useEffect(() => {
-      if (!place) {
-        console.error('No destination specified');
-      } else {
-        dispatch(setDestination(destination));
-      }
-    }, [place, destination, dispatch]);
+  useEffect(() => {
+    if (!place) {
+      setShowDestinationModal(true);
+    } else {
+      dispatch(setDestination(destination));
+      setShowDestinationModal(false);
+    }
+  }, [place, destination, dispatch]);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-      const { name, value } = e.target;
+  // Debounced Redux dispatch for preferences
+  const debouncedUpdatePreferences = useCallback(
+    debounce((name: string, value: string) => {
       dispatch(updatePreferences({ [name]: value }));
-    };
+    }, 300),
+    [dispatch]
+  );
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        dispatch(fetchItinerary({ destination, preferences }));
-        navigate(`/itinerary-builder?destination=${encodeURIComponent(destination)}`);
-    };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    if (name === 'interests') {
+      setLocalInterests(value); // Update local state immediately
+      debouncedUpdatePreferences(name, value); // Debounced Redux update
+    } else {
+      dispatch(updatePreferences({ [name]: value }));
+    }
+  };
 
-    const handleBackToPreferences = () => {
-      setShowItinerary(false);
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(fetchItinerary({ destination, preferences }));
+    navigate(`/itinerary-builder?destination=${encodeURIComponent(destination)}`);
+  };
+
+  const handleBackToPreferences = () => {
+    setShowItinerary(false);
+  };
+
+  const handleDestinationSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (tempDestination.trim()) {
+      dispatch(setDestination(tempDestination.trim()));
+      setShowDestinationModal(false);
+      navigate(`/destination/${encodeURIComponent(tempDestination.trim())}`);
+    }
+  };
+
+  // Destination Modal Component
+  const DestinationModal = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-zinc-900 rounded-lg p-6 w-full max-w-md shadow-lg">
+        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+          Enter Your Destination
+        </h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">
+          Please provide a city name to start planning your trip.
+        </p>
+        <form onSubmit={handleDestinationSubmit} className="space-y-4">
+          <input
+            key="destination-input" // Ensure unique key
+            type="text"
+            value={tempDestination}
+            onChange={(e) => setTempDestination(e.target.value)}
+            placeholder="Enter city name (e.g., Paris)"
+            className="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 
   // Preference Form Component
   const PreferenceForm = () => (
@@ -249,7 +308,7 @@ const UserPreferencePage: React.FC = () => {
             <label className="block text-sm font-medium">Your Interests and Preferences</label>
             <textarea
               name="interests"
-              value={preferences.interests}
+              value={localInterests} // Use local state
               onChange={handleInputChange}
               placeholder="Describe the activities and places you're interested in... e.g., local cuisine, museums, hiking, shopping, cultural sites"
               className="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 h-24 transition-colors duration-200"
@@ -295,9 +354,9 @@ const UserPreferencePage: React.FC = () => {
     </div>
   );
 
-  // Itinerary Component
   // Itinerary Component with Images
-const ItineraryView = () => (
+  const ItineraryView = () => (
+
     <div className="max-w-4xl mx-auto">
       <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg overflow-hidden transition-all duration-200">
         <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 p-4">
@@ -416,6 +475,8 @@ const ItineraryView = () => (
     </div>
   );
 
+  console.log('Loading state:', loading);
+  
   return (
     <div className="min-h-screen transition-colors duration-200 dark:bg-zinc-950 dark:text-white py-10 px-4 mb-20">
       <div className="mb-10 text-center">
@@ -426,6 +487,8 @@ const ItineraryView = () => (
           {showItinerary ? `Your personalized ${preferences.days}-day itinerary for ${destination}` : 'Customize your perfect trip with our AI-powered itinerary planner.'}
         </p>
       </div>
+
+      {showDestinationModal && <DestinationModal />}
 
       {loading ? (
         <div className="max-w-3xl mx-auto">

@@ -14,7 +14,12 @@ const protect = async (req, res, next) => {
 
   try {
     // Make sure the JWT_SECRET exactly matches what was used to sign the token
-    const JWT_SECRET = process.env.JWT_SECRET || "DevKing"; // fallback to the secret if env var not set
+    console.log("Token received:", token);
+    console.log("JWT_SECRET being used:", process.env.JWT_SECRET || "DevKing");
+    const JWT_SECRET = "DevKing" // fallback to the secret if env var not set
+    // hamna production ma nathi so using hardcoded secret
+    // but in production change kari dejo to "process.env.JWT_SECRET"
+
     console.log("Using JWT_SECRET for verification");
 
     const verified = jwt.verify(token, JWT_SECRET);

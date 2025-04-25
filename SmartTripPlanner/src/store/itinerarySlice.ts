@@ -71,7 +71,7 @@ export const fetchItinerary = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/generate-itinerary', {
+      const response = await axios.post('https://smarttripplanner.onrender.com/api/generate-itinerary', {
         destination,
         preferences,
       });
@@ -102,7 +102,7 @@ export const saveItineraryToDb = createAsyncThunk(
         };
 
         const response = await axios.post(
-          `https://smarttripplanner.onrender.com/api/save-itinerary`,
+          `http://localhost:5000/api/save-itinerary`,
           {
             destination,
             days

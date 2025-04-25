@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import {
-  Clock, DollarSign, Edit2, MapPin, Trash2, Utensils,
-  Landmark, Bus, Home, Briefcase, ImageIcon, Eye, Info
+  Clock, Edit2, MapPin, Trash2, Utensils,
+  Landmark, Bus, Home, Briefcase, ImageIcon, Eye
 } from 'lucide-react'
 import type { Activity } from "./itinerary-builder"
 import ActivityDetailDrawer from "./activity-detail-drawer"
@@ -18,7 +18,7 @@ interface ActivityItemProps {
   onDelete: () => void
 }
 
-const getCategoryIcon = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | undefined) => {
+const getCategoryIcon = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | "entertainment" | "shopping" | undefined) => {
   switch (category) {
     case "food":
       return <Utensils className="h-4 w-4" />
@@ -35,7 +35,7 @@ const getCategoryIcon = (category: "food" | "attraction" | "transport" | "accomm
   }
 }
 
-const getCategoryColor = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | undefined) => {
+const getCategoryColor = (category: "food" | "attraction" | "transport" | "accommodation" | "other" | "entertainment" | "shopping" | undefined) => {
   switch (category) {
     case "food":
       return "bg-blue-100 text-blue-800 hover:bg-blue-200"

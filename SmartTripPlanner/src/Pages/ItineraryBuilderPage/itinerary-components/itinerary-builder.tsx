@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback, useMemo } from "react"
 import { AppDispatch } from "@/store/index"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/index"
@@ -7,7 +7,6 @@ import {
   updatePreferences,
   setDestination,
   saveItineraryToDb,
-  getSavedItinerary
 } from "@/store/itinerarySlice"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,17 +15,17 @@ import ItineraryDay from "./itinerary-day"
 import { v4 as uuidv4 } from "uuid"
 import { useToast } from "@/components/ui/toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export interface Activity {
-  id: string
-  title: string
-  time?: string
-  description?: string
-  location?: string
-  cost?: string
-  category?: "food" | "attraction" | "transport" | "accommodation" | "other"
-  imageUrl?: string
+    id: string
+    title: string
+    time?: string
+    description?: string
+    location?: string
+    cost?: string
+    category?: "food" | "attraction" | "transport" | "accommodation" | "other" | "entertainment" | "shopping"
+    imageUrl?: string
 }
 
 export interface Day {
@@ -40,116 +39,129 @@ export interface Day {
 export default function ItineraryBuilder({ isLoading = false, destination = "Unknown Destination" }) {
   const { toast } = useToast()
   const dispatch: AppDispatch = useDispatch()
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+
   // Get itinerary state from Redux
-  const { itinerary, loading, error, preferences, saveLoading, saveError } = useSelector((state: RootState) => state.itinerary)
+  const { itinerary, loading, error, preferences, saveLoading } = useSelector((state: RootState) => state.itinerary)
   const [days, setDays] = useState<Day[]>([])
   const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [activeTab, setActiveTab] = useState("0")
 
+  // Only run once when destination changes or on initial load
   useEffect(() => {
-    // Then set destination and fetch itinerary if needed
     dispatch(setDestination(destination))
-    dispatch(fetchItinerary({ destination, preferences }))
-  }, [dispatch, destination, preferences])
+    // Only fetch if we don't already have data
+    if (isInitialLoad) {
+      dispatch(fetchItinerary({ destination, preferences }))
+    }
+  }, [dispatch, destination, isInitialLoad, preferences])
 
+  // Process itinerary data only when it changes
   useEffect(() => {
     if (itinerary.length > 0) {
-      setDays(
-        itinerary.map((day) => ({
+      const processedDays = itinerary.map((day) => ({
+        id: uuidv4(),
+        dayNumber: day.day,
+        date: (() => {
+          const startDate = new Date();
+          startDate.setDate(startDate.getDate() + (day.day - 1));
+          return startDate.toISOString().split("T")[0];
+        })(),
+        description: day.description || "",
+        activities: day.activities.map((activity) => ({
           id: uuidv4(),
-          dayNumber: day.day,
-          date: (() => {
-            // Set first day to current date, then increment for subsequent days
-            const startDate = new Date();
-            startDate.setDate(startDate.getDate() + (day.day - 1));
-            return startDate.toISOString().split("T")[0];
-          })(),
-          description: day.description || "",
-          activities: day.activities.map((activity) => ({
-            id: uuidv4(),
-            title: activity.title,
-            description: activity.description,
-            location: activity.location || "",
-            time: activity.time || "",
-            cost: activity.cost || "",
-            category: activity.category as "food" | "attraction" | "transport" | "accommodation" | "other" || "other",
-            imageUrl: activity.imageUrl || `/placeholder.svg?height=200&width=300`,
-          })),
-        }))
-      )
-      setIsInitialLoad(false)
-    }
-  }, [itinerary])
+          title: activity.title,
+          description: activity.description,
+          location: activity.location || "",
+          time: activity.time || "",
+          cost: activity.cost || "",
+          category: activity.category as "food" | "attraction" | "transport" | "accommodation" | "other" || "other",
+          imageUrl: activity.imageUrl || `/placeholder.svg?height=200&width=300`,
+        })),
+      }));
 
-  const addDay = () => {
-    if (days.length === 0) {
-      // If no days exist, create the first day with current date
-      setDays([
-        {
+      setDays(processedDays);
+      setIsInitialLoad(false);
+    }
+  }, [itinerary]);
+
+  // Memoize handlers to prevent recreation on each render
+  const addDay = useCallback(() => {
+    setDays(prevDays => {
+      if (prevDays.length === 0) {
+        // If no days exist, create the first day with current date
+        return [{
           id: uuidv4(),
           dayNumber: 1,
           date: new Date().toISOString().split("T")[0],
           activities: [],
-        },
-      ])
-      return
-    }
+        }];
+      }
 
-    const lastDay = days[days.length - 1]
-    // Create a new date object from the last day's date
-    const newDate = new Date(lastDay.date)
-    // Increment by one day
-    newDate.setDate(newDate.getDate() + 1)
+      const lastDay = prevDays[prevDays.length - 1];
+      // Create a new date object from the last day's date
+      const newDate = new Date(lastDay.date);
+      // Increment by one day
+      newDate.setDate(newDate.getDate() + 1);
 
-    setDays([
-      ...days,
-      {
+      const newDay = {
         id: uuidv4(),
         dayNumber: lastDay.dayNumber + 1,
         date: newDate.toISOString().split("T")[0],
         activities: [],
-      },
-    ])
+      };
 
-    // Set the active tab to the new day
-    setActiveTab(String(days.length))
-  }
+      // Set the active tab to the new day (outside this callback to avoid dependency loop)
+      setTimeout(() => setActiveTab(String(prevDays.length)), 0);
 
-  const removeDay = (dayId: string) => {
-    if (days.length === 1) {
-      toast({
-        title: "Cannot remove day",
-        description: "Your itinerary must have at least one day.",
-        variant: "destructive",
-      })
-      return
+      return [...prevDays, newDay];
+    });
+  }, []);
+
+  const removeDay = useCallback((dayId: string) => {
+    setDays(prevDays => {
+      if (prevDays.length === 1) {
+        toast({
+          title: "Cannot remove day",
+          description: "Your itinerary must have at least one day.",
+          variant: "destructive",
+        });
+        return prevDays;
+      }
+
+      const dayIndex = prevDays.findIndex(day => day.id === dayId);
+      const newDays = prevDays.filter((day) => day.id !== dayId);
+
+      // Renumber days
+      newDays.forEach((day, index) => {
+        day.dayNumber = index + 1;
+      });
+
+      // Update active tab if needed
+      if (activeTab === String(dayIndex)) {
+        setTimeout(() => {
+          setActiveTab(String(Math.min(dayIndex, newDays.length - 1)));
+        }, 0);
+      }
+
+      return newDays;
+    });
+  }, [activeTab, toast]);
+
+  const updateDay = useCallback((updatedDay: Day) => {
+    setDays(prevDays =>
+      prevDays.map((day) => (day.id === updatedDay.id ? updatedDay : day))
+    );
+  }, []);
+
+  const saveItinerary = useCallback(async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e) {
+      e.preventDefault();
     }
 
-    const dayIndex = days.findIndex(day => day.id === dayId)
-    const newDays = days.filter((day) => day.id !== dayId)
-
-    // Renumber days
-    newDays.forEach((day, index) => (day.dayNumber = index + 1))
-    setDays(newDays)
-
-    // Update active tab if needed
-    if (activeTab === String(dayIndex)) {
-      setActiveTab(String(Math.min(dayIndex, newDays.length - 1)))
-    }
-  }
-
-  const updateDay = (updatedDay: Day) => {
-    setDays(days.map((day) => (day.id === updatedDay.id ? updatedDay : day)))
-  }
-
-  const saveItinerary = async (e:any) => {
     // Update local preferences
-    if (e && e.preventDefault) {
-        e.preventDefault();
-    }
-    dispatch(updatePreferences({ days: days.length }))
-    navigate('/profile')
+    dispatch(updatePreferences({ days: days.length }));
+
     try {
       // Save to database
       await dispatch(saveItineraryToDb({
@@ -173,20 +185,26 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
       toast({
         title: "Itinerary saved",
         description: `Your ${destination} itinerary has been saved successfully.`,
-      })
+      });
 
+      navigate('/profile');
     } catch (error) {
       toast({
         title: "Save failed",
         description: "There was a problem saving your itinerary. Please try again.",
         variant: "destructive",
-      })
+      });
     }
+  }, [days, destination, dispatch, navigate, toast]);
 
+  // Memoize loading state to prevent unnecessary rerenders
+  const isLoadingState = useMemo(() =>
+    isInitialLoad || loading || isLoading,
+    [isInitialLoad, loading, isLoading]
+  );
 
-  }
-
-  if (isInitialLoad || loading || isLoading) {
+  // Loading state
+  if (isLoadingState) {
     return (
       <Card className="shadow-md border-border/40 dark:border-border/40 bg-card/50">
         <div className="flex flex-col items-center justify-center py-16">
@@ -199,9 +217,10 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
           </p>
         </div>
       </Card>
-    )
+    );
   }
 
+  // Error state
   if (error) {
     return (
       <Card className="shadow-md border-border/40 dark:border-border/40 bg-card/50">
@@ -218,9 +237,10 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
           </div>
         </CardContent>
       </Card>
-    )
+    );
   }
 
+  // Render main component
   return (
     <Card className="shadow-md border-border/40 dark:border-border/40 bg-card/50">
       <CardHeader className="pb-4">
@@ -232,10 +252,7 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
             <CardDescription>Build your day-by-day plan for an unforgettable trip</CardDescription>
           </div>
           <Button
-            onClick={(e) => {
-                e.preventDefault();
-                saveItinerary(e);
-              }}
+            onClick={saveItinerary}
             size="sm"
             className="flex items-center gap-1"
             disabled={saveLoading}
@@ -307,5 +324,5 @@ export default function ItineraryBuilder({ isLoading = false, destination = "Unk
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

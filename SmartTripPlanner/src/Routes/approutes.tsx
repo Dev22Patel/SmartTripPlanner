@@ -36,6 +36,11 @@ export const AppRoutes = () => {
                 <UserPreferencePage />
             </ProtectedRoute>
         } />
+        {/* <Route path='/destination' element={
+            <ProtectedRoute>
+                <UserPreferencePage />
+            </ProtectedRoute>
+        } /> */}
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/test" element={<ItineraryPage />} />

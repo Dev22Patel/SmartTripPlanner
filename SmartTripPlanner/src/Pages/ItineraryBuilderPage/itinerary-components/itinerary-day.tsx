@@ -13,11 +13,26 @@ import { format } from "date-fns"
 import { v4 as uuidv4 } from "uuid"
 import ActivityItem from "./activity-item"
 import type { Day, Activity } from "./itinerary-builder"
+import { useToast } from "@/components/ui/toast"
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import WeatherForecast from "@/components/WeatherForcast"
+import {  DragEvent } from "react"
 import ActivityMap from "@/components/Activity-map"
 
+interface Recommendation {
+    id: string
+    name: string
+    type: "attraction" | "restaurant" | "hotel" | "activity"
+    rating: number
+    image: string
+    description: string
+    location: string
+    price: string
+    duration?: string
+    tags: string[]
+    url: string
+}
 
 interface ItineraryDayProps {
   day: Day
@@ -43,7 +58,7 @@ export default function ItineraryDay({ day, updateDay, removeDay, destination }:
     category: "other",
     imageUrl: "",
   })
-
+  const { toast } = useToast()
   const handleAddActivity = () => {
     if (!newActivity.title.trim()) return
 
@@ -113,6 +128,74 @@ export default function ItineraryDay({ day, updateDay, removeDay, destination }:
     setIsEditDescriptionOpen(false)
   }
 
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+    // Prevent default to allow drop
+    e.preventDefault()
+    // Change the drop effect to show a copy operation
+    e.dataTransfer.dropEffect = "copy"
+  }
+
+  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+
+    try {
+      // Get the recommendation data
+      const data = e.dataTransfer.getData("application/json")
+      if (!data) return
+
+      const recommendation = JSON.parse(data) as Recommendation
+
+      // Convert recommendation to activity format
+      const newActivity: Activity = {
+        id: uuidv4(),
+        title: recommendation.name,
+        description: recommendation.description,
+        location: recommendation.location,
+        time: recommendation.duration || "",
+        cost: recommendation.price,
+        category: mapRecommendationTypeToCategory(recommendation.type),
+        imageUrl: recommendation.image,
+      }
+
+      // Add to current day's activities
+      updateDay({
+        ...day,
+        activities: [...day.activities, newActivity],
+      })
+
+      // Show success notification
+    toast({
+        title: "Activity added",
+        description: `Added "${recommendation.name}" to Day ${day.dayNumber}`,
+        variant: "default",
+      })
+    }
+    catch (error) {
+      console.error("Error adding dragged item:", error)
+      // Show error notification
+      toast({
+        title: "Failed to add activity",
+        description: "There was a problem adding this item to your itinerary",
+        variant: "destructive",
+      })
+    }
+  }
+
+  const mapRecommendationTypeToCategory = (type: string): "food" | "attraction" | "transport" | "accommodation" | "other" => {
+    switch (type) {
+      case "restaurant":
+        return "food"
+      case "attraction":
+        return "attraction"
+      case "hotel":
+        return "accommodation"
+      case "activity":
+        return "other"
+      default:
+        return "other"
+    }
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -174,7 +257,7 @@ export default function ItineraryDay({ day, updateDay, removeDay, destination }:
           </Card>
 
           {/* Weather forecast */}
-          <WeatherForecast location={destination} date={day.date} />
+          <WeatherForecast location={destination} date={day.date} list={[]} />
         </div>
 
         {/* Right column - Activities and map */}
@@ -195,52 +278,50 @@ export default function ItineraryDay({ day, updateDay, removeDay, destination }:
             </TabsList>
 
             <TabsContent value="activities" className="space-y-4 mt-0">
-              {day.activities.length > 0 ? (
-                <div className="space-y-3">
-                  {day.activities.map((activity) => (
-                    <ActivityItem
-                      key={activity.id}
-                      activity={activity}
-                      onEdit={() => handleEditActivity(activity)}
-                      onDelete={() => handleDeleteActivity(activity.id)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <Card className="border-dashed bg-muted/50">
-                  <CardContent className="flex flex-col items-center justify-center py-6">
-                    <p className="text-muted-foreground mb-2">No activities planned for this day</p>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex items-center gap-1"
-                      onClick={() => setIsAddActivityOpen(true)}
-                    >
-                      <Plus className="h-4 w-4" />
-                      Add Activity
-                    </Button>
-                  </CardContent>
-                </Card>
-              )}
-
-              <div className="flex justify-center pt-2">
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-1"
-                  onClick={() => setIsAddActivityOpen(true)}
+                <div
+                    className="space-y-3 min-h-[200px] p-2 border-2 border-dashed border-primary/20 rounded-lg transition-colors"
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
                 >
-                  <Plus className="h-4 w-4" />
-                  {day.activities.length > 0 ? "Add Another Activity" : "Add Activity"}
-                </Button>
-              </div>
+                    {day.activities.length > 0 ? (
+                    day.activities.map((activity) => (
+                        <ActivityItem
+                        key={activity.id}
+                        activity={activity}
+                        onEdit={() => handleEditActivity(activity)}
+                        onDelete={() => handleDeleteActivity(activity.id)}
+                        />
+                    ))
+                    ) : (
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                        <p className="text-muted-foreground mb-2">Drag recommendations here or add activities manually</p>
+                        <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex items-center gap-1 mt-2"
+                        onClick={() => setIsAddActivityOpen(true)}
+                        >
+                        <Plus className="h-4 w-4" />
+                        Add Activity
+                        </Button>
+                    </div>
+                    )}
+                </div>
+
+                <div className="flex justify-center pt-2">
+                    <Button
+                    variant="outline"
+                    className="flex items-center gap-1"
+                    onClick={() => setIsAddActivityOpen(true)}
+                    >
+                    <Plus className="h-4 w-4" />
+                    {day.activities.length > 0 ? "Add Another Activity" : "Add Activity"}
+                    </Button>
+                </div>
             </TabsContent>
 
             <TabsContent value="map" className="mt-0">
               <ActivityMap activities={day.activities} destination={destination} />
-            </TabsContent>
-
-            <TabsContent value="weather" className="mt-0 lg:hidden">
-              <WeatherForecast location={destination} date={day.date} />
             </TabsContent>
           </Tabs>
         </div>
