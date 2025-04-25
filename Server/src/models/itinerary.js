@@ -12,7 +12,7 @@ const ActivitySchema = new mongoose.Schema({
   cost: String,
   category: {
     type: String,
-    enum: ['food', 'attraction', 'transport', 'accommodation', 'other','entertainment','shopping','relaxation'],
+    enum: ['food', 'attraction', 'transport', 'accommodation', 'other','entertainment','shopping','relaxation',"food, entertainment","entertainment, food","food,shopping","shopping,food","entertainment,shopping","shopping,entertainment"],
     default: 'other'
   },
   imageUrl: String

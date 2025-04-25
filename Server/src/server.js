@@ -560,7 +560,7 @@ app.get('/api/geocode', async (req, res) => {
 
 app.get('/get-itinerary',protect, async (req, res) => {
     try {
-      const itinerary = await Itinerary.findOne({ userId: req.user.id });
+      const itinerary = await Itinerary.find({ userId: req.user.id });
 
       if (!itinerary) {
         return res.status(404).json({ msg: 'No itinerary found for this user' });
@@ -573,44 +573,32 @@ app.get('/get-itinerary',protect, async (req, res) => {
     }
   });
 
- app.post('/api/save-itinerary', protect, async (req, res) => {
-      const { destination, days } = req.body;
-      console.log('Save itinerary request:', req.body);
+  app.post('/api/save-itinerary', protect, async (req, res) => {
+    const { destination, days } = req.body;
+    console.log('Save itinerary request:', req.body);
 
-      try {
-          // Get user ID from the authenticated user
-          const userIdentifier = req.user.id;
+    try {
+      const userIdentifier = req.user.id;
 
-          if (!userIdentifier) {
-              return res.status(401).json({ message: 'User ID not found. Authentication required.' });
-          }
-
-          let itinerary = await Itinerary.findOne({ userId: userIdentifier });
-
-          if (itinerary) {
-              // Update existing itinerary
-              itinerary.destination = destination;
-              itinerary.days = days;
-              itinerary.updatedAt = Date.now();
-
-              await itinerary.save();
-              return res.json(itinerary);
-          }
-
-          // Create new itinerary
-          itinerary = new Itinerary({
-              userId: userIdentifier,
-              destination,
-              days
-          });
-
-          await itinerary.save();
-          res.json(itinerary);
-      } catch (err) {
-          console.error(err.message);
-          res.status(500).send('Server Error');
+      if (!userIdentifier) {
+        return res.status(401).json({ message: 'User ID not found. Authentication required.' });
       }
+
+      // Always create a new itinerary
+      const itinerary = new Itinerary({
+        userId: userIdentifier,
+        destination,
+        days
+      });
+
+      await itinerary.save();
+      res.json(itinerary);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   });
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;

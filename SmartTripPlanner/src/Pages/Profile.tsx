@@ -163,7 +163,7 @@ export default function Profile() {
       const formData = new FormData();
       formData.append("profilePicture", file); // Make sure the key matches what your backend expects
 
-      const response = await fetch("https://smarttripplanner.onrender.com/api/user/upload", {
+      const response = await fetch("http://localhost:5000/api/user/upload", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -210,7 +210,7 @@ export default function Profile() {
       if (!token) throw new Error("No token found, please login again.");
 
       const response = await fetch(
-        "https://smarttripplanner.onrender.com/api/user",
+        "http://localhost:5000/api/user",
         {
           method: "PUT",
           headers: {
