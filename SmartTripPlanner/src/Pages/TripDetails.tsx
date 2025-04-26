@@ -375,7 +375,7 @@ export default function TripDetails() {
             <button
               onClick={saveChanges}
               disabled={isSaving}
-              className="bg-primary dark:bg- text-white px-4 py-2 rounded-md hover:bg-primary-dark disabled:opacity-50"
+              className="bg-primary dark:bg-black dark:text-white text-white px-4 py-2 rounded-md hover:bg-primary-dark disabled:opacity-50"
             >
               {isSaving ? "Saving..." : "Save Changes"}
             </button>

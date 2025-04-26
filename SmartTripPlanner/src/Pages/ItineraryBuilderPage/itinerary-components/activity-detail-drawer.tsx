@@ -230,10 +230,7 @@ export default function ActivityDetailDrawer({ activity, isOpen, onClose }: Acti
             {/* Action buttons */}
             <DrawerFooter className="px-0 pt-2">
               <div className="flex space-x-2">
-                <Button variant="outline" className="flex-1">
-                  <Share2 className="h-4 w-4 mr-2" />
-                  Share
-                </Button>
+                
                 <DrawerClose asChild>
                   <Button className="flex-1">Close</Button>
                 </DrawerClose>

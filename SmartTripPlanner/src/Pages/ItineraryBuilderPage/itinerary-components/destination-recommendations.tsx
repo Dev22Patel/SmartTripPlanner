@@ -180,10 +180,10 @@ function RecommendationCard({ item }: { item: Recommendation }) {
                 {item.location}
               </div>
 
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <DollarSign className="h-3 w-3 mr-1" />
                 {item.price}
-              </div>
+              </div> */}
 
               {item.duration && (
                 <div className="flex items-center">

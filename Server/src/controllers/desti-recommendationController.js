@@ -17,7 +17,7 @@ const getRecommendations = async (req, res) => {
     } else {
       recommendations = generateMockRecommendations(destination);
     }
-
+    console.log("Recommendations:", recommendations);
     return res.json(recommendations);
   } catch (error) {
     console.error('Error fetching recommendations:', error);
@@ -83,7 +83,7 @@ const formatGooglePlace = (place, type, apiKey) => {
     image: photoUrl,
     description: place.editorial_summary?.overview || `Popular ${type} in ${place.formatted_address}`,
     location: place.vicinity || place.formatted_address,
-    price: priceSymbols,
+    price: place.price_level,
     duration: ['attraction', 'activity'].includes(type) ? '1-2 hours' : undefined,
     tags: tags.length ? tags : [capitalize(type), 'Popular', place.business_status === 'OPERATIONAL' ? 'Open' : 'Closed'],
     url: `https://www.google.com/maps/place/?q=place_id:${place.place_id}`

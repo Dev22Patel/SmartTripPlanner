@@ -290,7 +290,7 @@ async function getPlaceInfoForActivity(activityQuery, destination) {
             if (!response.ok) continue;
 
             const data = await response.json();
-
+            console.log(`Google Places API response for "${query}":`, data);
             if (data.results && data.results.length > 0) {
                 console.log(`Found ${data.results.length} places for "${query}"`);
 
@@ -305,7 +305,7 @@ async function getPlaceInfoForActivity(activityQuery, destination) {
                     userRatingsTotal: place.user_ratings_total,
                     coordinates: `${place.geometry.location.lat},${place.geometry.location.lng}`,
                     placeId: place.place_id,
-                    types: place.types
+                    types: place.types,
                 };
 
                 // Get a photo if available

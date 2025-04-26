@@ -12,10 +12,10 @@ const SmartTripPlannerDashboard = () => {
       { title: 'AI Travel Assistant', status: 'active' },
       { title: 'Real-Time Price Comparison', status: 'completed' },
       { title: 'Smart Itinerary Builder', status: 'active' },
-      { title: 'Interactive Map & Navigation', status: 'completed' },
+      { title: 'Interactive Map & Navigation', status: 'active' },
       { title: 'Customizable Travel Packages', status: 'active' },
       { title: 'User Reviews & Recommendations', status: 'active' },
-      { title: 'Flight & Hotel Booking Integration', status: 'active' },
+      { title: 'Flight & Hotel Booking Integration', status: 'completed' },
       { title: '→ and more features in our upcoming update!', status: 'pending' }
     ];
 
