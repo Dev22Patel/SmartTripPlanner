@@ -14,9 +14,9 @@ export default function Footer() {
 
         <div className="container mx-auto px-4 relative z-10 py-12">
           {/* Main Content */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
             {/* Brand Section */}
-            <div className="col-span-1 md:col-span-4 mb-8 text-center">
+            <div className="col-span-1 md:col-span-5 mb-8 text-center">
               <div className="flex items-center justify-center space-x-2 mb-4">
                 <motion.div
                   className="h-full w-full object-cover absolute inset-0 [mask-image:radial-gradient(circle,transparent,black_80%)] pointer-events-none"
@@ -36,27 +36,36 @@ export default function Footer() {
             <div className="space-y-4">
               <h3 className="font-semibold text-black dark:text-white">Company</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">About</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Blog</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Careers</a></li>
+                <li><a href="/about-us" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">About</a></li>
+                {/* <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Blog</a></li> */}
+                {/* <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Careers</a></li> */}
               </ul>
             </div>
 
             <div className="space-y-4">
               <h3 className="font-semibold text-black dark:text-white">Resources</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Documentation</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Learn</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Showcase</a></li>
+                <li><a href="https://github.com/Dev22Patel/SmartTripPlanner/blob/main/SmartTripPlanner.pdf" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Documentation</a></li>
+                {/* <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Learn</a></li> */}
+                <li><a href="/landing-page" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Showcase</a></li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-semibold text-black dark:text-white">Social</h3>
+              <h3 className="font-semibold text-black dark:text-white">Social - Dev</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">GitHub</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Twitter</a></li>
-                <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">Discord</a></li>
+                <li><a href="https://github.com/Dev22Patel" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/dev-patel-230475252/" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200" target="_blank">LinkedIn</a></li>
+                <li><a href="https://discord.com/users/1008764056687104171" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200" target="_blank">Discord</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="font-semibold text-black dark:text-white">Social - Jeet</h3>
+              <ul className="space-y-2">
+                <li><a href="https://github.com/jeetbhuptani" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200" target="_blank">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/jeetbhuptani" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200" target="_blank">LinkedIn</a></li>
+                <li><a href="https://discord.com/users/682083364995465246" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200" target="_blank">Discord</a></li>
               </ul>
             </div>
 
@@ -80,7 +89,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="text-center text-sm text-gray-500 dark:text-gray-400 mt-12">
-            <p>© {new Date().getFullYear()} Dev Creations. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Smart Trip Planner. All rights reserved.</p>
           </div>
         </div>
       </footer>
