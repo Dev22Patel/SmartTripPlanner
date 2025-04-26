@@ -10,7 +10,11 @@ import UserPreferencePage from '@/Pages/AI_itineraryPage/userPreference';
 import ItineraryPage from '@/Pages/testpage';
 import Profile from '@/Pages/Profile';
 import TripDetails from '@/Pages/TripDetails';
-
+import TopDestinations from '@/Pages/TopDestinations';
+import Products from '@/Pages/Products';
+import TravelPackages from '@/Pages/TravelPackages';
+import AdventureTours from '@/Pages/AdventureTours';
+import FamilyTrips from '@/Pages/FamilyTrips';
 
 export const AppRoutes = () => {
     return (
@@ -46,6 +50,12 @@ export const AppRoutes = () => {
         <Route path="/test" element={<ItineraryPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/trip/:id" element={<TripDetails />} />
+        <Route path='/products' element={<Products />} />
+        <Route path="/top-destinations" element={<TopDestinations />} />
+        <Route path="/travel-packages" element={<TravelPackages />} />
+        <Route path="/adventure-tours" element={<AdventureTours />} />
+        <Route path="/family-trips" element={<FamilyTrips />} />
+        
       </Routes>
     );
   };

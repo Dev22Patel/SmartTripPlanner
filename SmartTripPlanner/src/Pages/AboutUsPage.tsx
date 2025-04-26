@@ -224,7 +224,7 @@ export default function AboutPage() {
         <motion.div className="space-y-4" variants={fadeIn}>
           <h3 className="text-xl font-semibold text-zinc-800 dark:text-blue-50">Expertise</h3>
           <div className="flex flex-wrap gap-2">
-            {["Cloud", "Full Stack Development", "UI Designer"].map(
+            {["Cloud", "Full Stack Development", "UI Designer", "QA"].map(
                 (skill, i) => (
                     <motion.span
                     key={skill}
