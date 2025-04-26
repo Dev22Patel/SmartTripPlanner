@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import {
   Clock, Edit2, MapPin, Trash2, Utensils,
-  Landmark, Bus, Home, Briefcase, ImageIcon, Eye
+  Landmark, Bus, Home, Briefcase, ImageIcon, Eye,
+  DollarSign
 } from 'lucide-react'
 import type { Activity } from "./itinerary-builder"
 import ActivityDetailDrawer from "./activity-detail-drawer"
@@ -56,7 +57,7 @@ export default function ActivityItem({ activity, onEdit, onDelete }: ActivityIte
   const [imageError, setImageError] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+  console.log("ActivityItem rendered with activity:", activity);
   // Handle image loading errors
   const handleImageError = () => {
     setImageError(true);
@@ -158,12 +159,12 @@ export default function ActivityItem({ activity, onEdit, onDelete }: ActivityIte
                   </div>
                 )}
 
-                {/* {activity.cost && (
+                {activity.cost && (
                   <div className="flex items-center">
                     <DollarSign className="h-4 w-4 mr-1 text-gray-400" />
                     <span>{activity.cost}</span>
                   </div>
-                )} */}
+                )}
               </div>
 
               {/* Action buttons - Clearly labeled with text for non-technical users */}

@@ -189,8 +189,8 @@ const PreferenceForm: React.FC = () => {
           },
           {
             headers: {
+               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
             }
           }
         );
@@ -199,6 +199,8 @@ const PreferenceForm: React.FC = () => {
       } catch (error) {
         console.error('Error saving travel preferences:', error);
       }
+
+      
       // Navigate to dashboard
       navigate("/landing-page")
     } catch (err) {

@@ -1,12 +1,11 @@
-// controllers/travelPreferenceController.js
 const TravelPreference = require('../models/userPreferencs');
-
+const User = require('../models/user');
 // Create new travel preference
 exports.createTravelPreference = async (req, res) => {
   try {
-    
+
     console.log("hiii inside controller post");
-    const userId = req.user._id;
+    const userId = req.user.id; // Get user ID from the request object
     const { preferences, predictionResult } = req.body;
 
     // Create new travel preference
@@ -16,6 +15,7 @@ exports.createTravelPreference = async (req, res) => {
       predictionResult
     });
 
+    await User.findByIdAndUpdate(userId, { isFirstLogin: false });
     await newTravelPreference.save();
 
     return res.status(201).json({
