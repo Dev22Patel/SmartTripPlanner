@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "name": "Eiffel Tower",
+    "location": "Paris, France",
+    "rating": 4.7,
+    "reviews": 12000,
+    "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+    "description": "The most famous landmark of Paris, offering panoramic city views.",
+    "category": "popular",
+    "popularity": 95
+  },
+  {
+    "id": "2",
+    "name": "Grand Canyon",
+    "location": "Arizona, USA",
+    "rating": 4.8,
+    "reviews": 11000,
+    "image": "https://plus.unsplash.com/premium_photo-1669050701110-a5eb879f1b6a",
+    "description": "Massive natural canyon known for its stunning views and hiking trails.",
+    "category": "trending",
+    "popularity": 92
+  },
+  {
+    "id": "3",
+    "name": "Taj Mahal",
+    "location": "Agra, India",
+    "rating": 4.9,
+    "reviews": 9000,
+    "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523",
+    "description": "A symbol of love and UNESCO World Heritage Site, built in white marble.",
+    "category": "popular",
+    "popularity": 97
+  },
+  {
+    "id": "4",
+    "name": "Mount Fuji",
+    "location": "Honshu, Japan",
+    "rating": 4.6,
+    "reviews": 8000,
+    "image": "https://images.unsplash.com/photo-1578271887552-5ac3a72752bc",
+    "description": "Japan's iconic mountain, perfect for climbing and breathtaking photography.",
+    "category": "recommended",
+    "popularity": 88
+  },
+  {
+    "id": "5",
+    "name": "Colosseum",
+    "location": "Rome, Italy",
+    "rating": 4.7,
+    "reviews": 9500,
+    "image": "https://images.unsplash.com/photo-1711447402543-d9acc369fbe4",
+    "description": "Ancient Roman amphitheater known for gladiator fights and historical significance.",
+    "category": "trending",
+    "popularity": 90
+  }
+]

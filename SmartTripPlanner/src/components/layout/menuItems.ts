@@ -4,11 +4,13 @@ export const menuItems = {
         title: 'Itinerary Builder',
         href: '/itinerary-builder',
         description: 'Plan a day-by-day itinerary tailored to your preferences.',
+        image: 'https://images.unsplash.com/photo-1499591934245-40b55745b905',
       },
       {
         title: 'AI Itinerary Generator',
         href: '/landing-page',
         description: 'Get the best itinerary with AI',
+        image: 'https://images.unsplash.com/photo-1587573088697-b4fa10460683',
       },
     ],
     products: [
