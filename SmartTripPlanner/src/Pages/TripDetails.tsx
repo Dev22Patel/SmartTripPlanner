@@ -1,7 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
@@ -50,6 +52,7 @@ export default function TripDetails() {
   const location = useLocation();
   const navigate = useNavigate();
   const trip = location.state?.trip as Trip;
+  const contentRef = useRef<HTMLDivElement>(null);
 
   if (!trip) {
     navigate("/profile");
@@ -59,6 +62,7 @@ export default function TripDetails() {
   const [editableTrip, setEditableTrip] = useState<Trip>(trip);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [activeTab, setActiveTab] = useState<number>(0);
   const [costEstimate, setCostEstimate] = useState<CostEstimate | null>(null);
@@ -326,6 +330,364 @@ export default function TripDetails() {
     }
   };
 
+  // Export itinerary to PDF
+  const exportToPDF = async () => {
+    if (!contentRef.current) return;
+  
+    setIsExporting(true);
+    try {
+      const exportElement = document.createElement('div');
+      exportElement.className = 'pdf-export p-8';
+      exportElement.style.background = '#f0f4f8'; // Soft background
+      exportElement.style.padding = '30px';
+      exportElement.style.width = '210mm';
+      exportElement.style.color = '#333';
+      exportElement.style.fontFamily = 'Arial, sans-serif';
+  
+      // Title
+      const title = document.createElement('h1');
+      title.style.fontSize = '32px';
+      title.style.color = '#2b6cb0'; // Dark blue
+      title.style.textAlign = 'center';
+      title.style.marginBottom = '30px';
+      title.textContent = `${editableTrip.destination} Itinerary`;
+      exportElement.appendChild(title);
+  
+      // Section Divider
+      const divider = document.createElement('hr');
+      divider.style.border = 'none';
+      divider.style.borderTop = '2px solid #2b6cb0';
+      divider.style.marginBottom = '20px';
+      exportElement.appendChild(divider);
+  
+      // Trip Summary
+      const summary = document.createElement('div');
+      summary.style.background = '#ffffff';
+      summary.style.padding = '20px';
+      summary.style.borderRadius = '10px';
+      summary.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+      summary.style.marginBottom = '30px';
+      summary.innerHTML = `
+        <h2 style="color: #2f855a;">Trip Summary</h2>
+        <p><strong>Destination:</strong> ${editableTrip.destination}</p>
+        <p><strong>Duration:</strong> ${editableTrip.days.length} days</p>
+        <p><strong>Start Date:</strong> ${editableTrip.days[0]?.date ? new Date(editableTrip.days[0].date).toLocaleDateString() : "Not set"}</p>
+        <p><strong>End Date:</strong> ${editableTrip.days[editableTrip.days.length - 1]?.date ? new Date(editableTrip.days[editableTrip.days.length - 1].date).toLocaleDateString() : "Not set"}</p>
+        <p><strong>Total Activities:</strong> ${editableTrip.days.reduce((total, day) => total + day.activities.length, 0)}</p>
+      `;
+      exportElement.appendChild(summary);
+  
+      // Cost Estimate
+      if (costEstimate) {
+        const costSection = document.createElement('div');
+        costSection.style.background = '#e6fffa'; // Light teal
+        costSection.style.padding = '20px';
+        costSection.style.borderRadius = '10px';
+        costSection.style.marginBottom = '30px';
+        costSection.innerHTML = `
+          <h2 style="color: #3182ce;">Cost Estimate</h2>
+          <p><strong>Accommodation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.accommodation}</p>
+          <p><strong>Activities:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.activities}</p>
+          <p><strong>Transportation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.transportation}</p>
+          <p><strong>Food:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.food}</p>
+          <p style="font-size: 18px; font-weight: bold; color: #2f855a;"><strong>Total:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.total}</p>
+          <small>*Note: This is an estimate based on current rates for ${editableTrip.destination}. Costs may vary.</small>
+        `;
+        exportElement.appendChild(costSection);
+      }
+  
+      // Alerts Section
+      if (alerts.length > 0) {
+        const alertsSection = document.createElement('div');
+        alertsSection.style.background = '#fff5f5'; // Very light red
+        alertsSection.style.padding = '20px';
+        alertsSection.style.borderRadius = '10px';
+        alertsSection.style.marginBottom = '30px';
+        alertsSection.innerHTML = `<h2 style="color: #e53e3e;">Trip Alerts</h2>`;
+  
+        alerts.forEach(alert => {
+          const alertDiv = document.createElement('div');
+          alertDiv.style.border = `2px solid ${alert.severity === 'critical' ? '#e53e3e' : '#ecc94b'}`;
+          alertDiv.style.padding = '15px';
+          alertDiv.style.marginTop = '10px';
+          alertDiv.style.borderRadius = '8px';
+          alertDiv.innerHTML = `
+            <strong>Day ${alert.dayNumber}: ${alert.placeTitle}</strong>
+            <p>${alert.reason}</p>
+          `;
+          alertsSection.appendChild(alertDiv);
+        });
+  
+        exportElement.appendChild(alertsSection);
+      }
+  
+      // Daily Itinerary
+      const daysSection = document.createElement('div');
+      daysSection.innerHTML = `<h2 style="color: #805ad5;">Daily Itinerary</h2>`;
+      exportElement.appendChild(daysSection);
+  
+      editableTrip.days.forEach((day) => {
+        const dayDiv = document.createElement('div');
+        dayDiv.style.background = '#ffffff';
+        dayDiv.style.padding = '20px';
+        dayDiv.style.marginTop = '20px';
+        dayDiv.style.borderRadius = '10px';
+        dayDiv.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+  
+        dayDiv.innerHTML = `
+          <h3 style="color: #2b6cb0;">Day ${day.dayNumber} - ${day.date ? new Date(day.date).toLocaleDateString() : "Date not set"}</h3>
+          <p style="font-style: italic;">${day.description || 'No description provided.'}</p>
+        `;
+  
+        if (day.activities.length > 0) {
+          const activitiesList = document.createElement('ul');
+          activitiesList.style.paddingLeft = '20px';
+          activitiesList.style.marginTop = '10px';
+          
+          day.activities.forEach(activity => {
+            const activityItem = document.createElement('li');
+            activityItem.style.marginBottom = '10px';
+            activityItem.innerHTML = `
+              <strong>${activity.title}</strong> ${activity.cost ? `(${activity.cost})` : ''}
+              <p>${activity.description}</p>
+              ${activity.category ? `<small style="color: #4a5568;">Category: ${activity.category}</small>` : ''}
+            `;
+            activitiesList.appendChild(activityItem);
+          });
+  
+          dayDiv.appendChild(activitiesList);
+        } else {
+          const noActivities = document.createElement('p');
+          noActivities.style.fontStyle = 'italic';
+          noActivities.textContent = 'No activities planned for this day.';
+          dayDiv.appendChild(noActivities);
+        }
+  
+        daysSection.appendChild(dayDiv);
+      });
+  
+      // Footer
+      const footer = document.createElement('div');
+      footer.style.marginTop = '40px';
+      footer.style.textAlign = 'center';
+      footer.style.color = '#718096';
+      footer.style.fontSize = '12px';
+      footer.innerHTML = `<p>Generated on ${new Date().toLocaleDateString()}</p>`;
+      exportElement.appendChild(footer);
+  
+      // Append to body temporarily
+      document.body.appendChild(exportElement);
+  
+      // Create PDF
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const canvasElement = await html2canvas(exportElement, {
+        scale: 2,
+        logging: false,
+        useCORS: true,
+        backgroundColor: '#FFFFFF'
+      });
+  
+      const imgData = canvasElement.toDataURL('image/png');
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = canvasElement.height * imgWidth / canvasElement.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+  
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+  
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+  
+      pdf.save(`${editableTrip.destination.replace(/\s+/g, '_')}_Itinerary.pdf`);
+  
+      document.body.removeChild(exportElement);
+  
+      toast.success('Itinerary exported beautifully as PDF! 🎉');
+    } catch (error) {
+      console.error('Error exporting to PDF:', error);
+      toast.error('Failed to export itinerary. Please try again.');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+  
+
+  // Print itinerary
+  const printItinerary = () => {
+    if (!contentRef.current) return;
+    
+    // Create a new printable div with better formatting
+    const printableContent = document.createElement('div');
+    printableContent.className = 'print-content';
+    printableContent.style.fontFamily = 'Arial, sans-serif';
+    printableContent.style.color = '#000';
+    printableContent.style.backgroundColor = '#fff';
+    printableContent.style.padding = '20px';
+    
+    // Create a title
+    const title = document.createElement('h1');
+    title.style.fontSize = '24px';
+    title.style.fontWeight = 'bold';
+    title.style.marginBottom = '20px';
+    title.style.textAlign = 'center';
+    title.textContent = `${editableTrip.destination} Itinerary`;
+    printableContent.appendChild(title);
+    
+    // Add trip summary
+    const summary = document.createElement('div');
+    summary.style.marginBottom = '30px';
+    summary.innerHTML = `
+      <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Trip Summary</h2>
+      <p><strong>Destination:</strong> ${editableTrip.destination}</p>
+      <p><strong>Duration:</strong> ${editableTrip.days.length} days</p>
+      <p><strong>Start Date:</strong> ${editableTrip.days[0]?.date ? new Date(editableTrip.days[0].date).toLocaleDateString() : "Not set"}</p>
+      <p><strong>End Date:</strong> ${editableTrip.days[editableTrip.days.length - 1]?.date ? new Date(editableTrip.days[editableTrip.days.length - 1].date).toLocaleDateString() : "Not set"}</p>
+    `;
+    printableContent.appendChild(summary);
+    
+    // Add cost estimate if available
+    if (costEstimate) {
+      const costSection = document.createElement('div');
+      costSection.style.marginBottom = '30px';
+      costSection.innerHTML = `
+        <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Cost Estimate</h2>
+        <p><strong>Accommodation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.accommodation}</p>
+        <p><strong>Activities:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.activities}</p>
+        <p><strong>Transportation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.transportation}</p>
+        <p><strong>Food:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.food}</p>
+        <p style="font-weight: bold;"><strong>Total Estimated Cost:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.total}</p>
+      `;
+      printableContent.appendChild(costSection);
+    }
+    
+    // Add daily itinerary details
+    const daysSection = document.createElement('div');
+    daysSection.innerHTML = `<h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Daily Itinerary</h2>`;
+    
+    editableTrip.days.forEach((day, index) => {
+      const dayDiv = document.createElement('div');
+      dayDiv.style.marginBottom = '30px';
+      dayDiv.style.pageBreakInside = 'avoid';
+      
+      dayDiv.innerHTML = `
+        <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+          Day ${day.dayNumber} - ${day.date ? new Date(day.date).toLocaleDateString() : "Date not set"}
+        </h3>
+        <p style="margin-bottom: 15px;">${day.description}</p>
+      `;
+      
+      if (day.activities.length > 0) {
+        const activitiesList = document.createElement('div');
+        activitiesList.style.paddingLeft = '15px';
+        
+        day.activities.forEach((activity, actIndex) => {
+          const activityDiv = document.createElement('div');
+          activityDiv.style.marginBottom = '15px';
+          activityDiv.innerHTML = `
+            <h4 style="font-size: 14px; font-weight: bold;">${activity.title} ${activity.cost ? `(${activity.cost})` : ''}</h4>
+            <p>${activity.description}</p>
+            ${activity.category ? `<p><strong>Category:</strong> ${activity.category}</p>` : ''}
+          `;
+          activitiesList.appendChild(activityDiv);
+        });
+        
+        dayDiv.appendChild(activitiesList);
+      } else {
+        const noActivities = document.createElement('p');
+        noActivities.style.fontStyle = 'italic';
+        noActivities.textContent = 'No activities planned for this day.';
+        dayDiv.appendChild(noActivities);
+      }
+      
+      daysSection.appendChild(dayDiv);
+    });
+    
+    printableContent.appendChild(daysSection);
+    
+    // Add alerts if any
+    if (alerts.length > 0) {
+      const alertsSection = document.createElement('div');
+      alertsSection.style.marginBottom = '30px';
+      alertsSection.style.pageBreakBefore = 'always';
+      alertsSection.innerHTML = `<h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Trip Alerts</h2>`;
+      
+      alerts.forEach(alert => {
+        const alertDiv = document.createElement('div');
+        alertDiv.style.border = '1px solid #ccc';
+        alertDiv.style.borderLeft = alert.severity === 'critical' ? '4px solid #e53e3e' : '4px solid #ecc94b';
+        alertDiv.style.padding = '10px';
+        alertDiv.style.marginBottom = '10px';
+        alertDiv.style.borderRadius = '4px';
+        alertDiv.innerHTML = `
+          <p><strong>Day ${alert.dayNumber}: ${alert.placeTitle}</strong></p>
+          <p>${alert.reason}</p>
+        `;
+        alertsSection.appendChild(alertDiv);
+      });
+      
+      printableContent.appendChild(alertsSection);
+    }
+    
+    // Add footer
+    const footer = document.createElement('div');
+    footer.style.marginTop = '30px';
+    footer.style.textAlign = 'center';
+    footer.style.fontSize = '12px';
+    footer.style.color = '#666';
+    footer.innerHTML = `
+      <p>Printed on ${new Date().toLocaleDateString()}</p>
+    `;
+    printableContent.appendChild(footer);
+    
+    // Create print-specific styles
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .print-content, .print-content * {
+          visibility: visible;
+        }
+        .print-content {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+        }
+        @page {
+          size: A4;
+          margin: 20mm;
+        }
+        h3 {
+          page-break-after: avoid;
+        }
+        h4 {
+          page-break-after: avoid;
+        }
+      }
+    `;
+    
+    // Append to document
+    document.body.appendChild(style);
+    document.body.appendChild(printableContent);
+    
+    // Trigger print dialog
+    window.print();
+    
+    // Clean up
+    document.body.removeChild(style);
+    document.body.removeChild(printableContent);
+    
+    toast.success('Print dialog opened!');
+  };
+
   const [earthquakes, setEarthquakes] = useState<any[]>([]);
 
   useEffect(() => {
@@ -358,7 +720,7 @@ export default function TripDetails() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto p-4 text-black dark:text-white">
-      <div className="lg:w-2/3 space-y-6">
+      <div className="lg:w-2/3 space-y-6" ref={contentRef}>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold">
             <input
@@ -394,7 +756,7 @@ export default function TripDetails() {
                     <AlertDialogDescription>
                       This action cannot be undone. All your data, including saved trips, will be permanently deleted.
                     </AlertDialogDescription>
-                  </AlertDialogHeader>
+                    </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                     <AlertDialogAction
@@ -715,13 +1077,30 @@ export default function TripDetails() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Trip Actions</h2>
           <div className="space-y-2">
-            <button className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-              Export Itinerary
+            <button 
+              onClick={exportToPDF}
+              disabled={isExporting}
+              className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50 flex items-center justify-center"
+            >
+              {isExporting ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Exporting...
+                </>
+              ) : (
+                <>Export Itinerary</>
+              )}
             </button>
             <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
               Share Trip
             </button>
-            <button className="w-full bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600">
+            <button 
+              onClick={printItinerary}
+              className="w-full bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600"
+            >
               Print Itinerary
             </button>
           </div>
