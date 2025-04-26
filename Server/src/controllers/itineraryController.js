@@ -1,4 +1,5 @@
 const Itinerary = require("../models/itinerary");
+
 const updateItinerary = async(req, res) => {
     try {
         const { id } = req.params;
