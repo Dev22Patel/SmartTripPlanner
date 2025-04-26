@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
@@ -575,7 +574,7 @@ export default function TripDetails() {
     const daysSection = document.createElement('div');
     daysSection.innerHTML = `<h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Daily Itinerary</h2>`;
     
-    editableTrip.days.forEach((day, index) => {
+    editableTrip.days.forEach((day) => {
       const dayDiv = document.createElement('div');
       dayDiv.style.marginBottom = '30px';
       dayDiv.style.breakInside = 'avoid';
@@ -591,7 +590,7 @@ export default function TripDetails() {
         const activitiesList = document.createElement('div');
         activitiesList.style.paddingLeft = '15px';
         
-        day.activities.forEach((activity, actIndex) => {
+        day.activities.forEach((activity) => {
           const activityDiv = document.createElement('div');
           activityDiv.style.marginBottom = '15px';
           activityDiv.innerHTML = `

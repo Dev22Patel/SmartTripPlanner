@@ -22,7 +22,7 @@ const Dropdown = ({ items, type }: DropdownProps) => (
       type === 'products' ? 'w-[800px]' : 'w-64'
     } rounded-lg bg-white dark:bg-black/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 shadow-2xl transition-all duration-200 ease-out opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible`}
   >
-    <div className={`p-4 ${type === 'products' ? 'grid grid-cols-2 gap-4' : 'space-y-3'}`}>
+    <div className={`p-4 ${type === 'products' ? 'grid grid-cols-1 gap-2' : 'space-y-3'}`}>
       {items.map((item) => (
         <Link
           key={item.title}
@@ -70,7 +70,7 @@ const NavItem = ({
       }
     >
       {label}
-      {items && <ChevronDown className="ml-1 h-4 w-4 opacity-50 group-hover:opacity-100" />}
+      {items && <ChevronDown className="ml-1 h-2   w-2 opacity-50 group-hover:opacity-100" />}
     </NavLink>
     {items && type && <Dropdown items={items} type={type} />}
   </div>
