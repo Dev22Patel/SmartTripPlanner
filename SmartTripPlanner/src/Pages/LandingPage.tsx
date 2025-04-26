@@ -293,7 +293,7 @@ export default function Dashboard() {
           </div>
         </CardContent>
         <CardFooter>
-          <a href={`https://www.google.com/search?q=${encodeURIComponent(prediction.predicted_destination)}`}
+          <a href={`destination/${prediction.predicted_destination}`}
             target='_blank'
             className='block w-full'
           >
@@ -381,7 +381,7 @@ export default function Dashboard() {
         </div>
 
         <div className=''>
-        
+
         </div>
       </main>
     </div>

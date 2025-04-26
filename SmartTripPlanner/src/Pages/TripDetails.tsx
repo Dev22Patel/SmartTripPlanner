@@ -297,6 +297,7 @@ export default function TripDetails() {
 
       if (response.status !== 200) throw new Error("Failed to save changes");
       toast.success("Changes saved successfully!");
+      navigate("/profile");
     } catch (error) {
       console.error("Error saving changes:", error);
       toast.error("Failed to save changes. Please try again.");
@@ -736,7 +737,7 @@ export default function TripDetails() {
             <button
               onClick={saveChanges}
               disabled={isSaving}
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark disabled:opacity-50"
+              className="bg-primary dark:bg- text-white px-4 py-2 rounded-md hover:bg-primary-dark disabled:opacity-50"
             >
               {isSaving ? "Saving..." : "Save Changes"}
             </button>
@@ -991,7 +992,7 @@ export default function TripDetails() {
           )}
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        {/* <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">Cost Estimate</h2>
             <button
@@ -1038,7 +1039,7 @@ export default function TripDetails() {
             Actual costs may vary based on seasonality and specific choices.
             {currency === "INR" && " Exchange rate used: 1 USD = 83.5 INR."}
           </p>
-        </div>
+        </div> */}
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Trip Summary</h2>
