@@ -15,6 +15,7 @@ const { auth } = require("google-auth-library");
 const protect = require("./middlewares/authMiddleware");
 const itineraryRoutes = require('./routes/itineraryRoutes');
 const recommendationsRoute = require('./routes/recommandationRoutes');
+const { compareSync } = require("bcryptjs");
 
 // Middleware
 app.use(express.json());
@@ -87,7 +88,7 @@ app.post("/api/generate-itinerary", async (req, res) => {
         - A catchy, descriptive title (15 words max)
         - A compelling description (50-70 words) highlighting what makes it special
         - Exact location name that will match Google Maps search results
-        - Estimated cost category ($, $$, $$$)
+        - Estimated cost in inr and give it in response(provide a specific amount or range)
         - Best time to visit
         - Activity category (attraction, food, transport, accommodation, entertainment)
         - **Optimal travel mode & estimated travel time** from the previous activity
@@ -575,26 +576,35 @@ app.get('/get-itinerary',protect, async (req, res) => {
 
   app.post('/api/save-itinerary', protect, async (req, res) => {
     const { destination, days } = req.body;
-    console.log('Save itinerary request:', req.body);
 
     try {
       const userIdentifier = req.user.id;
-
       if (!userIdentifier) {
         return res.status(401).json({ message: 'User ID not found. Authentication required.' });
       }
 
-      // Always create a new itinerary
+      // Sanitize categories in the days data
+      const sanitizedDays = days.map(day => ({
+        ...day,
+        activities: day.activities.map(activity => ({
+          ...activity,
+          // Map invalid categories to 'other'
+          category: ["food", "attraction", "transport", "accommodation", "other"].includes(activity.category)
+            ? activity.category
+            : "other"
+        }))
+      }));
+
       const itinerary = new Itinerary({
         userId: userIdentifier,
         destination,
-        days
+        days: sanitizedDays
       });
 
       await itinerary.save();
       res.json(itinerary);
     } catch (err) {
-      console.error(err.message);
+      console.error('Error saving itinerary:', err.message);
       res.status(500).send('Server Error');
     }
   });

@@ -39,7 +39,6 @@ export default function WeatherForecast({ location, date }: WeatherForecastProps
                 const data = await getWeatherForecast(location, date);
                 setWeather(data);
             } catch (err) {
-                setError("Unable to load weather data");
                 console.error(err);
             } finally {
                 setLoading(false);

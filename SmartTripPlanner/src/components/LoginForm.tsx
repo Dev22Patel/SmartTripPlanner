@@ -20,7 +20,7 @@ export default function LoginForm() {
     // Redirect if already authenticated
     useEffect(() => {
         if (isAuthenticated) {
-            navigate('/preferences');
+            navigate('/landing-page');
         }
     }, [isAuthenticated, navigate]);
 
@@ -51,7 +51,7 @@ export default function LoginForm() {
                 setLoading(false);
                 return;
             }
-            
+
             // Save token and authenticate user
             await login(data.token);
             // Navigation happens in useEffect

@@ -30,6 +30,7 @@ exports.signup = async (req, res) => {
     await newUser.save();
 
     const token = generateToken(newUser);
+
     res.status(201).json({
       message: "User registered successfully",
       token,

@@ -108,7 +108,7 @@ export default function Profile() {
 
       // Updated to use the correct API endpoint
       const response = await fetch(
-        "https://smarttripplanner.onrender.com/api/user",
+        "http://localhost:5000/api/user",
         {
           method: "DELETE",
           headers: {
@@ -454,7 +454,7 @@ export default function Profile() {
           <h2 className="text-2xl font-bold">SAVED TRIPS</h2>
           <Button
             variant="outline"
-            onClick={() => navigate('/create-trip')}
+            onClick={() => navigate('/landing-page')}
             className="text-sm flex items-center gap-1 border-black dark:border-white/20"
           >
             <PlusCircle className="w-4 h-4" />
