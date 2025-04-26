@@ -297,7 +297,6 @@ export default function TripDetails() {
 
       if (response.status !== 200) throw new Error("Failed to save changes");
       toast.success("Changes saved successfully!");
-      navigate("/profile");
     } catch (error) {
       console.error("Error saving changes:", error);
       toast.error("Failed to save changes. Please try again.");
@@ -337,178 +336,181 @@ export default function TripDetails() {
   
     setIsExporting(true);
     try {
-      const exportElement = document.createElement('div');
-      exportElement.className = 'pdf-export p-8';
-      exportElement.style.background = '#f0f4f8'; // Soft background
-      exportElement.style.padding = '30px';
-      exportElement.style.width = '210mm';
-      exportElement.style.color = '#333';
-      exportElement.style.fontFamily = 'Arial, sans-serif';
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = 210;
+      const pageHeight = 297;
+      const margin = 15;
+      const contentWidth = pageWidth - margin * 2;
   
       // Title
-      const title = document.createElement('h1');
-      title.style.fontSize = '32px';
-      title.style.color = '#2b6cb0'; // Dark blue
-      title.style.textAlign = 'center';
-      title.style.marginBottom = '30px';
-      title.textContent = `${editableTrip.destination} Itinerary`;
-      exportElement.appendChild(title);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(24);
+      pdf.setTextColor(43, 108, 176);
   
-      // Section Divider
-      const divider = document.createElement('hr');
-      divider.style.border = 'none';
-      divider.style.borderTop = '2px solid #2b6cb0';
-      divider.style.marginBottom = '20px';
-      exportElement.appendChild(divider);
+      const title = `${editableTrip.destination} Itinerary`;
+      const titleWidth = pdf.getStringUnitWidth(title) * 24 / pdf.internal.scaleFactor;
+      const titleX = (pageWidth - titleWidth) / 2;
+      pdf.text(title, titleX, margin + 5);
+  
+      // Horizontal line
+      pdf.setDrawColor(43, 108, 176);
+      pdf.setLineWidth(0.8);
+      pdf.line(margin, margin + 12, pageWidth - margin, margin + 12);
+  
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(12);
+      pdf.setTextColor(0, 0, 0);
+  
+      let yPosition = margin + 20;
   
       // Trip Summary
-      const summary = document.createElement('div');
-      summary.style.background = '#ffffff';
-      summary.style.padding = '20px';
-      summary.style.borderRadius = '10px';
-      summary.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-      summary.style.marginBottom = '30px';
-      summary.innerHTML = `
-        <h2 style="color: #2f855a;">Trip Summary</h2>
-        <p><strong>Destination:</strong> ${editableTrip.destination}</p>
-        <p><strong>Duration:</strong> ${editableTrip.days.length} days</p>
-        <p><strong>Start Date:</strong> ${editableTrip.days[0]?.date ? new Date(editableTrip.days[0].date).toLocaleDateString() : "Not set"}</p>
-        <p><strong>End Date:</strong> ${editableTrip.days[editableTrip.days.length - 1]?.date ? new Date(editableTrip.days[editableTrip.days.length - 1].date).toLocaleDateString() : "Not set"}</p>
-        <p><strong>Total Activities:</strong> ${editableTrip.days.reduce((total, day) => total + day.activities.length, 0)}</p>
-      `;
-      exportElement.appendChild(summary);
+      pdf.setFillColor(240, 244, 248);
+      pdf.roundedRect(margin, yPosition, contentWidth, 40, 3, 3, 'F');
   
-      // Cost Estimate
-      if (costEstimate) {
-        const costSection = document.createElement('div');
-        costSection.style.background = '#e6fffa'; // Light teal
-        costSection.style.padding = '20px';
-        costSection.style.borderRadius = '10px';
-        costSection.style.marginBottom = '30px';
-        costSection.innerHTML = `
-          <h2 style="color: #3182ce;">Cost Estimate</h2>
-          <p><strong>Accommodation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.accommodation}</p>
-          <p><strong>Activities:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.activities}</p>
-          <p><strong>Transportation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.transportation}</p>
-          <p><strong>Food:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.food}</p>
-          <p style="font-size: 18px; font-weight: bold; color: #2f855a;"><strong>Total:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.total}</p>
-          <small>*Note: This is an estimate based on current rates for ${editableTrip.destination}. Costs may vary.</small>
-        `;
-        exportElement.appendChild(costSection);
-      }
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Trip Summary', margin + 5, yPosition + 8);
+      pdf.setFont('helvetica', 'normal');
+  
+      pdf.text(`Destination: ${editableTrip.destination}`, margin + 5, yPosition + 16);
+      pdf.text(`Duration: ${editableTrip.days.length} days`, margin + 5, yPosition + 24);
+  
+      const startDate = editableTrip.days[0]?.date
+        ? new Date(editableTrip.days[0].date).toLocaleDateString()
+        : "Not set";
+  
+      const endDate = editableTrip.days[editableTrip.days.length - 1]?.date
+        ? new Date(editableTrip.days[editableTrip.days.length - 1].date).toLocaleDateString()
+        : "Not set";
+  
+      pdf.text(`Start Date: ${startDate}`, margin + 5, yPosition + 32);
+      pdf.text(`End Date: ${endDate}`, margin + contentWidth / 2, yPosition + 32);
+  
+      yPosition += 50;
   
       // Alerts Section
       if (alerts.length > 0) {
-        const alertsSection = document.createElement('div');
-        alertsSection.style.background = '#fff5f5'; // Very light red
-        alertsSection.style.padding = '20px';
-        alertsSection.style.borderRadius = '10px';
-        alertsSection.style.marginBottom = '30px';
-        alertsSection.innerHTML = `<h2 style="color: #e53e3e;">Trip Alerts</h2>`;
+        if (yPosition + 30 > pageHeight - margin) {
+          pdf.addPage();
+          yPosition = margin;
+        }
+  
+        pdf.setFillColor(255, 245, 245);
+        pdf.roundedRect(margin, yPosition, contentWidth, 15 + alerts.length * 25, 3, 3, 'F');
+  
+        pdf.setFont('helvetica', 'bold');
+        pdf.text('Trip Alerts', margin + 5, yPosition + 10);
+        pdf.setFont('helvetica', 'normal');
+  
+        yPosition += 18;
   
         alerts.forEach(alert => {
-          const alertDiv = document.createElement('div');
-          alertDiv.style.border = `2px solid ${alert.severity === 'critical' ? '#e53e3e' : '#ecc94b'}`;
-          alertDiv.style.padding = '15px';
-          alertDiv.style.marginTop = '10px';
-          alertDiv.style.borderRadius = '8px';
-          alertDiv.innerHTML = `
-            <strong>Day ${alert.dayNumber}: ${alert.placeTitle}</strong>
-            <p>${alert.reason}</p>
-          `;
-          alertsSection.appendChild(alertDiv);
-        });
+          if (yPosition + 25 > pageHeight - margin) {
+            pdf.addPage();
+            yPosition = margin;
+          }
   
-        exportElement.appendChild(alertsSection);
+          const alertColor: [number, number, number] = alert.severity === 'critical' ? [229, 62, 62] : [236, 201, 75];
+          pdf.setDrawColor(...alertColor);
+          pdf.setLineWidth(0.5);
+          pdf.roundedRect(margin + 5, yPosition, contentWidth - 10, 20, 2, 2, 'S');
+  
+          pdf.setFont('helvetica', 'bold');
+          pdf.text(`Day ${alert.dayNumber}: ${alert.placeTitle}`, margin + 10, yPosition + 8);
+          pdf.setFont('helvetica', 'normal');
+          pdf.setFontSize(10);
+          pdf.text(`${alert.reason}`, margin + 10, yPosition + 16);
+          pdf.setFontSize(12);
+  
+          yPosition += 25;
+        });
       }
   
       // Daily Itinerary
-      const daysSection = document.createElement('div');
-      daysSection.innerHTML = `<h2 style="color: #805ad5;">Daily Itinerary</h2>`;
-      exportElement.appendChild(daysSection);
-  
-      editableTrip.days.forEach((day) => {
-        const dayDiv = document.createElement('div');
-        dayDiv.style.background = '#ffffff';
-        dayDiv.style.padding = '20px';
-        dayDiv.style.marginTop = '20px';
-        dayDiv.style.borderRadius = '10px';
-        dayDiv.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
-  
-        dayDiv.innerHTML = `
-          <h3 style="color: #2b6cb0;">Day ${day.dayNumber} - ${day.date ? new Date(day.date).toLocaleDateString() : "Date not set"}</h3>
-          <p style="font-style: italic;">${day.description || 'No description provided.'}</p>
-        `;
-  
-        if (day.activities.length > 0) {
-          const activitiesList = document.createElement('ul');
-          activitiesList.style.paddingLeft = '20px';
-          activitiesList.style.marginTop = '10px';
-          
-          day.activities.forEach(activity => {
-            const activityItem = document.createElement('li');
-            activityItem.style.marginBottom = '10px';
-            activityItem.innerHTML = `
-              <strong>${activity.title}</strong> ${activity.cost ? `(${activity.cost})` : ''}
-              <p>${activity.description}</p>
-              ${activity.category ? `<small style="color: #4a5568;">Category: ${activity.category}</small>` : ''}
-            `;
-            activitiesList.appendChild(activityItem);
-          });
-  
-          dayDiv.appendChild(activitiesList);
-        } else {
-          const noActivities = document.createElement('p');
-          noActivities.style.fontStyle = 'italic';
-          noActivities.textContent = 'No activities planned for this day.';
-          dayDiv.appendChild(noActivities);
-        }
-  
-        daysSection.appendChild(dayDiv);
-      });
-  
-      // Footer
-      const footer = document.createElement('div');
-      footer.style.marginTop = '40px';
-      footer.style.textAlign = 'center';
-      footer.style.color = '#718096';
-      footer.style.fontSize = '12px';
-      footer.innerHTML = `<p>Generated on ${new Date().toLocaleDateString()}</p>`;
-      exportElement.appendChild(footer);
-  
-      // Append to body temporarily
-      document.body.appendChild(exportElement);
-  
-      // Create PDF
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const canvasElement = await html2canvas(exportElement, {
-        scale: 2,
-        logging: false,
-        useCORS: true,
-        backgroundColor: '#FFFFFF'
-      });
-  
-      const imgData = canvasElement.toDataURL('image/png');
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = canvasElement.height * imgWidth / canvasElement.width;
-      let heightLeft = imgHeight;
-      let position = 0;
-  
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-  
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
+      if (yPosition + 20 > pageHeight - margin) {
         pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+        yPosition = margin;
       }
   
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(16);
+      pdf.text('Daily Itinerary', margin, yPosition + 5);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(12);
+  
+      yPosition += 15;
+  
+      for (const day of editableTrip.days) {
+        if (yPosition + 40 > pageHeight - margin) {
+          pdf.addPage();
+          yPosition = margin;
+        }
+  
+        pdf.setFillColor(230, 240, 255);
+        pdf.roundedRect(margin, yPosition, contentWidth, 25, 3, 3, 'F');
+  
+        const dayDate = day.date ? new Date(day.date).toLocaleDateString() : "Date not set";
+  
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(`Day ${day.dayNumber} - ${dayDate}`, margin + 5, yPosition + 10);
+        pdf.setFont('helvetica', 'normal');
+  
+        const description = day.description || 'No description provided.';
+        const lines = pdf.splitTextToSize(description, contentWidth - 10);
+        pdf.text(lines, margin + 5, yPosition + 20);
+  
+        yPosition += 30 + (lines.length - 1) * 5;
+  
+        // Activities
+        if (day.activities.length > 0) {
+          for (const activity of day.activities) {
+            if (yPosition + 30 > pageHeight - margin) {
+              pdf.addPage();
+              yPosition = margin;
+            }
+  
+            pdf.setFillColor(255, 255, 255);
+            pdf.setDrawColor(200, 200, 200);
+            pdf.roundedRect(margin, yPosition, contentWidth, 30, 2, 2, 'FD');
+  
+            // Activity title (WITHOUT COST now)
+            pdf.setFont('helvetica', 'bold');
+            pdf.text(activity.title, margin + 5, yPosition + 10);
+  
+            // Activity description
+            pdf.setFont('helvetica', 'normal');
+            const descLines = pdf.splitTextToSize(activity.description || '', contentWidth - 10);
+            pdf.text(descLines, margin + 5, yPosition + 18);
+  
+            // Activity category
+            if (activity.category) {
+              pdf.setFontSize(10);
+              pdf.setTextColor(100, 100, 100);
+              pdf.text(`Category: ${activity.category}`, margin + 5, yPosition + 18 + (descLines.length * 5));
+              pdf.setTextColor(0, 0, 0);
+              pdf.setFontSize(12);
+            }
+  
+            yPosition += 35 + (descLines.length - 1) * 5;
+          }
+        } else {
+          pdf.setFont('helvetica', 'italic');
+          pdf.text('No activities planned for this day.', margin + 5, yPosition + 10);
+          pdf.setFont('helvetica', 'normal');
+          yPosition += 15;
+        }
+  
+        yPosition += 15; // space between days
+      }
+  
+      // Footer
+      pdf.setFont('helvetica', 'italic');
+      pdf.setFontSize(10);
+      pdf.setTextColor(120, 120, 120);
+      pdf.text(`Generated on ${new Date().toLocaleDateString()}`, pageWidth / 2, pageHeight - 10, {
+        align: 'center',
+      });
+  
       pdf.save(`${editableTrip.destination.replace(/\s+/g, '_')}_Itinerary.pdf`);
-  
-      document.body.removeChild(exportElement);
-  
       toast.success('Itinerary exported beautifully as PDF! 🎉');
     } catch (error) {
       console.error('Error exporting to PDF:', error);
@@ -517,6 +519,8 @@ export default function TripDetails() {
       setIsExporting(false);
     }
   };
+  
+  
   
 
   // Print itinerary
@@ -553,19 +557,19 @@ export default function TripDetails() {
     printableContent.appendChild(summary);
     
     // Add cost estimate if available
-    if (costEstimate) {
-      const costSection = document.createElement('div');
-      costSection.style.marginBottom = '30px';
-      costSection.innerHTML = `
-        <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Cost Estimate</h2>
-        <p><strong>Accommodation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.accommodation}</p>
-        <p><strong>Activities:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.activities}</p>
-        <p><strong>Transportation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.transportation}</p>
-        <p><strong>Food:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.food}</p>
-        <p style="font-weight: bold;"><strong>Total Estimated Cost:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.total}</p>
-      `;
-      printableContent.appendChild(costSection);
-    }
+    // if (costEstimate) {
+    //   const costSection = document.createElement('div');
+    //   costSection.style.marginBottom = '30px';
+    //   costSection.innerHTML = `
+    //     <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Cost Estimate</h2>
+    //     <p><strong>Accommodation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.accommodation}</p>
+    //     <p><strong>Activities:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.activities}</p>
+    //     <p><strong>Transportation:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.transportation}</p>
+    //     <p><strong>Food:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.food}</p>
+    //     <p style="font-weight: bold;"><strong>Total Estimated Cost:</strong> ${currency === "USD" ? "$" : "₹"}${costEstimate.total}</p>
+    //   `;
+    //   printableContent.appendChild(costSection);
+    // }
     
     // Add daily itinerary details
     const daysSection = document.createElement('div');
@@ -574,7 +578,7 @@ export default function TripDetails() {
     editableTrip.days.forEach((day, index) => {
       const dayDiv = document.createElement('div');
       dayDiv.style.marginBottom = '30px';
-      dayDiv.style.pageBreakInside = 'avoid';
+      dayDiv.style.breakInside = 'avoid';
       
       dayDiv.innerHTML = `
         <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
@@ -591,7 +595,7 @@ export default function TripDetails() {
           const activityDiv = document.createElement('div');
           activityDiv.style.marginBottom = '15px';
           activityDiv.innerHTML = `
-            <h4 style="font-size: 14px; font-weight: bold;">${activity.title} ${activity.cost ? `(${activity.cost})` : ''}</h4>
+            <h4 style="font-size: 14px; font-weight: bold;">${activity.title}</h4>
             <p>${activity.description}</p>
             ${activity.category ? `<p><strong>Category:</strong> ${activity.category}</p>` : ''}
           `;
@@ -737,7 +741,7 @@ export default function TripDetails() {
             <button
               onClick={saveChanges}
               disabled={isSaving}
-              className="bg-primary dark:bg- text-white px-4 py-2 rounded-md hover:bg-primary-dark disabled:opacity-50"
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark disabled:opacity-50"
             >
               {isSaving ? "Saving..." : "Save Changes"}
             </button>
@@ -992,7 +996,7 @@ export default function TripDetails() {
           )}
         </div>
 
-        {/* <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">Cost Estimate</h2>
             <button
@@ -1039,7 +1043,7 @@ export default function TripDetails() {
             Actual costs may vary based on seasonality and specific choices.
             {currency === "INR" && " Exchange rate used: 1 USD = 83.5 INR."}
           </p>
-        </div> */}
+        </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Trip Summary</h2>
@@ -1095,9 +1099,9 @@ export default function TripDetails() {
                 <>Export Itinerary</>
               )}
             </button>
-            <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+            {/* <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
               Share Trip
-            </button>
+            </button> */}
             <button 
               onClick={printItinerary}
               className="w-full bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600"
